@@ -72,31 +72,58 @@
     });
   }
 
-  // Contact form — front-end handler
-  // The form uses formsubmit.co as action. This JS layer adds a success state
-  // overlay so users get immediate feedback without a page reload.
-  // To connect a different backend, change the form action attribute.
-  const contactForm = document.getElementById('contactForm');
+  // Contact form — submits to the S-Protocol Apps Script webhook via fetch.
+  // Uses URLSearchParams (application/x-www-form-urlencoded) — a CORS "simple
+  // request" that requires no preflight OPTIONS, making it the most reliable
+  // choice for Google Apps Script web app endpoints.
+  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyOh8-2IwhL6yK6YWjJMENjv0dJugE3G7LcBg2nM22YPK7P8iXHbPQ9wuABSHij4vtp4g/exec';
+
+  var contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      // If formsubmit.co or similar service is configured, let the form POST normally.
-      // For pure front-end demo mode (action="#"), prevent default and show success.
-      const action = contactForm.getAttribute('action') || '';
-      if (action === '' || action === '#' || action === '#contact') {
-        e.preventDefault();
-        showFormSuccess();
-        return;
-      }
-      // For real endpoint (formsubmit.co etc.), submit naturally but also show
-      // an optimistic success state after a short delay.
-      setTimeout(showFormSuccess, 800);
+      e.preventDefault();
+
+      var btn = contactForm.querySelector('button[type="submit"]');
+      var originalText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      var params = new URLSearchParams();
+      params.append('name',    (contactForm.querySelector('[name="name"]').value    || '').trim());
+      params.append('email',   (contactForm.querySelector('[name="email"]').value   || '').trim());
+      params.append('company', (contactForm.querySelector('[name="company"]').value || '').trim());
+      params.append('phone',   (contactForm.querySelector('[name="phone"]').value   || '').trim());
+      params.append('message', (contactForm.querySelector('[name="message"]').value || '').trim());
+      params.append('source',  's-protocol.com');
+      params.append('page',    window.location.href);
+
+      fetch(WEBHOOK_URL, { method: 'POST', body: params })
+        .then(function (res) { return res.json(); })
+        .then(function (json) {
+          if (json && json.ok) {
+            showFormSuccess();
+          } else {
+            showFormError(btn, originalText);
+          }
+        })
+        .catch(function () {
+          showFormError(btn, originalText);
+        });
     });
+  }
+
+  // Mobile: remove SMIL <animate> elements so the S renders as a static shape.
+  // The CSS glow pulse (s-glow-pulse) continues independently on the SVG element.
+  // This prevents broken morph frames on mobile browsers without freezing CSS.
+  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
+    var heroSvg = document.querySelector('.hero-s-svg');
+    if (heroSvg) {
+      heroSvg.querySelectorAll('animate').forEach(function (el) { el.parentNode.removeChild(el); });
+    }
   }
 
   function showFormSuccess() {
     const form = document.getElementById('contactForm');
     if (!form) return;
-    // Build success message inline
     const card = form.closest('.contact-card');
     if (!card) return;
     let success = card.querySelector('.form-success');
@@ -115,6 +142,22 @@
       form.style.display = 'none';
       success.classList.add('visible');
     }, 300);
+  }
+
+  function showFormError(btn, originalText) {
+    if (btn) { btn.disabled = false; btn.textContent = originalText; }
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    let errEl = form.querySelector('.form-error');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.className = 'form-error';
+      errEl.textContent = 'Something went wrong. Please try again or email us directly.';
+      const actions = form.querySelector('.form-actions');
+      if (actions) actions.insertAdjacentElement('afterend', errEl);
+      else form.appendChild(errEl);
+    }
+    errEl.style.display = 'block';
   }
 
 })();
