@@ -94,14 +94,14 @@
   }
 
   // Mobile hero animation fix:
-  // The SMIL morph between S (M+6C) and infinity (M+4C) paths is broken on mobile
-  // because mismatched command counts produce distorted intermediate frames.
-  // Pause the SMIL on mobile and apply a clean CSS-only sway animation instead.
+  // pauseAnimations() freezes CSS animations on iOS/WebKit — use DOM removal instead.
+  // Removing <animate> elements stops the broken SMIL path morph while keeping
+  // the CSS s-mobile-sway animation fully running.
   if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
     var heroSvg = document.querySelector('.hero-s-svg');
-    if (heroSvg && typeof heroSvg.pauseAnimations === 'function') {
-      heroSvg.pauseAnimations(); // pauses all SMIL on this <svg> element
-      heroSvg.classList.add('hero-s-mobile'); // CSS sway takes over
+    if (heroSvg) {
+      heroSvg.querySelectorAll('animate').forEach(function (el) { el.parentNode.removeChild(el); });
+      heroSvg.classList.add('hero-s-mobile');
     }
   }
 
