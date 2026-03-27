@@ -93,6 +93,16 @@
     });
   }
 
+  // Mobile: remove SMIL <animate> elements so the S renders as a static shape.
+  // The CSS glow pulse (s-glow-pulse) continues independently on the SVG element.
+  // This prevents broken morph frames on mobile browsers without freezing CSS.
+  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
+    var heroSvg = document.querySelector('.hero-s-svg');
+    if (heroSvg) {
+      heroSvg.querySelectorAll('animate').forEach(function (el) { el.parentNode.removeChild(el); });
+    }
+  }
+
   function showFormSuccess() {
     const form = document.getElementById('contactForm');
     if (!form) return;
