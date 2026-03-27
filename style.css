@@ -222,7 +222,8 @@ img, svg { display: block; }
   display: flex;
   align-items: center;
   padding-top: 80px;
-  overflow: hidden;
+  /* overflow: hidden was clipping the SVG glow filter on mobile;
+     containment is handled by the child bg elements instead */
 }
 
 .hero-bg-grid {
@@ -1039,29 +1040,47 @@ img, svg { display: block; }
     gap: 16px 24px;
   }
 
-  /* Stronger atmospheric glow on mobile */
+  /* Larger S on mobile so it reads as a proper hero symbol */
+  .hero-s-wrap { width: 180px; }
+
+  /* Atmospheric glow on mobile */
   .hero-s-svg {
     filter:
       drop-shadow(0 0 10px rgba(224,32,32,0.80))
-      drop-shadow(0 0 36px rgba(224,32,32,0.45))
-      drop-shadow(0 0 80px rgba(224,32,32,0.22))
-      drop-shadow(0 0 130px rgba(224,32,32,0.08));
+      drop-shadow(0 0 40px rgba(224,32,32,0.40))
+      drop-shadow(0 0 90px rgba(224,32,32,0.20))
+      drop-shadow(0 0 160px rgba(224,32,32,0.08));
+  }
+
+  /* Mobile draw animation: the S writes itself forward, holds, then undraws
+     in reverse — a premium stroke-reveal loop. Pure CSS, works on all devices,
+     guaranteed no broken frames since the path shape never changes. */
+  .s-morph-path {
+    stroke-dasharray: 1000;
+    animation: s-mobile-draw 6s ease-in-out infinite;
+  }
+
+  @keyframes s-mobile-draw {
+    0%   { stroke-dashoffset: 1000; } /* fully hidden — draw begins */
+    42%  { stroke-dashoffset: 0; }    /* fully drawn */
+    62%  { stroke-dashoffset: 0; }    /* hold */
+    100% { stroke-dashoffset: 1000; } /* undraw in reverse, ready to loop */
   }
 
   @keyframes s-glow-pulse {
     0%, 100% {
       filter:
         drop-shadow(0 0 10px rgba(224,32,32,0.80))
-        drop-shadow(0 0 36px rgba(224,32,32,0.45))
-        drop-shadow(0 0 80px rgba(224,32,32,0.22))
-        drop-shadow(0 0 130px rgba(224,32,32,0.08));
+        drop-shadow(0 0 40px rgba(224,32,32,0.40))
+        drop-shadow(0 0 90px rgba(224,32,32,0.20))
+        drop-shadow(0 0 160px rgba(224,32,32,0.08));
     }
     45% {
       filter:
         drop-shadow(0 0 14px rgba(224,32,32,0.95))
-        drop-shadow(0 0 48px rgba(224,32,32,0.60))
-        drop-shadow(0 0 110px rgba(224,32,32,0.30))
-        drop-shadow(0 0 180px rgba(224,32,32,0.12));
+        drop-shadow(0 0 52px rgba(224,32,32,0.55))
+        drop-shadow(0 0 120px rgba(224,32,32,0.28))
+        drop-shadow(0 0 220px rgba(224,32,32,0.10));
     }
   }
 }
