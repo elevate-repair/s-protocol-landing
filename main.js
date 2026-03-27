@@ -93,6 +93,18 @@
     });
   }
 
+  // Mobile hero animation fix:
+  // The SMIL morph between S (M+6C) and infinity (M+4C) paths is broken on mobile
+  // because mismatched command counts produce distorted intermediate frames.
+  // Pause the SMIL on mobile and apply a clean CSS-only sway animation instead.
+  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
+    var heroSvg = document.querySelector('.hero-s-svg');
+    if (heroSvg && typeof heroSvg.pauseAnimations === 'function') {
+      heroSvg.pauseAnimations(); // pauses all SMIL on this <svg> element
+      heroSvg.classList.add('hero-s-mobile'); // CSS sway takes over
+    }
+  }
+
   function showFormSuccess() {
     const form = document.getElementById('contactForm');
     if (!form) return;
