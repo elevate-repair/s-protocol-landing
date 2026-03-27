@@ -10,11 +10,14 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://s-protocol.com/" />
   <meta property="og:title" content="S-Protocol — Appliance Repair Operations Software" />
   <meta property="og:description" content="The focused SRM platform built for appliance repair businesses. $35/month. Built by operators, for operators." />
   <meta property="og:site_name" content="S-Protocol" />
   <meta property="og:image" content="https://s-protocol.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -25,12 +28,55 @@
   <title>S-Protocol — Appliance Repair Operations Software</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="shortcut icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#080a0c" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://s-protocol.com/#organization",
+        "name": "S-Protocol",
+        "url": "https://s-protocol.com",
+        "logo": "https://s-protocol.com/favicon.svg",
+        "description": "S-Protocol is a focused SRM platform built for appliance repair businesses.",
+        "email": "hello@s-protocol.com",
+        "sameAs": ["https://app.s-protocol.com"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://s-protocol.com/#website",
+        "url": "https://s-protocol.com",
+        "name": "S-Protocol",
+        "publisher": { "@id": "https://s-protocol.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://s-protocol.com/#app",
+        "name": "S-Protocol",
+        "url": "https://app.s-protocol.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "A focused SRM platform for appliance repair businesses — job management, scheduling, customer records, and technician workflow.",
+        "offers": {
+          "@type": "Offer",
+          "price": "35",
+          "priceCurrency": "USD",
+          "description": "Full platform access. No per-seat add-ons."
+        },
+        "provider": { "@id": "https://s-protocol.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
