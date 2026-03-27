@@ -93,22 +93,6 @@
     });
   }
 
-  // Mobile hero animation fix:
-  // 3D transforms (rotateY + perspective) are unreliable on SVG elements in mobile browsers.
-  // Solution: remove SMIL <animate> elements to stop the broken path morph, then add
-  // the motion class to the HTML wrapper div (.hero-s-wrap) which handles 2D transforms
-  // correctly on all mobile browsers. The SVG glow pulse still runs on .hero-s-svg.
-  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
-    var heroSvg = document.querySelector('.hero-s-svg');
-    var heroWrap = document.querySelector('.hero-s-wrap');
-    if (heroSvg) {
-      heroSvg.querySelectorAll('animate').forEach(function (el) { el.parentNode.removeChild(el); });
-    }
-    if (heroWrap) {
-      heroWrap.classList.add('hero-s-mobile');
-    }
-  }
-
   function showFormSuccess() {
     const form = document.getElementById('contactForm');
     if (!form) return;
