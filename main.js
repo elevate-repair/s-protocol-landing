@@ -94,14 +94,18 @@
   }
 
   // Mobile hero animation fix:
-  // pauseAnimations() freezes CSS animations on iOS/WebKit — use DOM removal instead.
-  // Removing <animate> elements stops the broken SMIL path morph while keeping
-  // the CSS s-mobile-sway animation fully running.
+  // 3D transforms (rotateY + perspective) are unreliable on SVG elements in mobile browsers.
+  // Solution: remove SMIL <animate> elements to stop the broken path morph, then add
+  // the motion class to the HTML wrapper div (.hero-s-wrap) which handles 2D transforms
+  // correctly on all mobile browsers. The SVG glow pulse still runs on .hero-s-svg.
   if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
     var heroSvg = document.querySelector('.hero-s-svg');
+    var heroWrap = document.querySelector('.hero-s-wrap');
     if (heroSvg) {
       heroSvg.querySelectorAll('animate').forEach(function (el) { el.parentNode.removeChild(el); });
-      heroSvg.classList.add('hero-s-mobile');
+    }
+    if (heroWrap) {
+      heroWrap.classList.add('hero-s-mobile');
     }
   }
 

@@ -1060,39 +1060,25 @@ img, svg { display: block; }
 }
 
 /* ============================================================
-   Mobile hero S — clean CSS sway (applied via JS, replaces broken SMIL morph)
-   SMIL path morph is paused on mobile because the S (M+6C) and infinity (M+4C)
-   paths have different command counts and produce distorted intermediate frames.
-   This CSS-only animation keeps the S shape intact throughout the loop.
+   Mobile hero S — applied to .hero-s-wrap (HTML div, not SVG element).
+   3D transforms on SVG are unreliable on mobile — using only 2D transforms
+   on the wrapper div, which all mobile browsers handle correctly.
+   The SVG's CSS glow pulse (s-glow-pulse) continues independently.
    ============================================================ */
 .hero-s-mobile {
-  animation: s-mobile-sway 5s ease-in-out infinite !important;
+  animation: s-mobile-sway 4s ease-in-out infinite;
+  transform-origin: center center;
 }
 
 @keyframes s-mobile-sway {
   0%, 100% {
-    transform: perspective(500px) rotateY(0deg) scaleX(1);
-    filter:
-      drop-shadow(0 0 10px rgba(224,32,32,0.80))
-      drop-shadow(0 0 36px rgba(224,32,32,0.45))
-      drop-shadow(0 0 80px rgba(224,32,32,0.22))
-      drop-shadow(0 0 130px rgba(224,32,32,0.08));
+    transform: rotate(0deg) scale(1) translateY(0px);
   }
-  28% {
-    transform: perspective(500px) rotateY(14deg) scaleX(0.93);
-    filter:
-      drop-shadow(0 0 14px rgba(224,32,32,0.95))
-      drop-shadow(0 0 48px rgba(224,32,32,0.60))
-      drop-shadow(0 0 110px rgba(224,32,32,0.30))
-      drop-shadow(0 0 180px rgba(224,32,32,0.12));
+  30% {
+    transform: rotate(4deg) scale(1.05) translateY(-8px);
   }
-  64% {
-    transform: perspective(500px) rotateY(-11deg) scaleX(0.95);
-    filter:
-      drop-shadow(0 0 12px rgba(224,32,32,0.88))
-      drop-shadow(0 0 42px rgba(224,32,32,0.52))
-      drop-shadow(0 0 92px rgba(224,32,32,0.24))
-      drop-shadow(0 0 140px rgba(224,32,32,0.09));
+  65% {
+    transform: rotate(-3deg) scale(1.02) translateY(4px);
   }
 }
 
