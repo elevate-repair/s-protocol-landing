@@ -14,7 +14,6 @@
       mobileNav.setAttribute('aria-hidden', !isOpen);
     });
 
-    // Close on nav link click
     mobileNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         mobileNav.classList.remove('open');
@@ -24,26 +23,25 @@
     });
   }
 
-  // Header scroll shadow
+  // Header scroll opacity
   const header = document.querySelector('.header');
   if (header) {
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 20) {
-        header.style.background = 'rgba(8, 10, 12, 0.96)';
-      } else {
-        header.style.background = 'rgba(8, 10, 12, 0.82)';
-      }
+      header.style.background = window.scrollY > 20
+        ? 'rgba(8, 10, 12, 0.96)'
+        : 'rgba(8, 10, 12, 0.82)';
     }, { passive: true });
   }
 
-  // Smooth anchor scroll (handles offset for fixed header)
+  // Smooth anchor scroll with fixed header offset
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const offset = 70;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
@@ -58,8 +56,8 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
-          entry.target.style.transform = entry.target.style.transform
-            ? entry.target.style.transform.replace('translateY(16px)', '')
+          entry.target.style.transform = entry.target.classList.contains('feature-card')
+            ? 'translateY(0)'
             : '';
           observer.unobserve(entry.target);
         }
@@ -73,4 +71,50 @@
       observer.observe(card);
     });
   }
+
+  // Contact form — front-end handler
+  // The form uses formsubmit.co as action. This JS layer adds a success state
+  // overlay so users get immediate feedback without a page reload.
+  // To connect a different backend, change the form action attribute.
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      // If formsubmit.co or similar service is configured, let the form POST normally.
+      // For pure front-end demo mode (action="#"), prevent default and show success.
+      const action = contactForm.getAttribute('action') || '';
+      if (action === '' || action === '#' || action === '#contact') {
+        e.preventDefault();
+        showFormSuccess();
+        return;
+      }
+      // For real endpoint (formsubmit.co etc.), submit naturally but also show
+      // an optimistic success state after a short delay.
+      setTimeout(showFormSuccess, 800);
+    });
+  }
+
+  function showFormSuccess() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    // Build success message inline
+    const card = form.closest('.contact-card');
+    if (!card) return;
+    let success = card.querySelector('.form-success');
+    if (!success) {
+      success = document.createElement('div');
+      success.className = 'form-success';
+      success.innerHTML =
+        '<div class="form-success-icon">&#10003;</div>' +
+        '<h3>Message received.</h3>' +
+        '<p>We will be in touch within one business day.</p>';
+      card.appendChild(success);
+    }
+    form.style.transition = 'opacity 0.3s';
+    form.style.opacity = '0';
+    setTimeout(function () {
+      form.style.display = 'none';
+      success.classList.add('visible');
+    }, 300);
+  }
+
 })();

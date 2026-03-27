@@ -1,0 +1,16 @@
+{
+  "name": "S-Protocol",
+  "short_name": "S-Protocol",
+  "description": "The focused SRM platform built for appliance repair businesses.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#080a0c",
+  "theme_color": "#080a0c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
