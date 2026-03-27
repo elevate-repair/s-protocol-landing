@@ -838,6 +838,13 @@ img, svg { display: block; }
   color: var(--text-muted);
 }
 
+.form-error {
+  font-size: 13px;
+  color: #f87171;
+  margin-top: 12px;
+  display: none;
+}
+
 /* ============================================================
    Final CTA
    ============================================================ */
