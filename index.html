@@ -131,33 +131,44 @@
             <path class="s-morph-path" filter="url(#s-glow)"
               d="M 150,52 C 150,25 125,8 100,8 C 70,8 45,28 45,55 C 45,82 65,95 100,110 C 135,125 155,142 155,175 C 155,210 130,252 100,252 C 68,252 50,232 50,208"
               fill="none" stroke="#e02020" stroke-width="18" stroke-linecap="round">
-              <!-- S shape at 0,20%  |  Infinity at 40,60%  |  S shape at 80,100% -->
+              <!--
+                Both paths are M + 6C (identical command structure).
+                Previously the S was M+6C and the infinity M+4C — mismatched counts
+                caused SMIL to produce broken/warped intermediate frames on all devices.
+
+                S path:        starts top-right, curves through the classic S form, ends bottom-left.
+                Infinity path: same start/end. Traces a horizontal figure-eight (∞):
+                  C1 — right lobe right edge
+                  C2 — bottom crossing left
+                  C3 — left lobe, looping back up to top-left
+                  C4 — inner crossing rightward through center
+                  C5 — lower right arc toward end
+                  C6 — arrive at end (nearly identical to S C6 for smooth loop closure)
+              -->
               <animate
                 attributeName="d"
-                dur="7s"
+                dur="8s"
                 repeatCount="indefinite"
                 calcMode="spline"
-                keyTimes="0; 0.18; 0.38; 0.5; 0.68; 0.82; 1"
-                keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"
+                keyTimes="0; 0.20; 0.42; 0.58; 0.78; 1"
+                keySplines="0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1"
                 values="
                   M 150,52 C 150,25 125,8 100,8 C 70,8 45,28 45,55 C 45,82 65,95 100,110 C 135,125 155,142 155,175 C 155,210 130,252 100,252 C 68,252 50,232 50,208;
                   M 150,52 C 150,25 125,8 100,8 C 70,8 45,28 45,55 C 45,82 65,95 100,110 C 135,125 155,142 155,175 C 155,210 130,252 100,252 C 68,252 50,232 50,208;
-                  M 50,110 C 50,60 5,30 5,80 C 5,130 50,155 100,110 C 150,65 195,90 195,130 C 195,175 150,195 100,110;
-                  M 50,110 C 50,60 5,30 5,80 C 5,130 50,155 100,110 C 150,65 195,90 195,130 C 195,175 150,195 100,110;
-                  M 50,110 C 50,60 5,30 5,80 C 5,130 50,155 100,110 C 150,65 195,90 195,130 C 195,175 150,195 100,110;
+                  M 150,52 C 195,52 200,100 165,130 C 130,160 70,160 35,130 C 5,100 10,52 50,52 C 90,52 120,80 130,110 C 140,140 120,180 90,208 C 70,220 55,215 50,208;
+                  M 150,52 C 195,52 200,100 165,130 C 130,160 70,160 35,130 C 5,100 10,52 50,52 C 90,52 120,80 130,110 C 140,140 120,180 90,208 C 70,220 55,215 50,208;
                   M 150,52 C 150,25 125,8 100,8 C 70,8 45,28 45,55 C 45,82 65,95 100,110 C 135,125 155,142 155,175 C 155,210 130,252 100,252 C 68,252 50,232 50,208;
                   M 150,52 C 150,25 125,8 100,8 C 70,8 45,28 45,55 C 45,82 65,95 100,110 C 135,125 155,142 155,175 C 155,210 130,252 100,252 C 68,252 50,232 50,208
                 "
               />
-              <!-- Stroke color: red when S, shifts slightly during infinity transition -->
               <animate
                 attributeName="stroke"
-                dur="7s"
+                dur="8s"
                 repeatCount="indefinite"
                 calcMode="spline"
-                keyTimes="0; 0.18; 0.38; 0.5; 0.68; 0.82; 1"
-                keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"
-                values="#e02020; #e02020; #c41a1a; #c41a1a; #c41a1a; #e02020; #e02020"
+                keyTimes="0; 0.20; 0.42; 0.58; 0.78; 1"
+                keySplines="0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1"
+                values="#e02020; #e02020; #c41a1a; #c41a1a; #e02020; #e02020"
               />
             </path>
           </svg>
