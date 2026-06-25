@@ -144,7 +144,7 @@
     if (!errEl) {
       errEl = document.createElement('p');
       errEl.className = 'form-error';
-      errEl.textContent = 'Something went wrong. Please try again, or email hello@s-protocol.com.';
+      errEl.textContent = 'Something went wrong. Please try again, or email support@s-protocol.com.';
       var actions = form.querySelector('.form-actions');
       if (actions) actions.insertAdjacentElement('afterend', errEl);
       else form.appendChild(errEl);
