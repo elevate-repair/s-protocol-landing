@@ -18,6 +18,10 @@ Static site — plain HTML, CSS, and vanilla JS. No build step.
 - `privacy/index.html` — Privacy Policy (`/privacy`)
 - `style.css` — design system and layout (shared by all pages)
 - `main.js` — navigation, scroll reveal, and contact form (shared)
+- `clarity.js` — shared Microsoft Clarity loader for all pages. **No-op until the
+  approved Clarity project ID for s-protocol.com is pasted into
+  `CLARITY_PROJECT_ID`** (Clarity dashboard → Settings → Overview; same source
+  as the existing Elevate public sites). Never commit a guessed/placeholder ID.
 - `site.webmanifest` — PWA manifest
 - `robots.txt`, `sitemap.xml` — crawler hints
 
