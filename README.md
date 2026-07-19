@@ -21,9 +21,20 @@ Static site — plain HTML, CSS, and vanilla JS. No build step.
 - `site.webmanifest` — PWA manifest
 - `robots.txt`, `sitemap.xml` — crawler hints
 
-Legal pages carry a version date (`2026-07-01`) that must stay in sync with the
-`CURRENT_TERMS_VERSION` / `CURRENT_PRIVACY_VERSION` constants enforced by the
-signup Edge Functions.
+## Legal-version release note
+
+The public Terms and Privacy pages are effective **2026-07-19** (their actual
+publication date). The S Protocol app repository must be updated separately, in
+its own release, to match:
+
+- set `CURRENT_TERMS_VERSION` and `CURRENT_PRIVACY_VERSION` to `2026-07-19`
+  (signup Edge Functions and `src/data/legal.js`);
+- point the signup/legal links at the canonical pages
+  `https://s-protocol.com/terms` and `https://s-protocol.com/privacy`.
+
+Until that app release ships, the app keeps recording acceptance of its current
+constants. Historical acceptance records are version-stamped and must not be
+rewritten to this version.
 
 ## Assets
 
