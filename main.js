@@ -1,4 +1,4 @@
-// S-Protocol — main.js
+// S Protocol — main.js
 
 (function () {
   'use strict';
@@ -74,7 +74,7 @@
   }
 
   // ---- Contact form ----
-  // Submits to the S-Protocol Apps Script webhook via fetch using
+  // Submits to the S Protocol Apps Script webhook via fetch using
   // URLSearchParams (application/x-www-form-urlencoded) — a CORS "simple
   // request" that needs no preflight, the most reliable choice for
   // Google Apps Script web app endpoints.

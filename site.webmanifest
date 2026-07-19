@@ -1,7 +1,7 @@
 {
-  "name": "S-Protocol — Free Adaptive CRM",
-  "short_name": "S-Protocol",
-  "description": "Free adaptive CRM for service businesses. Manage customers, jobs, technicians, invoices, payments, and workflows in one simple platform.",
+  "name": "S Protocol — Service-Business Platform",
+  "short_name": "S Protocol",
+  "description": "Run your service business from one place. Manage jobs, customers, estimates, invoices, payments, and your team with one connected platform.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
