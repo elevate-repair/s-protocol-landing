@@ -1,6 +1,6 @@
 /* ============================================================
-   S-Protocol — landing styles
-   Free adaptive CRM for service businesses
+   S Protocol — site styles
+   Service-business operating platform
    Light / minimal / premium design system
    ============================================================ */
 
@@ -79,6 +79,8 @@ button { font-family: inherit; }
   background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 0 0 8px 0;
 }
 .skip-link:focus { left: 0; }
+
+section[id] { scroll-margin-top: 78px; }
 
 .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 28px; }
 
@@ -423,7 +425,7 @@ button { font-family: inherit; }
    Footer
    ============================================================ */
 .footer { background: linear-gradient(180deg, var(--navy-2), var(--navy-deep)); color: #aeb9cc; padding: 72px 0 40px; }
-.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer-inner { display: grid; grid-template-columns: 2.1fr 1fr 1fr 1fr 1fr; gap: 36px; }
 .footer-logo { height: 30px; width: auto; margin-bottom: 18px; }
 .footer-tag { font-size: 14.5px; line-height: 1.6; color: #8b97ad; max-width: 360px; }
 .footer-app-links { display: flex; gap: 18px; margin-top: 20px; }
@@ -486,4 +488,144 @@ button { font-family: inherit; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Focus visibility (keyboard navigation)
+   ============================================================ */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(10, 132, 255, .6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.btn:focus-visible { outline-offset: 3px; }
+.footer a:focus-visible { outline-color: rgba(255, 255, 255, .7); }
+
+/* ============================================================
+   Subpage hero (S Invoice, legal pages)
+   ============================================================ */
+.page-hero { position: relative; overflow: hidden; padding: 72px 0 56px; text-align: center; }
+.page-hero .hero-aura { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.page-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.page-hero .hero-headline { font-size: clamp(34px, 5.4vw, 58px); }
+.breadcrumb { font-size: 13.5px; color: var(--faint); margin-bottom: 18px; }
+.breadcrumb a { color: var(--muted); font-weight: 500; }
+.breadcrumb a:hover { color: var(--blue-strong); }
+
+/* ============================================================
+   Pricing / plans
+   ============================================================ */
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 880px; margin: 0 auto; align-items: stretch; }
+.plan {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 34px 32px; box-shadow: var(--sh-sm); text-align: left;
+}
+.plan-pro { border-color: #bcd9ff; box-shadow: var(--sh); position: relative; }
+.plan-tag {
+  display: inline-block; align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--blue-strong); background: var(--blue-tint); border-radius: var(--r-pill);
+  padding: 4px 10px; margin-bottom: 16px;
+}
+.plan h3 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+.plan-price { font-family: "Newsreader", Georgia, serif; font-size: 34px; color: var(--ink); margin: 8px 0 2px; }
+.plan-price small { font-family: "Inter", sans-serif; font-size: 14.5px; color: var(--muted); font-weight: 500; }
+.plan-alt { font-size: 13.5px; color: var(--faint); margin-bottom: 14px; }
+.plan-desc { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 18px; }
+.plan-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+.plan-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+.plan-list svg { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 2px; color: var(--green); }
+.plan .btn { margin-top: auto; }
+.plan-note { margin: 26px auto 0; max-width: 640px; text-align: center; font-size: 13.5px; color: var(--faint); line-height: 1.6; }
+
+/* ============================================================
+   Product family (S Protocol × S Invoice)
+   ============================================================ */
+.duo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+.duo {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 36px 34px; box-shadow: var(--sh-sm); text-align: left;
+}
+.duo-featured { background: linear-gradient(180deg, #f7fbff, #eef6ff); border-color: #d6e6fb; }
+.duo h3 { font-size: 24px; font-weight: 600; margin-bottom: 4px; }
+.duo-kicker { font-size: 13px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--blue-strong); margin-bottom: 14px; }
+.duo p { color: var(--muted); font-size: 15.5px; line-height: 1.6; margin-bottom: 18px; }
+.duo-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.duo-chips span {
+  font-size: 13px; font-weight: 500; color: var(--text);
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-pill);
+  padding: 6px 13px;
+}
+.duo-featured .duo-chips span { background: rgba(255, 255, 255, .8); }
+.duo .btn { align-self: flex-start; margin-top: auto; }
+.duo-bridge {
+  margin: 30px auto 0; max-width: 700px; text-align: center;
+  font-size: 15.5px; color: var(--muted); line-height: 1.6;
+}
+
+/* ============================================================
+   Steps (estimate → invoice → paid)
+   ============================================================ */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 940px; margin: 0 auto; counter-reset: step; }
+.step {
+  position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--r);
+  padding: 28px 26px 26px; box-shadow: var(--sh-sm); counter-increment: step;
+}
+.step::before {
+  content: counter(step);
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--blue-tint); color: var(--blue-strong);
+  font-weight: 700; font-size: 15px; margin-bottom: 16px;
+}
+.step h3 { font-size: 17.5px; font-weight: 600; margin-bottom: 7px; }
+.step p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+
+/* ============================================================
+   Legal pages (Terms / Privacy)
+   ============================================================ */
+.legal-main { padding: 64px 0 96px; }
+.legal-wrap { max-width: 800px; margin: 0 auto; }
+.legal-title { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+.legal-meta { margin-top: 14px; font-size: 14.5px; color: var(--faint); }
+.legal-intro { margin-top: 22px; font-size: 16.5px; color: var(--text); line-height: 1.7; }
+.legal-toc {
+  margin: 34px 0 12px; background: var(--bg-soft); border: 1px solid var(--line-2);
+  border-radius: var(--r); padding: 24px 28px;
+}
+.legal-toc h2 { font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.legal-toc ol { margin: 0; padding-left: 20px; list-style: decimal; columns: 2; column-gap: 36px; }
+.legal-toc li { font-size: 14.5px; line-height: 1.5; padding: 3px 0; break-inside: avoid; }
+.legal-toc a { color: var(--text); font-weight: 500; }
+.legal-toc a:hover { color: var(--blue-strong); }
+.legal-body { margin-top: 24px; }
+.legal-body h2 {
+  font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+  margin: 44px 0 14px; padding-top: 10px; scroll-margin-top: 92px;
+}
+.legal-body h3 { font-size: 17px; font-weight: 600; margin: 26px 0 10px; scroll-margin-top: 92px; }
+.legal-body p { font-size: 16px; line-height: 1.72; color: var(--text); margin: 0 0 14px; }
+.legal-body ul { list-style: disc; padding-left: 24px; margin: 0 0 16px; }
+.legal-body ul li { font-size: 16px; line-height: 1.66; color: var(--text); padding: 3px 0; }
+.legal-body a { color: var(--blue-strong); font-weight: 500; }
+.legal-body a:hover { text-decoration: underline; }
+.legal-body strong { color: var(--ink); }
+.legal-callout {
+  background: var(--blue-tint); border: 1px solid #d4e7ff; border-radius: var(--r-sm);
+  padding: 16px 20px; font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 16px;
+}
+.legal-backtop { display: inline-block; margin-top: 40px; font-weight: 600; font-size: 14.5px; color: var(--blue-strong); }
+
+@media (max-width: 940px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 760px) {
+  .plan-grid, .duo-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .legal-toc ol { columns: 1; }
+  .legal-main { padding: 44px 0 72px; }
+  .page-hero { padding: 52px 0 44px; }
 }

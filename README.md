@@ -1,21 +1,45 @@
 # s-protocol-landing
 
-Landing page for **S-Protocol** — a free, adaptive CRM for service businesses.
+Public marketing website for **S Protocol** — the service-business operating platform —
+and **S Invoice**, its focused estimates & invoicing product. Both are products of
+Elevate Repair LLC.
 
-S-Protocol helps service businesses manage customers, jobs, technicians, dispatch,
-scheduling, invoices, payments, and daily operations in one simple system. The core
-CRM stays free; the platform grows through optional surrounding products and services
-(insurance, payment processing, premium integrations, branded systems, and more).
+S Protocol helps service businesses manage jobs, customers, technicians, dispatch,
+scheduling, estimates, invoices, payments, and daily operations in one connected
+platform. A Free plan is available; S Protocol Pro unlocks unlimited use.
 
 ## Stack
 
 Static site — plain HTML, CSS, and vanilla JS. No build step.
 
-- `index.html` — page markup and metadata
-- `style.css` — design system and layout
-- `main.js` — navigation, scroll reveal, and contact form
+- `index.html` — homepage markup and metadata
+- `s-invoice/index.html` — S Invoice product page (`/s-invoice`)
+- `terms/index.html` — Terms of Service (`/terms`)
+- `privacy/index.html` — Privacy Policy (`/privacy`)
+- `style.css` — design system and layout (shared by all pages)
+- `main.js` — navigation, scroll reveal, and contact form (shared)
+- `clarity.js` — shared Microsoft Clarity loader for all pages, carrying the
+  approved s-protocol.com project ID in `CLARITY_PROJECT_ID` (Clarity
+  dashboard → Settings → Overview; same source as the existing Elevate public
+  sites). Clearing the ID turns the loader into a no-op. Never commit a
+  guessed/placeholder ID.
 - `site.webmanifest` — PWA manifest
 - `robots.txt`, `sitemap.xml` — crawler hints
+
+## Legal-version release note
+
+The public Terms and Privacy pages are effective **2026-07-19** (their actual
+publication date). The S Protocol app repository must be updated separately, in
+its own release, to match:
+
+- set `CURRENT_TERMS_VERSION` and `CURRENT_PRIVACY_VERSION` to `2026-07-19`
+  (signup Edge Functions and `src/data/legal.js`);
+- point the signup/legal links at the canonical pages
+  `https://s-protocol.com/terms` and `https://s-protocol.com/privacy`.
+
+Until that app release ships, the app keeps recording acceptance of its current
+constants. Historical acceptance records are version-stamped and must not be
+rewritten to this version.
 
 ## Assets
 
@@ -31,7 +55,8 @@ files directly in the page.
 
 ## Links
 
-- Web app: https://app.s-protocol.com
+- S Protocol web app: https://app.s-protocol.com
+- S Invoice web app: https://invoice.s-protocol.com
 - iOS app: https://apps.apple.com/us/app/s-protocol/id6763838117
 
 ## Develop
