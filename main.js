@@ -1,39 +1,93 @@
-// S Protocol — main.js
+// S Protocol / S Invoice — main.js
 
 (function () {
   'use strict';
 
-  // ---- Mobile menu toggle ----
+  var DESKTOP = '(min-width: 1024px)';
+  var isDesktop = function () { return window.matchMedia(DESKTOP).matches; };
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Mobile drawer ----------------------------------------------------
   var menuBtn = document.querySelector('.mobile-menu-btn');
   var mobileNav = document.getElementById('mobileNav');
 
+  function setDrawer(open) {
+    if (!menuBtn || !mobileNav) return;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) {
+      mobileNav.removeAttribute('hidden');
+      mobileNav.classList.add('is-open');
+    } else {
+      mobileNav.classList.remove('is-open');
+      mobileNav.setAttribute('hidden', '');
+    }
+  }
+
   if (menuBtn && mobileNav) {
     menuBtn.addEventListener('click', function () {
-      var isOpen = mobileNav.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', isOpen);
-      mobileNav.setAttribute('aria-hidden', !isOpen);
+      setDrawer(menuBtn.getAttribute('aria-expanded') !== 'true');
     });
-
     mobileNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileNav.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        mobileNav.setAttribute('aria-hidden', 'true');
-      });
+      link.addEventListener('click', function () { setDrawer(false); });
     });
   }
 
-  // ---- Header border/background on scroll ----
-  var header = document.querySelector('.header');
+  // ---- Header dropdowns (Products, Sign in) ------------------------------
+  var drops = Array.prototype.slice.call(document.querySelectorAll('.nav-drop'));
+
+  function closeDrops(except) {
+    drops.forEach(function (drop) {
+      if (drop === except) return;
+      var btn = drop.querySelector('.nav-drop-btn');
+      var menu = drop.querySelector('.nav-menu');
+      if (!btn || !menu) return;
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('hidden', '');
+    });
+  }
+
+  drops.forEach(function (drop) {
+    var btn = drop.querySelector('.nav-drop-btn');
+    var menu = drop.querySelector('.nav-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      closeDrops(drop);
+      btn.setAttribute('aria-expanded', String(!open));
+      if (open) menu.setAttribute('hidden', '');
+      else menu.removeAttribute('hidden');
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { closeDrops(null); });
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('.nav-drop')) closeDrops(null);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    closeDrops(null);
+    if (menuBtn && menuBtn.getAttribute('aria-expanded') === 'true') {
+      setDrawer(false);
+      menuBtn.focus();
+    }
+  });
+
+  // ---- Header shadow on scroll ------------------------------------------
+  var header = document.querySelector('.site-header');
   if (header) {
-    var onScroll = function () {
-      header.classList.toggle('scrolled', window.scrollY > 12);
-    };
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 12); };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // ---- Smooth anchor scroll with fixed-header offset ----
+  // ---- Smooth anchor scroll with fixed-header offset ---------------------
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       var id = this.getAttribute('href');
@@ -41,21 +95,72 @@
       var target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      var top = target.getBoundingClientRect().top + window.scrollY - 78;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      var offset = isDesktop() ? 84 : 70;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      if (target.id) history.replaceState(null, '', '#' + target.id);
     });
   });
 
-  // ---- Scroll reveal (subtle, staggered) ----
+  // ---- Integrations: a grid on desktop, an accordion on mobile ----------
+  var accordions = Array.prototype.slice.call(document.querySelectorAll('.integ'));
+
+  function syncAccordions() {
+    var desktop = isDesktop();
+    accordions.forEach(function (item, i) {
+      if (desktop) {
+        item.open = true;
+      } else if (!item.dataset.touched) {
+        item.open = i === 0;
+      }
+    });
+  }
+
+  accordions.forEach(function (item) {
+    var summary = item.querySelector('summary');
+    if (!summary) return;
+    summary.addEventListener('click', function (e) {
+      // On desktop the panels are always open and the summary is inert.
+      if (isDesktop()) { e.preventDefault(); return; }
+      item.dataset.touched = '1';
+    });
+  });
+
+  syncAccordions();
+
+  // ---- Dispatch-board scroller: page indicator --------------------------
+  var scroller = document.querySelector('[data-scroller]');
+  var hint = document.querySelector('[data-scroll-hint]');
+
+  if (scroller && hint) {
+    var bars = Array.prototype.slice.call(hint.querySelectorAll('.bar'));
+    var syncHint = function () {
+      var max = scroller.scrollWidth - scroller.clientWidth;
+      var ratio = max > 0 ? scroller.scrollLeft / max : 0;
+      var active = Math.round(ratio * (bars.length - 1));
+      bars.forEach(function (bar, i) { bar.classList.toggle('is-on', i === active); });
+    };
+    scroller.addEventListener('scroll', syncHint, { passive: true });
+    syncHint();
+  }
+
+  // ---- Re-sync on breakpoint change -------------------------------------
+  var mq = window.matchMedia(DESKTOP);
+  var onBreakpoint = function () {
+    syncAccordions();
+    if (isDesktop()) { setDrawer(false); } else { closeDrops(null); }
+  };
+  if (mq.addEventListener) mq.addEventListener('change', onBreakpoint);
+  else if (mq.addListener) mq.addListener(onBreakpoint);
+
+  // ---- Scroll reveal (subtle, staggered) --------------------------------
   var revealEls = document.querySelectorAll(
-    '.card, .tile, .feature, .integ, .build-list li, .mini'
+    '.door, .flow-step, .cluster, .stage, .plan, .integ, .faq-item, .growth-card, .closing-card, .cmp-card'
   );
 
-  if ('IntersectionObserver' in window && revealEls.length &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if ('IntersectionObserver' in window && revealEls.length && !reduceMotion) {
     revealEls.forEach(function (el) {
       el.classList.add('reveal');
-      // small stagger based on position among its siblings
       var siblings = Array.prototype.slice.call(el.parentNode.children);
       var i = siblings.indexOf(el);
       el.style.transitionDelay = Math.min(i % 4, 3) * 60 + 'ms';
@@ -73,7 +178,7 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   }
 
-  // ---- Contact form ----
+  // ---- Contact form ------------------------------------------------------
   // Submits to the S Protocol Apps Script webhook via fetch using
   // URLSearchParams (application/x-www-form-urlencoded) — a CORS "simple
   // request" that needs no preflight, the most reliable choice for
