@@ -222,6 +222,14 @@ button { font: inherit; color: inherit; }
 
 .apple-glyph { width: 15px; height: 15px; }
 
+/* Secondary App Store action — sits beside a product-start CTA and never
+   carries the primary's weight. Outline treatment, existing palette only. */
+.btn-store { padding: 11px 18px; font-size: 14.5px; gap: 8px; min-height: 44px; }
+.btn-store .apple-glyph { width: 14px; height: 14px; }
+.door-body > .btn-store { align-self: flex-start; margin-top: 12px; }
+.plan .btn + .btn { margin-top: 10px; }
+.closing-actions { display: flex; flex-direction: column; gap: 8px; flex: 0 0 auto; }
+
 /* Legacy button aliases still used by the /s-invoice page */
 .btn-lg      { padding: 15px 26px; font-size: 16px; }
 .btn-primary { background: var(--si-blue); color: #fff; box-shadow: 0 12px 28px rgba(37, 99, 235, .26); }
@@ -1163,7 +1171,6 @@ button { font: inherit; color: inherit; }
   display: flex; justify-content: space-between; align-items: center;
   gap: 20px; font-size: 13.5px; color: var(--sp-text-4);
 }
-.footer-origin { color: #3a4a68; }
 
 /* ============================ LEGAL PAGES ============================ */
 .legal-main { padding: 64px 0 96px; }
@@ -1332,9 +1339,12 @@ button { font: inherit; color: inherit; }
 
   /* ---- 52px full-width primary CTAs ---- */
   .zone-actions .btn, .door-foot .btn, .plan .btn,
-  .cmp-foot .btn, .cmp-card .btn, .closing-card .btn, .contact-apps .btn {
+  .cmp-foot .btn, .cmp-card .btn, .closing-card .btn, .contact-apps .btn,
+  .door-body > .btn-store {
     width: 100%; min-height: 52px; font-size: 16px;
   }
+  .door-body > .btn-store { align-self: stretch; }
+  .closing-actions { align-self: stretch; width: 100%; }
   .closing-card { flex-direction: column; align-items: stretch; gap: 16px; padding: 24px 20px; }
   .closing-card > div { text-align: center; }
   .door { padding: 22px 20px; min-height: 0; }
