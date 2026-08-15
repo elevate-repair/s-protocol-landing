@@ -1452,6 +1452,11 @@ button { font: inherit; color: inherit; }
 
 @media (max-width: 767px) {
   .shell, .container { max-width: none; }
+
+  /* .hero-inner's `padding: 66px 0 56px` shorthand zeroes the shell gutter for
+     the whole hero, so the text block would sit flush against the viewport.
+     Inset the copy only — the product doors keep their approved full-bleed box. */
+  .hero-copy { padding-left: 24px; padding-right: 24px; }
 }
 
 @media (max-width: 480px) {
