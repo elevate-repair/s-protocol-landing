@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="S Protocol is the service-business operating platform. Manage jobs, customers, estimates, invoices, payments, dispatch, and your team in one connected platform — on web and iOS. Start with the Free plan and upgrade when your business needs more." />
+  <meta name="description" content="Two products for service businesses. S Invoice handles estimates, invoices and getting paid. S Protocol runs the whole operation — jobs, scheduling, dispatch, technicians and payments. Same account architecture, on web and iPhone. Both free to start." />
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="3WADm3AJeTcGOfuZgEue5JDBfN6L91X_JyDMQ-gTzAc" />
   <link rel="canonical" href="https://s-protocol.com/" />
@@ -12,21 +12,21 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://s-protocol.com/" />
-  <meta property="og:title" content="S Protocol — Run Your Service Business From One Place" />
-  <meta property="og:description" content="Manage jobs, customers, estimates, invoices, payments, and your team with one connected platform. Start with the Free plan and upgrade when your business needs more." />
+  <meta property="og:title" content="S Protocol &amp; S Invoice — Two Products for Service Businesses" />
+  <meta property="og:description" content="S Invoice bills the work. S Protocol runs the whole operation — jobs, schedules, technicians and the money behind them. Same foundation, so starting small never means starting over." />
   <meta property="og:site_name" content="S Protocol" />
   <meta property="og:image" content="https://s-protocol.com/assets/brand/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="S Protocol — run your service business from one place" />
+  <meta property="og:image:alt" content="S Protocol and S Invoice — software for service businesses" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="S Protocol — Run Your Service Business From One Place" />
-  <meta name="twitter:description" content="Manage jobs, customers, estimates, invoices, payments, and your team with one connected platform. Start with the Free plan and upgrade when your business needs more." />
+  <meta name="twitter:title" content="S Protocol &amp; S Invoice — Two Products for Service Businesses" />
+  <meta name="twitter:description" content="S Invoice bills the work. S Protocol runs the whole operation — jobs, schedules, technicians and the money behind them. Same foundation, so starting small never means starting over." />
   <meta name="twitter:image" content="https://s-protocol.com/assets/brand/og-image.png" />
 
-  <title>S Protocol — Run Your Service Business From One Place</title>
+  <title>S Protocol &amp; S Invoice — Two Products for Service Businesses</title>
 
   <!-- Favicons / App icons -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon whiet/favicon.svg" />
@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,18..72,400;0,18..72,500;1,18..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,18..72,400;0,18..72,500;1,18..72,400&amp;display=swap" rel="stylesheet" />
 
   <!-- Microsoft Clarity (shared loader — project ID lives in clarity.js) -->
   <script src="/clarity.js" defer></script>
@@ -58,7 +58,7 @@
         "legalName": "Elevate Repair LLC",
         "url": "https://s-protocol.com",
         "logo": "https://s-protocol.com/assets/brand/logo-header.png",
-        "description": "S Protocol is a service-business operating platform. S Protocol and S Invoice are products of Elevate Repair LLC.",
+        "description": "Elevate Repair LLC builds S Protocol, the service-business operating platform, and S Invoice, its focused estimates-and-invoicing product.",
         "email": "support@s-protocol.com",
         "sameAs": [
           "https://app.s-protocol.com",
@@ -80,8 +80,28 @@
         "url": "https://app.s-protocol.com",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, iOS",
-        "description": "A service-business operating platform — jobs, customers, dispatch, scheduling, technicians, estimates, invoices, payments, and team workflow in one connected system. A Free plan is available; S Protocol Pro unlocks unlimited use.",
-        "provider": { "@id": "https://s-protocol.com/#organization" }
+        "description": "A service-business operating platform — jobs, scheduling, dispatch, technicians, customers, estimates, invoices, payments and reporting in one connected system. A Free plan is available; S Protocol Pro unlocks unlimited use.",
+        "provider": { "@id": "https://s-protocol.com/#organization" },
+        "offers": [
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "S Protocol Pro — monthly", "price": "24.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "S Protocol Pro — yearly", "price": "249.99", "priceCurrency": "USD" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://s-protocol.com/#s-invoice",
+        "name": "S Invoice",
+        "url": "https://invoice.s-protocol.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS",
+        "description": "Estimates, invoices, customers, reports and getting paid — for people who bill for their own work. A Free plan is available; S Invoice Pro unlocks unlimited invoices and recorded payments.",
+        "provider": { "@id": "https://s-protocol.com/#organization" },
+        "offers": [
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "S Invoice Pro — monthly", "price": "4.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "S Invoice Pro — yearly", "price": "49.99", "priceCurrency": "USD" }
+        ]
       }
     ]
   }
@@ -91,336 +111,1099 @@
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- HEADER -->
-  <header class="header" id="top">
-    <div class="container header-inner">
+  <!-- ══════════ HEADER — neutral family state ══════════ -->
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
       <a href="#top" class="brand" aria-label="S Protocol home">
         <picture>
           <source srcset="assets/brand/logo-header.webp" type="image/webp" />
           <img src="assets/brand/logo-header.png" alt="S Protocol" class="brand-logo" width="190" height="32" />
         </picture>
       </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#product" class="nav-link">Product</a>
-        <a href="/s-invoice" class="nav-link">S Invoice</a>
+
+      <nav class="nav" aria-label="Main">
+        <div class="nav-drop">
+          <button type="button" class="nav-link nav-drop-btn" aria-expanded="false" aria-controls="menu-products">
+            Products <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-menu" id="menu-products" hidden>
+            <a class="nav-menu-item" href="#s-protocol">
+              <img src="assets/brand/app-icon.webp" alt="" width="32" height="32" class="nav-menu-mark" />
+              <span><strong>S Protocol</strong><small>Jobs, dispatch, team, money</small></span>
+            </a>
+            <a class="nav-menu-item" href="#s-invoice">
+              <img src="assets/brand/s-invoice-icon.webp" alt="" width="32" height="32" class="nav-menu-mark is-tile" />
+              <span><strong>S Invoice</strong><small>Estimates, invoices, payments</small></span>
+            </a>
+            <span class="nav-menu-sep" aria-hidden="true"></span>
+            <a class="nav-menu-link" href="https://app.s-protocol.com" target="_blank" rel="noopener">Open S Protocol</a>
+            <a class="nav-menu-link" href="https://invoice.s-protocol.com" target="_blank" rel="noopener">Open S Invoice</a>
+          </div>
+        </div>
+        <a href="#compare" class="nav-link">Compare</a>
         <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#features" class="nav-link">How it works</a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#integrations" class="nav-link">Integrations</a>
       </nav>
+
       <div class="header-cta">
-        <a href="https://app.s-protocol.com" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Sign in</a>
-        <a href="https://app.s-protocol.com/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Get started</a>
+        <div class="nav-drop">
+          <button type="button" class="btn btn-quiet btn-sm nav-drop-btn" aria-expanded="false" aria-controls="menu-signin">
+            Sign in <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-menu nav-menu-right" id="menu-signin" hidden>
+            <a class="nav-menu-item" href="https://app.s-protocol.com" target="_blank" rel="noopener">
+              <img src="assets/brand/app-icon.webp" alt="" width="32" height="32" class="nav-menu-mark" />
+              <span><strong>S Protocol</strong><small>app.s-protocol.com</small></span>
+            </a>
+            <a class="nav-menu-item" href="https://invoice.s-protocol.com" target="_blank" rel="noopener">
+              <img src="assets/brand/s-invoice-icon.webp" alt="" width="32" height="32" class="nav-menu-mark is-tile" />
+              <span><strong>S Invoice</strong><small>invoice.s-protocol.com</small></span>
+            </a>
+          </div>
+        </div>
+        <a href="#choose" class="btn btn-neutral btn-sm">Choose a product</a>
       </div>
-      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span>
       </button>
     </div>
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="#product" class="mobile-nav-link">Product</a>
-      <a href="/s-invoice" class="mobile-nav-link">S Invoice</a>
-      <a href="#pricing" class="mobile-nav-link">Pricing</a>
-      <a href="#features" class="mobile-nav-link">How it works</a>
-      <a href="#integrations" class="mobile-nav-link">Integrations</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
-      <div class="mobile-nav-cta">
-        <a href="https://app.s-protocol.com/signup" class="btn btn-primary" target="_blank" rel="noopener">Get started</a>
-        <a href="https://app.s-protocol.com" class="btn btn-outline" target="_blank" rel="noopener">Sign in</a>
+
+    <!-- Mobile drawer — the product choice IS the navigation -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <p class="drawer-label">Choose a product</p>
+      <div class="drawer-products">
+        <a class="drawer-product" href="#s-protocol">
+          <img src="assets/brand/app-icon.webp" alt="" width="40" height="40" class="drawer-mark" />
+          <span>
+            <strong>S Protocol</strong>
+            <small>Jobs, dispatch, team, money.</small>
+            <em>Web · iPhone · Free · $24.99/mo</em>
+          </span>
+        </a>
+        <a class="drawer-product is-invoice" href="#s-invoice">
+          <img src="assets/brand/s-invoice-icon.webp" alt="" width="40" height="40" class="drawer-mark is-tile" />
+          <span>
+            <strong>S Invoice</strong>
+            <small>Estimates, invoices, payments.</small>
+            <em>Web · iPhone · Free · $4.99/mo</em>
+          </span>
+        </a>
       </div>
+      <nav class="drawer-links" aria-label="Mobile">
+        <a href="#compare">Compare</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#contact">Contact</a>
+        <a href="https://app.s-protocol.com" target="_blank" rel="noopener">Sign in to S Protocol</a>
+        <a href="https://invoice.s-protocol.com" target="_blank" rel="noopener">Sign in to S Invoice</a>
+        <a href="/terms" class="is-quiet">Terms of Service</a>
+        <a href="/privacy" class="is-quiet">Privacy Policy</a>
+      </nav>
     </div>
   </header>
 
   <main id="main">
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-aura" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <picture>
-        <source srcset="assets/brand/app-icon.webp" type="image/webp" />
-        <img src="assets/brand/app-icon.png" alt="S Protocol app icon" class="hero-icon" width="84" height="84" />
-      </picture>
-      <p class="eyebrow">Service-business platform · Web &amp; iOS</p>
-      <h1 class="hero-headline">Run your service business <br />from <em>one place</em>.</h1>
-      <p class="hero-sub">Manage jobs, customers, estimates, invoices, payments, and your team with one connected platform — a system that adapts to the way your business already works.</p>
-      <div class="hero-actions">
-        <a href="https://app.s-protocol.com/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get started</a>
-        <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" class="btn btn-dark btn-lg" target="_blank" rel="noopener">
-          <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-39.3.6-79.4 22.9-101.6 58.3-43.4 70.2-11.1 173.9 31.2 230.9 20.7 27.9 45.3 59.2 77.6 58 31.2-1.2 42.9-20.2 80.6-20.2 37.4 0 48.2 20.2 80.6 19.6 33.3-.5 54.4-28.4 75-56.4 23.7-32.6 33.3-64.2 33.8-65.8-.7-.3-65-25-65.2-99.4zM263.4 74.6c17.1-20.7 28.6-49.5 25.5-78.6-24.6 1-54.4 16.4-72.1 37.1-15.9 18.3-29.8 47.6-26.1 75.6 27.4 2.2 55.6-14.4 72.7-34.1z"/></svg>
-          Download on the App Store
-        </a>
-        <a href="/s-invoice" class="btn btn-ghost btn-lg">Just need invoicing?</a>
+  <!-- ══════════ FAMILY HERO — both products above the fold ══════════ -->
+  <section class="hero" id="choose">
+    <div class="aura" aria-hidden="true"></div>
+    <div class="shell hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Software for service businesses · Web &amp; iOS</p>
+        <h1 class="hero-title">Two products for the work.<br />Pick the one your business <em>is doing today</em>.</h1>
+        <p class="hero-sub">S Invoice handles the estimates, invoices and getting paid. S Protocol runs the whole operation — jobs, schedules, technicians and the money behind them. Same account architecture, so starting small never means starting over.</p>
       </div>
-      <p class="hero-micro">Start with the Free plan and upgrade when your business needs more.</p>
 
-      <div class="hero-chips" aria-label="What S Protocol manages">
-        <span>Customers</span><span>Jobs</span><span>Technicians</span><span>Dispatch</span><span>Scheduling</span><span>Invoices</span><span>Payments</span><span>Communication</span>
+      <!-- Two product doors, equal weight -->
+      <div class="doors" id="product">
+        <article class="door door-sp">
+          <div class="door-glow" aria-hidden="true"></div>
+          <div class="door-body">
+            <div class="door-head">
+              <img src="assets/brand/app-icon.webp" alt="" width="40" height="40" class="door-mark" />
+              <div>
+                <h2 class="door-name">S Protocol</h2>
+                <p class="door-kicker">Run the whole business</p>
+              </div>
+            </div>
+            <p class="door-lede">See every job, know who&rsquo;s going, and get paid for it — with your customers, technicians and money in one system.</p>
+            <ul class="chips">
+              <li>Jobs</li><li>Scheduling</li><li>Dispatch</li><li>Technicians</li>
+              <li>Invoices</li><li>Payments</li><li>Tap to Pay</li><li>Reports</li>
+            </ul>
+            <div class="door-foot">
+              <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp" target="_blank" rel="noopener">Start with S Protocol</a>
+              <p class="door-price"><strong>Free to start · Pro $24.99/mo</strong><span>Web and iPhone</span></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="door door-si">
+          <div class="door-glow" aria-hidden="true"></div>
+          <div class="door-body">
+            <div class="door-head">
+              <img src="assets/brand/s-invoice-icon.webp" alt="" width="40" height="40" class="door-mark is-tile" />
+              <div>
+                <h2 class="door-name">S Invoice</h2>
+                <p class="door-kicker">Create · send · get paid</p>
+              </div>
+            </div>
+            <p class="door-lede">Price the job, send a professional invoice, and know exactly what&rsquo;s still owed — from the driveway or the kitchen table.</p>
+            <ul class="chips chips-light">
+              <li>Estimates</li><li>Invoices</li><li>Customers</li><li>Card payments</li>
+              <li>Statements <span>iPhone</span></li><li>Reports</li>
+            </ul>
+            <div class="door-foot">
+              <a href="https://invoice.s-protocol.com/signup" class="btn btn-si" target="_blank" rel="noopener">Start invoicing free</a>
+              <p class="door-price"><strong>Free to start · Pro $4.99/mo</strong><span>Web and iPhone</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="triage">
+        <strong>Not sure?</strong>
+        <p>If you schedule other people&rsquo;s work, you want S Protocol. If you bill for your own, start with S Invoice — and add the operations later, on the same workspace.</p>
+        <a href="#compare" class="triage-link">Compare them <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- WHY S PROTOCOL -->
-  <section class="section" id="product">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-label">Why S Protocol</p>
-        <h2 class="section-title">Software that adapts to your business — not the other way around.</h2>
-        <p class="section-intro">Most business software asks you to bend your operation to fit it. S Protocol is built to flex around how your team already works, so it feels obvious from the first day.</p>
+  <!-- ══════════ S PROTOCOL — dark opener + dispatch board ══════════ -->
+  <section class="zone-sp" id="s-protocol">
+    <div class="aura aura-sp" aria-hidden="true"></div>
+    <div class="shell zone-sp-inner">
+      <div class="zone-head">
+        <div>
+          <p class="eyebrow eyebrow-sp">S Protocol</p>
+          <h2 class="zone-title">Every job, every technician, <em>one board</em>.</h2>
+          <p class="zone-sub">The morning starts here. Who is working, what is booked, what is running late, and what is still unassigned — without a group chat and three calendars.</p>
+        </div>
+        <div class="zone-actions">
+          <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp" target="_blank" rel="noopener">Start with S Protocol</a>
+          <a href="https://app.s-protocol.com" class="btn btn-sp-ghost" target="_blank" rel="noopener">Open the app</a>
+        </div>
       </div>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
-          <h3>Adaptive to your workflow</h3>
-          <p>Shape jobs, stages, and records around how your team actually operates. The system bends to your process, not the reverse.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
-          <h3>Simple by design</h3>
-          <p>A clean, focused interface your whole team can pick up on day one — office staff and technicians alike. No training program required.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <h3>No unnecessary complexity</h3>
-          <p>None of the bloat, ceremony, or enterprise overhead you will never use. Just the tools that move real work forward.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3>Built from real operations</h3>
-          <p>Every workflow is shaped by running real service work in the field — not by guessing at features from a whiteboard.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M16 3.5a3.2 3.2 0 0 1 0 6.2M21 21v-2a4 4 0 0 0-3-3.8"/></svg></div>
-          <h3>Made for service businesses</h3>
-          <p>Dispatch, scheduling, and field workflow are first-class — not bolted on. Built for teams that run jobs in the real world.</p>
-        </article>
-        <article class="card card-origin">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="6"/></svg></div>
-          <h3>Where it started</h3>
-          <p>S Protocol began inside an appliance repair business — its first real-world proving ground — and grew into a platform built for service businesses of every kind.</p>
-        </article>
+
+      <!-- DISPATCH BOARD — the app's own Night Blue tokens -->
+      <figure class="app-frame app-frame-sp">
+        <figcaption class="sr-only">The S Protocol dispatch board: technician columns for a single day, with an unassigned lane.</figcaption>
+        <div class="app-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="app-host">app.s-protocol.com</span>
+        </div>
+        <div class="app-body">
+          <div class="sp-rail" aria-hidden="true">
+            <div class="sp-rail-brand">
+              <img src="assets/brand/app-icon.webp" alt="" width="26" height="26" />
+              <span>S Protocol</span>
+            </div>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Dashboard</span>
+            <span class="sp-rail-item is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Jobs</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Operations</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Clients</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>Estimates</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Invoices</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Team chat</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Analytics</span>
+            <span class="sp-rail-sep"></span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Site leads</span>
+            <span class="sp-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</span>
+          </div>
+
+          <div class="sp-board">
+            <div class="sp-board-head">
+              <div class="sp-board-title"><strong>Today</strong><span class="mono">Thu 14 Aug · 11 jobs</span></div>
+              <div class="sp-board-tools">
+                <span class="sp-pill">Unassigned · 2</span>
+                <span class="sp-pill is-primary">New job</span>
+              </div>
+            </div>
+
+            <div class="sp-cols" data-scroller>
+              <div class="sp-col">
+                <div class="sp-col-head">
+                  <span class="avatar">MR</span>
+                  <div><strong>M. Ruiz</strong><span class="mono is-ok">On site</span></div>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">8:00 AM</span><span class="tag tag-amber">On site</span></div>
+                  <strong>Dryer not heating</strong>
+                  <span>R. Alvarez · Elmwood Ave</span>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">11:30 AM</span><span class="tag tag-blue">Dispatched</span></div>
+                  <strong>Fridge leaking</strong>
+                  <span>Northside Deli · Main St</span>
+                </div>
+              </div>
+
+              <div class="sp-col">
+                <div class="sp-col-head">
+                  <span class="avatar">DK</span>
+                  <div><strong>D. Kaur</strong><span class="mono">En route</span></div>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">9:15 AM</span><span class="tag tag-green">Paid</span></div>
+                  <strong>Oven install</strong>
+                  <span>T. Okafor · Linden Rd</span>
+                  <div class="sp-job-money"><span>Invoice #2181</span><span class="mono is-ok">$340.00</span></div>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">1:00 PM</span><span class="tag tag-blue">Dispatched</span></div>
+                  <strong>Washer diagnostic</strong>
+                  <span>J. Whitfield · Parkside</span>
+                </div>
+              </div>
+
+              <div class="sp-col">
+                <div class="sp-col-head">
+                  <span class="avatar">AP</span>
+                  <div><strong>A. Petrov</strong><span class="mono">Available</span></div>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">2:30 PM</span><span class="tag tag-grey">Scheduled</span></div>
+                  <strong>Dishwasher no drain</strong>
+                  <span>P. Nowak · Grant St</span>
+                </div>
+                <div class="sp-drop">Drop a job here to assign</div>
+              </div>
+
+              <div class="sp-col sp-col-unassigned">
+                <div class="sp-col-head is-plain">
+                  <strong>Unassigned</strong>
+                  <span class="mono is-accent">2</span>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">Today</span><span class="tag tag-amber">Needs tech</span></div>
+                  <strong>Ice maker repair</strong>
+                  <span>Website form · 8:42 AM</span>
+                </div>
+                <div class="sp-job">
+                  <div class="sp-job-top"><span class="mono">Tomorrow</span><span class="tag tag-amber">Needs tech</span></div>
+                  <strong>Range hood fan</strong>
+                  <span>Inbound call · 9:10 AM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-hint" data-scroll-hint aria-hidden="true">
+          <span class="bar is-on"></span><span class="bar"></span><span class="bar"></span>
+          <em>Swipe the board</em>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════ S PROTOCOL — how the work moves ══════════ -->
+  <section class="band-light" id="how-it-works">
+    <div class="shell">
+      <div class="band-head">
+        <p class="eyebrow">How the work moves</p>
+        <h2 class="band-title">One record follows the job from the phone call to the payment.</h2>
+        <p class="band-sub">Nothing gets retyped between stages. The customer, the technician, the estimate and the invoice are all the same thread — which is why the history is still there a year later when they call back.</p>
+      </div>
+
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="flow-num">1</span>
+          <h3>Customer calls</h3>
+          <p>Or a website form arrives. It lands as a lead with the address and the problem already attached.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">2</span>
+          <h3>Job booked</h3>
+          <p>Pick the slot, pick the technician. The schedule and the board update together.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">3</span>
+          <h3>Technician works</h3>
+          <p>Status, notes and photos from their phone. The office sees it without asking.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">4</span>
+          <h3>Estimate &rarr; invoice</h3>
+          <p>Approved work converts straight to an invoice against the same job.</p>
+        </li>
+        <li class="flow-step is-final">
+          <span class="flow-num is-green">5</span>
+          <h3>Paid and filed</h3>
+          <p>Card, Tap to Pay on iPhone or cash. It reconciles to the invoice and stays in the customer&rsquo;s history.</p>
+        </li>
+      </ol>
+
+      <div class="clusters" id="features">
+        <div class="cluster">
+          <h3 class="cluster-head">Operations</h3>
+          <ul><li>Jobs</li><li>Scheduling</li><li>Dispatch board</li><li>Technician mobile workflow</li><li>Price book</li></ul>
+        </div>
+        <div class="cluster">
+          <h3 class="cluster-head">Customers</h3>
+          <ul><li>Client records</li><li>Full job history</li><li>Notes and photos</li><li>Website lead intake</li><li>Inbound calls on the board</li></ul>
+        </div>
+        <div class="cluster">
+          <h3 class="cluster-head">Money</h3>
+          <ul><li>Estimates</li><li>Invoices</li><li>Card and online payments</li><li>Tap to Pay on iPhone</li><li>Analytics and reporting</li></ul>
+        </div>
+        <div class="cluster">
+          <h3 class="cluster-head">Team</h3>
+          <ul><li>Owner, dispatcher, technician roles</li><li>Team chat on the job</li><li>Technician earnings</li><li>No per-seat pricing</li><li>Web and iPhone</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PLANS / PRICING -->
-  <section class="section section-soft" id="pricing">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-label">Plans &amp; pricing</p>
-        <h2 class="section-title">Start with the Free plan. Upgrade when your business needs more.</h2>
-        <p class="section-intro">Every organization gets the full platform experience. The Free plan is a real way to start; S&nbsp;Protocol Pro removes the limits when your volume grows.</p>
+  <!-- ══════════ S PROTOCOL — job record + technician phone ══════════ -->
+  <section class="zone-sp zone-sp-detail">
+    <div class="aura aura-sp-low" aria-hidden="true"></div>
+    <div class="shell detail-grid">
+      <div class="detail-copy">
+        <p class="eyebrow eyebrow-sp">The job record</p>
+        <h2 class="zone-title is-sm">Everything about the visit, in one panel.</h2>
+        <p class="zone-sub">The customer&rsquo;s history, the technician assigned, what was quoted, what was billed, and what is still owed. Open it in the office or in the van and it is the same record.</p>
+
+        <div class="job-panel">
+          <div class="job-panel-head">
+            <div>
+              <strong>Dryer not heating</strong>
+              <span>R. Alvarez · 128 Elmwood Ave · Job #4417</span>
+            </div>
+            <span class="tag tag-amber">On site</span>
+          </div>
+          <div class="job-tabs" aria-hidden="true">
+            <span class="is-active">Overview</span><span>Estimate</span><span>Invoice</span><span>Photos</span><span>History</span>
+          </div>
+          <div class="job-grid">
+            <div class="job-cell">
+              <span class="job-cell-label">Technician</span>
+              <strong>M. Ruiz</strong>
+              <span class="is-ok">Arrived 8:06 AM</span>
+            </div>
+            <div class="job-cell">
+              <span class="job-cell-label">Balance due</span>
+              <strong class="mono is-big">$186.00</strong>
+              <span>Invoice #2184 · Sent</span>
+            </div>
+            <div class="job-cell job-cell-wide">
+              <span class="job-cell-label">Previous visits</span>
+              <div class="job-visit"><span>Washer drum bearing · Mar 2026</span><span class="mono is-ok">Paid $420.00</span></div>
+              <div class="job-visit"><span>Dishwasher install · Nov 2025</span><span class="mono is-ok">Paid $260.00</span></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="plan-grid">
-        <div class="plan">
-          <span class="plan-tag">Get started</span>
-          <h3>Free</h3>
-          <p class="plan-price">$0 <small>— no card required</small></p>
-          <p class="plan-alt">For evaluating and getting set up</p>
-          <p class="plan-desc">The full platform — customers, scheduling, dispatch, estimates, and team workflow — with limits on creation volume.</p>
+
+      <div class="detail-phone">
+        <div class="phone phone-dark">
+          <div class="phone-screen">
+            <div class="phone-status"><span class="mono">9:41</span><span class="notch"></span><span class="mono">100%</span></div>
+            <div class="phone-body">
+              <p class="phone-eyebrow">My day · Thu 14 Aug</p>
+              <p class="phone-title">3 jobs</p>
+              <div class="tech-job is-current">
+                <div class="sp-job-top"><span class="mono">8:00 AM</span><span class="tag tag-amber">On site</span></div>
+                <strong>Dryer not heating</strong>
+                <span>R. Alvarez · Elmwood Ave</span>
+                <div class="tech-actions"><span>Add photo</span><span class="is-quiet">Note</span></div>
+                <div class="tech-pay">Take payment</div>
+              </div>
+              <div class="tech-job">
+                <div class="sp-job-top"><span class="mono">11:30 AM</span><span class="tag tag-blue">Next</span></div>
+                <strong>Fridge leaking</strong>
+                <span>Northside Deli · Main St</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">The technician view on iPhone. Status, photos, notes and payment at the door — the same job record the office is looking at.</p>
+        <div class="ttp-card">
+          <p class="ttp-label">Tap to Pay on iPhone</p>
+          <p>Take the payment in person on the phone that is already in the technician&rsquo;s hand. No card reader to buy, carry or charge.</p>
+          <p class="ttp-note">Card readers are supported as well. In-person payments are USD.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S PROTOCOL PRICING ══════════ -->
+  <section class="pricing-sp" id="pricing">
+    <div class="shell">
+      <div class="price-head">
+        <div>
+          <p class="eyebrow eyebrow-sp">S Protocol pricing</p>
+          <h2 class="band-title is-light">One price for the business. No per-seat maths.</h2>
+        </div>
+        <p class="price-note">Add every dispatcher and technician you employ — the price does not move. Free is a real way to set up and try the whole platform.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan plan-dark">
+          <h3 class="plan-name">Free</h3>
+          <p class="plan-figure">$0</p>
+          <p class="plan-meta">No card required</p>
           <ul class="plan-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All core platform features</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Includes up to 5 jobs, 5 invoices, and 5 recorded payments</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Web and iOS access</li>
+            <li>Your first <strong>5 jobs</strong>, <strong>5 invoices</strong> and <strong>5 recorded payments</strong></li>
+            <li>A one-time allowance for the business, not a monthly reset</li>
+            <li>Every feature unlocked — nothing is held back</li>
+            <li>Whatever you create stays readable, always</li>
           </ul>
-          <a href="https://app.s-protocol.com/signup" class="btn btn-outline" target="_blank" rel="noopener">Create your free account</a>
+          <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp-outline btn-block" target="_blank" rel="noopener">Create a free workspace</a>
         </div>
-        <div class="plan plan-pro">
-          <span class="plan-tag">Unlimited</span>
-          <h3>S Protocol Pro</h3>
-          <p class="plan-price">$24.99<small>/month</small></p>
-          <p class="plan-alt">or $249.99/year</p>
-          <p class="plan-desc">Everything in Free, without the usage limits — built for businesses running real daily volume.</p>
+        <div class="plan plan-dark plan-pro">
+          <h3 class="plan-name">S Protocol Pro</h3>
+          <p class="plan-figure">$24.99<span>/month</span></p>
+          <p class="plan-meta is-accent">or $249.99/year — works out at $20.83 a month, $49.89 less than paying monthly</p>
           <ul class="plan-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited jobs, invoices, and payments</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All platform features and integrations</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cancel anytime — keeps running through the paid period</li>
+            <li>Unlimited jobs, invoices and payments</li>
+            <li>Every role and integration included</li>
+            <li>Cancel anytime — it runs to the end of the period you paid for</li>
+            <li>If billing lapses, your records are never hidden</li>
           </ul>
-          <a href="https://app.s-protocol.com/signup" class="btn btn-primary" target="_blank" rel="noopener">Get started</a>
+          <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp btn-block" target="_blank" rel="noopener">Start with S Protocol</a>
         </div>
       </div>
-      <p class="plan-note">Prices in USD. Subscriptions renew automatically until cancelled; where subscription purchase is offered through the Apple App&nbsp;Store, billing is handled and managed by Apple. See the <a href="/terms">Terms of Service</a> for billing details.</p>
+
+      <p class="legal-line legal-line-dark">Prices in USD. Subscriptions renew until cancelled. Where the subscription is bought through the App&nbsp;Store, Apple handles the billing, and the subscription is managed and cancelled through your Apple account. By subscribing you agree to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>, which cover S Protocol and S Invoice alike.</p>
     </div>
   </section>
 
-  <!-- PRODUCT FAMILY -->
-  <section class="section" id="products">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-label">Two products, one platform</p>
-        <h2 class="section-title">The full platform — or just the invoicing.</h2>
-        <p class="section-intro">S&nbsp;Protocol is the complete operating platform for service businesses. S&nbsp;Invoice is its focused sibling: estimates and invoicing only, for businesses that want to start simpler. Both run on the same foundation, so you can move up whenever you&rsquo;re ready.</p>
+  <!-- ══════════ TRANSITION — the family band ══════════ -->
+  <section class="family" id="growth">
+    <div class="aura aura-family" aria-hidden="true"></div>
+    <div class="shell">
+      <div class="family-head">
+        <p class="eyebrow eyebrow-quiet">One family</p>
+        <h2 class="family-title">Same workspace. <em>More capability.</em></h2>
+        <p class="family-sub">S Invoice and S Protocol are two products on one foundation. Adding the operations layer is not a move, an export or a fresh start — the same business, the same customers, the same numbering, with more of the work inside it.</p>
       </div>
-      <div class="duo-grid">
-        <div class="duo duo-featured">
-          <p class="duo-kicker">The platform</p>
-          <h3>S Protocol</h3>
-          <p>Run the whole operation: jobs, dispatch, scheduling, clients, technicians, estimates, invoices, payments, team communication, and reporting — connected end to end.</p>
-          <div class="duo-chips">
-            <span>Jobs</span><span>Dispatch</span><span>Clients</span><span>Estimates</span><span>Invoices</span><span>Payments</span><span>Team &amp; ops</span>
+
+      <div class="growth">
+        <div class="growth-card growth-si">
+          <div class="growth-card-head">
+            <img src="assets/brand/s-invoice-icon.webp" alt="" width="26" height="26" class="is-tile" />
+            <h3>S Invoice today</h3>
           </div>
-          <a href="https://app.s-protocol.com/signup" class="btn btn-primary" target="_blank" rel="noopener">Get started</a>
+          <ul class="growth-list">
+            <li>Customers</li><li>Estimates</li><li>Invoices &amp; numbering</li>
+            <li>Payments &amp; refunds</li><li>Company details</li><li>Reports &amp; statements</li>
+          </ul>
         </div>
-        <div class="duo">
-          <p class="duo-kicker">The simple start</p>
-          <h3>S Invoice</h3>
-          <p>Focused estimates and invoicing for independent service pros — professional documents, payment tracking, and customer records without the full platform.</p>
-          <div class="duo-chips">
-            <span>Estimates</span><span>Invoices</span><span>Customers</span><span>Payment tracking</span>
+
+        <div class="growth-arrow" aria-hidden="true">
+          <span class="growth-arrow-label">stays exactly where it is</span>
+          <span class="growth-arrow-glyph">&rarr;</span>
+        </div>
+
+        <div class="growth-card growth-sp">
+          <div class="growth-card-head">
+            <img src="assets/brand/app-icon.webp" alt="" width="26" height="26" />
+            <h3>S Protocol adds</h3>
           </div>
-          <a href="/s-invoice" class="btn btn-outline">Learn about S&nbsp;Invoice</a>
+          <ul class="growth-list growth-list-2">
+            <li>Jobs</li><li>Scheduling</li><li>Dispatch board</li><li>Technicians</li><li>Team roles</li>
+            <li>Team chat</li><li>Tap to Pay on iPhone</li><li>Site leads</li><li>Price book</li><li>Operational analytics</li>
+          </ul>
+          <p class="growth-foot">Your invoice history stays visible in the new CRM. Job invoices created in S Protocol stay on the operations side, so the S Invoice list you know does not fill up with dispatch paperwork.</p>
         </div>
       </div>
-      <p class="duo-bridge">Start where it fits today — an S&nbsp;Invoice workspace can grow into the full S&nbsp;Protocol platform later, keeping your customers and records.</p>
-    </div>
-  </section>
 
-  <!-- FEATURES -->
-  <section class="section section-soft" id="features">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-label">What&rsquo;s included</p>
-        <h2 class="section-title">Everything you need to run the day.</h2>
-        <p class="section-intro">The real strengths of S Protocol, in one place — clean, fast, and ready to use on web and iOS.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div><h3>Customer management</h3><p>Every customer, contact, and history in one searchable place.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-          <div><h3>Job management</h3><p>Create, assign, and track jobs from intake to completion.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="10" height="6" rx="1.5"/><path d="M17 17h4"/></svg></div>
-          <div><h3>Dispatch board</h3><p>See who has what and move work in real time.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div><h3>Scheduling</h3><p>Book, reschedule, and balance the calendar without the chaos.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
-          <div><h3>Technician workflow</h3><p>Field-ready job views and status updates, right from a phone.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
-          <div><h3>Estimates &amp; invoices</h3><p>Quote the work, convert approved estimates, and bill against the job.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
-          <div><h3>Payments</h3><p>Collect and reconcile payments against every invoice.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <div><h3>Notes &amp; history</h3><p>Context, attachments, and a full timeline on every record.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M16 3.5a3.5 3.5 0 0 1 0 7"/></svg></div>
-          <div><h3>Team communication</h3><p>Keep the conversation attached to the job it&rsquo;s about.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-3"/></svg></div>
-          <div><h3>Reports</h3><p>See how the business is running with clear operational reporting.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div>
-          <div><h3>Public invoices</h3><p>Share clean, customer-facing invoice links in a click.</p></div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
-          <div><h3>Mobile &amp; iOS access</h3><p>Run the operation from the web app or the native iOS app.</p></div>
-        </div>
+      <div class="condition">
+        <p><strong>The one condition, stated plainly:</strong> activating S Protocol on an existing S Invoice workspace starts on a paid S Protocol plan, and the workspace owner is the one who does it. Creating a free S Protocol account instead is a separate signup with a fresh, empty workspace.</p>
+        <a href="#faq" class="condition-link">Read the detail <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- INTEGRATIONS -->
-  <section class="section" id="integrations">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-label">Integrations</p>
-        <h2 class="section-title">Connects with the tools you already use.</h2>
-        <p class="section-intro">S Protocol is built to plug into your stack. Some connections are live today, others are on the way — we label them honestly so you always know what to expect.</p>
-      </div>
-      <div class="grid grid-3 integ-grid">
-        <div class="integ">
-          <div class="integ-top"><h3>Stripe</h3><span class="badge badge-live">Available</span></div>
-          <p>Card and online payments, payouts, and reconciliation.</p>
+  <!-- ══════════ S INVOICE — paper opener + real product ══════════ -->
+  <section class="zone-si" id="s-invoice">
+    <div class="aura aura-si" aria-hidden="true"></div>
+    <div class="shell zone-si-inner">
+      <div class="zone-head">
+        <div>
+          <p class="eyebrow eyebrow-si">S Invoice</p>
+          <h2 class="zone-title is-dark">Price it, send it, <em>get paid for it</em>.</h2>
+          <p class="zone-sub is-dark">For the person who does the work and also does the billing. Professional documents, a link the customer can pay from, and an honest answer to &ldquo;what am I still owed?&rdquo;</p>
         </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Quo</h3><span class="badge badge-live">Available</span></div>
-          <p>Service warranty and parts workflows linked to your jobs.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Thumbtack</h3><span class="badge badge-live">Available</span></div>
-          <p>Pull in leads and turn them into booked, dispatched jobs.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Google APIs</h3><span class="badge badge-live">Available</span></div>
-          <p>Calendar, Maps, and Business Profile connections.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Website forms</h3><span class="badge badge-live">Available</span></div>
-          <p>Capture inquiries straight from your site into S Protocol.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Email &amp; SMS</h3><span class="badge badge-live">Available</span></div>
-          <p>Automated customer updates across email and text.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Custom APIs</h3><span class="badge badge-custom">By request</span></div>
-          <p>Connect your own systems through a documented API.</p>
-        </div>
-        <div class="integ">
-          <div class="integ-top"><h3>Webhooks</h3><span class="badge badge-custom">By request</span></div>
-          <p>Push events to the tools and automations you already run.</p>
-        </div>
-        <div class="integ integ-cta">
-          <h3>Need something specific?</h3>
-          <p>Tell us what you run. We support custom integration work for teams with particular requirements.</p>
-          <a href="#contact" class="link-arrow">Talk to us <span aria-hidden="true">&rarr;</span></a>
+        <div class="zone-actions">
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si" target="_blank" rel="noopener">Start invoicing free</a>
+          <a href="https://invoice.s-protocol.com" class="btn btn-si-ghost" target="_blank" rel="noopener">Open S Invoice</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- BUILD WITH US -->
-  <section class="section section-build" id="build">
-    <div class="container">
-      <div class="build-inner">
-        <div class="build-copy">
-          <p class="section-label">Build with us</p>
-          <h2 class="section-title">Build with us. <br /><span class="accent-em">Mix your workflow into the platform.</span></h2>
-          <p class="section-intro">S Protocol grows with the people who use it. If you run, dispatch, or work in a service business, your real-world workflow is exactly what shapes the product. Use it, tell us what&rsquo;s missing, request the workflows you need — and grow with the platform as it expands.</p>
-          <div class="build-actions">
-            <a href="#contact" class="btn btn-primary btn-lg">Build With Us</a>
-            <a href="https://app.s-protocol.com" class="btn btn-outline btn-lg" target="_blank" rel="noopener">Open App</a>
+      <!-- S INVOICE web Home -->
+      <figure class="app-frame app-frame-si">
+        <figcaption class="sr-only">The S Invoice web home screen: revenue stats, invoices needing attention, and recent activity.</figcaption>
+        <div class="app-bar is-light">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="app-host">invoice.s-protocol.com</span>
+        </div>
+        <div class="app-body">
+          <div class="si-rail" aria-hidden="true">
+            <div class="si-rail-brand">
+              <img src="assets/brand/s-invoice-icon.webp" alt="" width="32" height="32" class="is-tile" />
+              <span>S Invoice</span>
+            </div>
+            <div class="si-rail-items">
+              <span class="si-rail-item is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h9l4 4V21.2H6z"/><path d="M14.6 3.2V7.2h4"/><path d="M9 12h6M9 15.5h6M9 8.6h2.4"/></svg>Invoices</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h9l4 4V21.2H6z"/><path d="M14.6 3.2V7.2h4"/><path d="m9 13.4 2.1 2.1 4-4.3"/></svg>Estimates</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 20.2c.7-3.4 3.2-5.3 6.2-5.3s5.5 1.9 6.2 5.3"/><path d="M15.4 5a3.4 3.4 0 0 1 0 6"/><path d="M17.4 15.1c2 .7 3.4 2.4 3.9 5.1"/></svg>Customers</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.5" width="18.4" height="13" rx="2.4"/><path d="M2.8 9.8h18.4"/><path d="M6.5 14.6h4"/></svg>Payments</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20.2V13"/><path d="M10 20.2V4.8"/><path d="M16 20.2v-9"/><path d="M22 20.2H2"/></svg>Reports</span>
+              <span class="si-rail-sep"></span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.3 12a7.3 7.3 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-2.1-1.2L14.4 3h-4l-.4 2.7a7.6 7.6 0 0 0-2.1 1.2l-2.3-1-2 3.4 2 1.5a7.3 7.3 0 0 0 0 2.4l-2 1.5 2 3.4 2.3-1a7.6 7.6 0 0 0 2.1 1.2l.4 2.7h4l.4-2.7a7.6 7.6 0 0 0 2.1-1.2l2.3 1 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg>Settings</span>
+              <span class="si-rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.6 4-4.4 4 4.4"/><path d="M12 8.6v7.2"/></svg>Plan</span>
+            </div>
+            <div class="si-rail-foot">
+              <span class="avatar avatar-dark">RA</span>
+              <div><strong>Ruiz Appliance</strong><span>Rosa Ruiz</span></div>
+            </div>
+          </div>
+
+          <div class="si-content">
+            <div class="si-greet">
+              <div>
+                <p class="si-greet-title">Good morning, Rosa</p>
+                <p class="si-greet-date">Thursday, August 14</p>
+              </div>
+              <div class="si-greet-actions" aria-hidden="true">
+                <span class="si-btn">Add customer</span>
+                <span class="si-btn">New estimate</span>
+                <span class="si-btn is-primary">New invoice</span>
+              </div>
+            </div>
+
+            <div class="si-stats">
+              <div class="si-stat"><span>Total invoiced</span><strong>$18,940.00</strong></div>
+              <div class="si-stat"><span>Collected</span><strong class="is-ok">$17,134.00</strong></div>
+              <div class="si-stat"><span>Outstanding</span><strong class="is-warn">$1,486.00</strong></div>
+              <div class="si-stat"><span>Overdue</span><strong class="is-bad">$320.00</strong></div>
+            </div>
+
+            <div class="si-main">
+              <div class="si-lists">
+                <p class="si-list-label">Needs attention · 3</p>
+                <div class="si-card si-attention">
+                  <div class="si-row si-row-att">
+                    <span class="badge badge-bad">Overdue</span>
+                    <span class="si-cust">J. Whitfield<span class="si-num"> #1039</span></span>
+                    <span class="is-bad si-when">6 days past due</span>
+                    <span class="si-amt">$320.00</span>
+                  </div>
+                  <div class="si-row si-row-att">
+                    <span class="badge badge-draft">Draft</span>
+                    <span class="si-cust">M. Delgado<span class="si-num"> #1037</span></span>
+                    <span class="si-when is-mute">draft · Aug 13, 2026</span>
+                    <span class="si-amt">$95.00</span>
+                  </div>
+                  <div class="si-row si-row-att">
+                    <span class="badge badge-draft">Draft</span>
+                    <span class="si-cust">Corner Laundromat<span class="si-num"> #1036</span></span>
+                    <span class="si-when is-mute">draft · Aug 11, 2026</span>
+                    <span class="si-amt">$210.00</span>
+                  </div>
+                </div>
+
+                <div class="si-list-head">
+                  <p class="si-list-label">Recent invoices</p>
+                  <span class="si-link">View all</span>
+                </div>
+                <div class="si-card si-table">
+                  <div class="si-row si-row-head">
+                    <span>Invoice</span><span>Customer</span><span>Issued</span><span class="ta-r">Amount</span><span class="ta-r">Status</span>
+                  </div>
+                  <div class="si-row is-selected">
+                    <span class="si-no">#1042</span><span>Northside Deli</span><span class="is-mute">Aug 12, 2026</span>
+                    <span class="ta-r si-amt">$486.00</span><span class="ta-r"><span class="badge badge-ok">Paid</span></span>
+                  </div>
+                  <div class="si-row">
+                    <span class="si-no">#1041</span><span>R. Alvarez</span><span class="is-mute">Aug 12, 2026</span>
+                    <span class="ta-r si-amt">$186.00</span><span class="ta-r"><span class="badge badge-sent">Sent</span></span>
+                  </div>
+                  <div class="si-row">
+                    <span class="si-no">#1040</span><span>T. Okafor</span><span class="is-mute">Aug 10, 2026</span>
+                    <span class="ta-r si-amt">$640.00</span><span class="ta-r"><span class="badge badge-partial">Partial</span></span>
+                  </div>
+                  <div class="si-row">
+                    <span class="si-no">#1039</span><span>J. Whitfield</span><span class="is-mute">Aug 2, 2026</span>
+                    <span class="ta-r si-amt">$320.00</span><span class="ta-r"><span class="badge badge-bad">Overdue</span></span>
+                  </div>
+                  <div class="si-row">
+                    <span class="si-no">#1038</span><span>P. Nowak</span><span class="is-mute">Jul 30, 2026</span>
+                    <span class="ta-r si-amt">$140.00</span><span class="ta-r"><span class="badge badge-ok">Paid</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="si-side">
+                <div class="si-card si-pad">
+                  <h4>Revenue</h4>
+                  <div class="si-kv"><span>Total invoiced</span><strong>$18,940.00</strong></div>
+                  <div class="si-kv"><span>Collected</span><strong class="is-ok">$17,134.00</strong></div>
+                  <div class="si-kv"><span>Collected in August</span><strong class="is-ok">$6,240.00</strong></div>
+                  <div class="si-kv"><span>Outstanding</span><strong class="is-warn">$1,486.00</strong></div>
+                  <div class="si-kv"><span>Overdue</span><strong class="is-bad">$320.00</strong></div>
+                  <div class="si-kv"><span>Avg invoice</span><strong class="is-mute">$676.42</strong></div>
+                  <p class="si-foot">4 unpaid invoices</p>
+                </div>
+
+                <div class="si-card si-pad">
+                  <h4>Recent payments</h4>
+                  <div class="si-pay">
+                    <div><strong>Northside Deli</strong><span>Aug 12, 2026 · #1042 · Card</span></div>
+                    <span class="is-ok">+$486.00</span>
+                  </div>
+                  <div class="si-pay">
+                    <div><strong>T. Okafor</strong><span>Aug 10, 2026 · #1040 · Check</span></div>
+                    <span class="is-ok">+$300.00</span>
+                  </div>
+                  <div class="si-pay">
+                    <div><strong>P. Nowak</strong><span>Jul 30, 2026 · #1038 · Cash</span></div>
+                    <span class="is-ok">+$140.00</span>
+                  </div>
+                  <span class="si-link">View all payments</span>
+                </div>
+
+                <div class="si-quota">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3.4 2"/></svg>
+                  <p><b>2 of 3 free invoices remaining.</b> Estimates stay free until converted. <span class="si-link">See plans</span></p>
+                </div>
+              </aside>
+            </div>
           </div>
         </div>
-        <ul class="build-list">
-          <li><span class="dot"></span><div><strong>Start on the Free plan</strong><p>Set up your operation and see the fit before you pay.</p></div></li>
-          <li><span class="dot"></span><div><strong>Request workflows</strong><p>Ask for the flows your business actually needs.</p></div></li>
-          <li><span class="dot"></span><div><strong>Shape the roadmap</strong><p>Your feedback steers what we build next.</p></div></li>
-          <li><span class="dot"></span><div><strong>Grow with us</strong><p>Upgrade to Pro and expand as you scale.</p></div></li>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════ S INVOICE — the customer's document ══════════ -->
+  <section class="band-white" id="s-invoice-document">
+    <div class="shell">
+      <div class="band-head">
+        <p class="eyebrow">What the customer receives · the real document</p>
+        <h2 class="band-title">A document that looks like your business, not like a spreadsheet.</h2>
+        <p class="band-sub">Send a link or a PDF. Your customer opens it on their phone, sees exactly what the work was, and pays by card without creating an account. You can give the invoice a plain-language title — &ldquo;Hanging&rdquo; — while the number stays the number.</p>
+      </div>
+
+      <div class="doc-grid">
+        <figure class="doc-wrap">
+          <figcaption class="sr-only">An example customer-facing S Invoice document, paid in full.</figcaption>
+          <div class="doc">
+            <div class="doc-top">
+              <div class="doc-brand"><span class="doc-logo">R</span><strong>Ruiz Appliance Repair</strong></div>
+              <address class="doc-from">128 Elmwood Ave<br />Buffalo, NY 14222<br />(716) 000-0000<br />rosa@ruizappliance.com</address>
+            </div>
+            <hr class="doc-rule" />
+            <div class="doc-title">
+              <strong>Ice maker repair</strong>
+              <span>Invoice #1042</span>
+            </div>
+            <div class="doc-meta">
+              <div class="doc-billto">
+                <p class="doc-label">BILL TO</p>
+                <strong>Northside Deli</strong>
+                <span>440 Main St<br />Buffalo, NY 14202</span>
+              </div>
+              <div class="doc-dates">
+                <div><span class="doc-label">DATE:</span><span>Aug 12, 2026</span></div>
+                <div><span class="doc-label">DUE DATE:</span><span>Aug 26, 2026</span></div>
+                <div><span class="doc-label">STATUS:</span><span class="doc-paid">PAID</span></div>
+              </div>
+            </div>
+            <div class="doc-table">
+              <div class="doc-thead"><span>DESCRIPTION</span><span>QTY</span><span>RATE</span><span>AMOUNT</span></div>
+              <div class="doc-tr">
+                <div><strong>Water inlet valve replacement</strong><span>OEM part, fitted and pressure-tested</span></div>
+                <span>1</span><span>$168.00</span><span>$168.00</span>
+              </div>
+              <div class="doc-tr">
+                <div><strong>Labour</strong><span>Diagnostic and repair, 2 hours on site</span></div>
+                <span>2</span><span>$135.00</span><span>$270.00</span>
+              </div>
+              <div class="doc-tr">
+                <div><strong>Filter cartridge</strong></div>
+                <span>1</span><span>$14.00</span><span>$14.00</span>
+              </div>
+            </div>
+            <div class="doc-totals">
+              <div class="doc-total-row"><span>Subtotal</span><span>$452.00</span></div>
+              <div class="doc-total-row"><span>Tax (7.5%)</span><span>$34.00</span></div>
+              <div class="doc-total-row"><span>Paid Aug 12</span><span class="doc-credit">&minus;$486.00</span></div>
+              <div class="doc-balance"><span>BALANCE DUE</span><strong>$0.00</strong></div>
+            </div>
+            <div class="doc-payment">
+              <p class="doc-label">PAYMENT</p>
+              <p>Paid by card on Aug 12, 2026. Thank you — parts carry a 90-day warranty.</p>
+              <p class="doc-footline">Ruiz Appliance Repair · Licensed and insured · Questions? (716) 000-0000</p>
+            </div>
+          </div>
+        </figure>
+
+        <div class="doc-phone">
+          <div class="phone phone-light">
+            <div class="phone-screen">
+              <div class="phone-status is-light"><span class="mono">9:41</span><span class="notch"></span><span class="mono">100%</span></div>
+              <div class="si-phone-bar"><strong>Home</strong><span>Ruiz Appliance</span></div>
+              <div class="si-phone-body">
+                <div class="si-phone-greet"><strong>Hi, Rosa</strong><span class="si-btn is-primary">+ New</span></div>
+                <div class="si-tiles">
+                  <div class="si-tile"><span class="si-tile-icon is-warn-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3.4 2"/></svg></span><span class="si-tile-k">Outstanding</span><strong class="is-warn">$1,486</strong><span class="si-tile-s">unpaid balance</span></div>
+                  <div class="si-tile"><span class="si-tile-icon is-ok-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M16.5 7.2c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.9 4.5 3.4 4.5 1.5 4.5 3.4-2 3-4.5 3-4.5-1.1-4.5-3"/></svg></span><span class="si-tile-k">Paid this month</span><strong class="is-ok">$6,240</strong><span class="si-tile-s">collected</span></div>
+                  <div class="si-tile"><span class="si-tile-icon is-bad-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 19.5H3z"/><path d="M12 9.5v4.4"/><circle cx="12" cy="16.8" r="1"/></svg></span><span class="si-tile-k">Overdue</span><strong class="is-bad">1</strong><span class="si-tile-s">$320.00 past due</span></div>
+                  <div class="si-tile"><span class="si-tile-icon is-blue-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h9l4 4V21.2H6z"/><path d="M14.6 3.2V7.2h4"/><path d="M9 12h6M9 15.5h6M9 8.6h2.4"/></svg></span><span class="si-tile-k">Drafts</span><strong>2</strong><span class="si-tile-s">not yet sent</span></div>
+                </div>
+                <p class="si-list-label">Recent invoices</p>
+                <div class="si-phone-rows">
+                  <div class="si-phone-row"><div><strong>Northside Deli</strong><span>Ice maker repair · #1042</span></div><span class="badge badge-ok">Paid</span><span class="si-amt">$486</span></div>
+                  <div class="si-phone-row"><div><strong>T. Okafor</strong><span>Hanging · #1040</span></div><span class="badge badge-partial">Partial</span><span class="si-amt">$640</span></div>
+                  <div class="si-phone-row"><div><strong>J. Whitfield</strong><span>#1039 · Aug 2, 2026</span></div><span class="badge badge-bad">Overdue</span><span class="si-amt">$320</span></div>
+                </div>
+              </div>
+              <div class="si-tabbar" aria-hidden="true">
+                <span class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h9l4 4V21.2H6z"/><path d="M14.6 3.2V7.2h4"/><path d="M9 12h6M9 15.5h6M9 8.6h2.4"/></svg>Invoices</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M2.8 20.2c.7-3.4 3.2-5.3 6.2-5.3s5.5 1.9 6.2 5.3"/><path d="M15.4 5a3.4 3.4 0 0 1 0 6"/><path d="M17.4 15.1c2 .7 3.4 2.4 3.9 5.1"/></svg>Customers</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>More</span>
+              </div>
+            </div>
+          </div>
+          <p class="phone-caption is-dark">S Invoice on iPhone — four KPI tiles, recent invoices, and the Home / Invoices / Customers / More tab bar. Custom titles lead the row with the number beside them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S INVOICE — four-stage story ══════════ -->
+  <section class="band-paper" id="s-invoice-story">
+    <div class="shell">
+      <ol class="stages">
+        <li class="stage">
+          <div class="stage-head"><span class="stage-num">1</span><span class="stage-rule"></span></div>
+          <h3>Create</h3>
+          <p>Start with an estimate or go straight to the invoice. Line items, tax, your logo and brand colour, and an optional plain-language title.</p>
+          <ul class="stage-list">
+            <li>Estimates &rarr; invoice in one step</li>
+            <li>Custom invoice titles</li>
+            <li>Photos and documents attached</li>
+            <li>USD, CAD, EUR, GBP</li>
+          </ul>
+        </li>
+        <li class="stage">
+          <div class="stage-head"><span class="stage-num">2</span><span class="stage-rule"></span></div>
+          <h3>Send</h3>
+          <p>A link the customer opens on their phone, or a PDF for their records. No account, no app, no friction.</p>
+          <ul class="stage-list">
+            <li>Public invoice and estimate pages</li>
+            <li>Print-ready PDF</li>
+            <li>You can see when it was viewed</li>
+            <li>Share by email or message</li>
+          </ul>
+        </li>
+        <li class="stage">
+          <div class="stage-head"><span class="stage-num">3</span><span class="stage-rule"></span></div>
+          <h3>Get paid</h3>
+          <p>Card online through Stripe, or record the cash and cheques yourself. Part payments and refunds are handled properly.</p>
+          <ul class="stage-list">
+            <li>Card payments and wallets</li>
+            <li>Partial payments and deposits</li>
+            <li>Refunds against the original charge</li>
+            <li>Balance always current</li>
+          </ul>
+        </li>
+        <li class="stage">
+          <div class="stage-head"><span class="stage-num is-green">4</span></div>
+          <h3>Know where you stand</h3>
+          <p>What came in, what is still out, and who is behind. Generate a statement for a customer covering any period.</p>
+          <ul class="stage-list">
+            <li>Reports on paid and outstanding</li>
+            <li>Customer statements <span class="qualifier">(iPhone)</span></li>
+            <li>Full customer history</li>
+            <li>30-day Trash <span class="qualifier">(iPhone)</span></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════ S INVOICE PRICING ══════════ -->
+  <section class="pricing-si" id="s-invoice-pricing">
+    <div class="shell">
+      <div class="price-head">
+        <div>
+          <p class="eyebrow eyebrow-si">S Invoice pricing</p>
+          <h2 class="band-title">Under five dollars a month.</h2>
+        </div>
+        <p class="price-note is-dark">Free is a genuine trial of the real thing — three invoices and three recorded payments, then it is $4.99 to keep going.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan plan-paper">
+          <h3 class="plan-name">Free</h3>
+          <p class="plan-figure">$0</p>
+          <p class="plan-meta">No card required</p>
+          <ul class="plan-list">
+            <li>Your first <strong>3 invoices</strong> and <strong>3 recorded payments</strong></li>
+            <li>A one-time allowance, not a monthly reset</li>
+            <li>Estimates, customers, PDFs and public links included</li>
+            <li>Whatever you create stays readable, always</li>
+          </ul>
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si-outline btn-block" target="_blank" rel="noopener">Send your first invoice</a>
+        </div>
+        <div class="plan plan-paper plan-si-pro">
+          <h3 class="plan-name">S Invoice Pro</h3>
+          <p class="plan-figure">$4.99<span>/month</span></p>
+          <p class="plan-meta is-blue">or $49.99/year — works out at $4.17 a month, $9.89 less than paying monthly</p>
+          <ul class="plan-list">
+            <li>Unlimited invoices and recorded payments</li>
+            <li>Online card payments once Stripe is connected</li>
+            <li>Refunds, partial payments, balance tracking</li>
+            <li>Reports, statements and multi-currency documents</li>
+          </ul>
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si btn-block" target="_blank" rel="noopener">Go Pro</a>
+        </div>
+      </div>
+
+      <p class="legal-line">Prices in USD. Subscriptions renew until cancelled. Where the subscription is bought through the App&nbsp;Store, Apple handles the billing, and the subscription is managed and cancelled through your Apple account. By subscribing you agree to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>, which cover S Invoice and S Protocol alike.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ COMPARISON ══════════ -->
+  <section class="band-paper" id="compare">
+    <div class="shell">
+      <div class="band-head is-narrow">
+        <p class="eyebrow">Side by side</p>
+        <h2 class="band-title">Which one is yours?</h2>
+      </div>
+
+      <!-- Desktop: full table -->
+      <div class="cmp" data-desktop-only>
+        <table class="cmp-table">
+          <caption class="sr-only">Feature comparison between S Invoice and S Protocol</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Capability</span></th>
+              <th scope="col" class="cmp-si">
+                <span class="cmp-brand"><img src="assets/brand/s-invoice-icon.webp" alt="" width="26" height="26" class="is-tile" />S Invoice</span>
+                <span class="cmp-desc">Best for a solo pro or a small crew who bill for their own work.</span>
+                <span class="cmp-price">Free · Pro $4.99/mo</span>
+              </th>
+              <th scope="col" class="cmp-sp">
+                <span class="cmp-brand"><img src="assets/brand/app-icon.webp" alt="" width="26" height="26" />S Protocol</span>
+                <span class="cmp-desc">Best for a business scheduling and dispatching other people&rsquo;s work.</span>
+                <span class="cmp-price">Free · Pro $24.99/mo</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cmp-group"><th colspan="3" scope="colgroup">Getting paid — both products</th></tr>
+            <tr><th scope="row">Invoices</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Estimates</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Customers and history</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Public invoice links and PDFs</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Online card payments</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Reports</th><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Multi-currency documents</th><td class="is-yes">USD, CAD, EUR, GBP</td><td class="is-no">USD</td></tr>
+            <tr><th scope="row">Customer statements</th><td class="is-yes">On iPhone</td><td class="is-no">No</td></tr>
+
+            <tr class="cmp-group is-sp"><th colspan="3" scope="colgroup">Running the operation — S Protocol only</th></tr>
+            <tr><th scope="row">Jobs</th><td class="is-no">No</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Scheduling and dispatch</th><td class="is-no">No</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Technicians and team roles</th><td class="is-no">No</td><td class="is-yes">Yes — no per-seat cost</td></tr>
+            <tr><th scope="row">Tap to Pay on iPhone</th><td class="is-no">No</td><td class="is-yes">Yes — USD</td></tr>
+            <tr><th scope="row">Calls and SMS on your business line</th><td class="is-no">No</td><td class="is-yes">By request</td></tr>
+            <tr><th scope="row">Website lead intake</th><td class="is-no">No</td><td class="is-yes">Yes</td></tr>
+            <tr><th scope="row">Team chat on the job</th><td class="is-no">No</td><td class="is-yes">Yes</td></tr>
+          </tbody>
+        </table>
+        <div class="cmp-foot">
+          <p>Still deciding? Start with S Invoice. If the business grows into scheduling and crews, S Protocol activates on the same workspace.</p>
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si" target="_blank" rel="noopener">Start invoicing free</a>
+        </div>
+      </div>
+
+      <!-- Mobile: two self-contained lists, each with its own verdict -->
+      <div class="cmp-stack" data-mobile-only>
+        <div class="cmp-card cmp-card-si">
+          <div class="cmp-card-head">
+            <img src="assets/brand/s-invoice-icon.webp" alt="" width="28" height="28" class="is-tile" />
+            <h3>S Invoice</h3>
+          </div>
+          <p>For a solo pro or small crew billing for their own work.</p>
+          <ul>
+            <li>Invoices, estimates, customers</li>
+            <li>Public links, PDFs, card payments</li>
+            <li>Reports · statements on iPhone</li>
+            <li>USD, CAD, EUR, GBP documents</li>
+            <li class="is-not">No jobs, scheduling or dispatch</li>
+          </ul>
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si btn-block" target="_blank" rel="noopener">Start invoicing free</a>
+        </div>
+        <div class="cmp-card cmp-card-sp">
+          <div class="cmp-card-head">
+            <img src="assets/brand/app-icon.webp" alt="" width="28" height="28" />
+            <h3>S Protocol</h3>
+          </div>
+          <p>For a business scheduling and dispatching other people&rsquo;s work.</p>
+          <ul>
+            <li>Everything S Invoice does, plus:</li>
+            <li>Jobs, scheduling, dispatch board</li>
+            <li>Technicians and team roles</li>
+            <li>Tap to Pay on iPhone (USD)</li>
+            <li>Website leads · calls by request</li>
+          </ul>
+          <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp btn-block" target="_blank" rel="noopener">Start with S Protocol</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ INTEGRATIONS ══════════ -->
+  <section class="band-white" id="integrations">
+    <div class="shell">
+      <div class="price-head">
+        <div class="band-head is-flush">
+          <p class="eyebrow">Connections</p>
+          <h2 class="band-title">What connects, and how it actually gets connected.</h2>
+        </div>
+        <ul class="legend">
+          <li><span class="badge badge-live">Available with setup</span> Live — we provision it with you</li>
+          <li><span class="badge badge-req">By request</span> Built case by case — talk to us</li>
+        </ul>
+      </div>
+
+      <div class="integrations">
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Stripe</h3><span class="integ-scope">Both products</span></span>
+            <span class="badge badge-live">Available with setup</span>
+          </summary>
+          <p>Card payments from the invoice your customer opens, plus wallets, deposits, part payments and refunds against the original charge.</p>
+        </details>
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Tap to Pay &amp; card readers</h3><span class="integ-scope is-sp">S Protocol</span></span>
+            <span class="badge badge-live">Available with setup</span>
+          </summary>
+          <p>Take the card at the kitchen counter — Tap to Pay on iPhone uses the phone the technician already carries, with no separate reader. Card readers are supported too. USD only today, a documented boundary tied to reader capability rather than an oversight.</p>
+        </details>
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Quo</h3><span class="integ-scope is-sp">S Protocol</span></span>
+            <span class="badge badge-req">By request</span>
+          </summary>
+          <p>Business calls and SMS on your company line, with recent calls surfacing on the dispatch board so you know who rang.</p>
+        </details>
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Website lead intake</h3><span class="integ-scope is-sp">S Protocol</span></span>
+            <span class="badge badge-live">Available with setup</span>
+          </summary>
+          <p>An enquiry from your own site arrives as a lead with the address and the problem, ready to become a booked job.</p>
+        </details>
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Thumbtack</h3><span class="integ-scope is-sp">S Protocol</span></span>
+            <span class="badge badge-req">By request</span>
+          </summary>
+          <p>Inbound leads routed into your workspace. Provisioned per business rather than switched on from Settings.</p>
+        </details>
+        <details class="integ" open>
+          <summary>
+            <span class="integ-title"><h3>Your own systems</h3><span class="integ-scope is-sp">S Protocol</span></span>
+            <span class="badge badge-req">By request</span>
+          </summary>
+          <p>API access and webhooks for businesses running something specific. Tell us what you need to talk to.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ORIGIN — editorial break ══════════ -->
+  <section class="origin" id="origin">
+    <div class="shell origin-grid">
+      <div>
+        <p class="eyebrow eyebrow-quiet">Where this came from</p>
+        <p class="origin-lede">Built by people running the jobs. The first workspace was <em>an appliance repair business</em> — and it still runs on this.</p>
+        <p class="origin-sub">Every workflow here started as a problem somebody had on a Tuesday morning: a technician stuck without the history, an invoice nobody chased, a job assigned twice. That is the reason the dispatch board looks the way it does, and the reason S Invoice exists separately for people who only need the paperwork.</p>
+      </div>
+      <div class="origin-side">
+        <h3 class="origin-side-head">Service businesses using this shape of work</h3>
+        <ul class="trades">
+          <li>Appliance repair</li><li>Handyman</li><li>HVAC</li><li>Plumbing</li><li>Electrical</li>
+          <li>Locksmiths</li><li>Cleaning</li><li>Landscaping</li><li>Mobile mechanics</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section section-soft" id="contact">
-    <div class="container contact-wrap">
-      <div class="section-head section-head-left">
-        <p class="section-label">Get in touch</p>
-        <h2 class="section-title">Build with us — or just say hello.</h2>
-        <p class="section-intro">Want to run your business on S Protocol, request a workflow, or explore the platform? Send a note and we&rsquo;ll get back to you.</p>
-        <div class="contact-apps">
-          <a href="https://app.s-protocol.com" class="btn btn-primary" target="_blank" rel="noopener">Open App</a>
-          <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" class="btn btn-dark" target="_blank" rel="noopener">
-            <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-39.3.6-79.4 22.9-101.6 58.3-43.4 70.2-11.1 173.9 31.2 230.9 20.7 27.9 45.3 59.2 77.6 58 31.2-1.2 42.9-20.2 80.6-20.2 37.4 0 48.2 20.2 80.6 19.6 33.3-.5 54.4-28.4 75-56.4 23.7-32.6 33.3-64.2 33.8-65.8-.7-.3-65-25-65.2-99.4zM263.4 74.6c17.1-20.7 28.6-49.5 25.5-78.6-24.6 1-54.4 16.4-72.1 37.1-15.9 18.3-29.8 47.6-26.1 75.6 27.4 2.2 55.6-14.4 72.7-34.1z"/></svg>
-            iOS App
-          </a>
+  <!-- ══════════ FAQ ══════════ -->
+  <section class="band-white" id="faq">
+    <div class="shell">
+      <div class="band-head is-narrow">
+        <p class="eyebrow">Questions worth answering properly</p>
+        <h2 class="band-title">The things people ask before signing up.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>What happens when I hit the Free limit?</h3>
+          <p>You stop being able to create new invoices of that kind until you upgrade. Nothing is hidden, locked or deleted — every invoice, payment and customer you already have stays fully readable. The allowance is one-time per business, not monthly, and deleting a document does not give it back.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I move from S Invoice to S Protocol later?</h3>
+          <p>Yes, and it is not a migration. S Protocol is activated on the same workspace, so your customers, invoices, estimates, company details and invoice numbering are simply still there. The owner starts it from Settings, and that first activation is on a paid S Protocol plan. A free S Protocol account is instead a separate signup with an empty workspace.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is there a free trial of Pro?</h3>
+          <p>No. There is a Free plan with a real allowance instead, and it uses the same product Pro does — not a stripped demo. We would rather you test the real thing than race a countdown.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I pay per technician?</h3>
+          <p>No. S Protocol Pro has no team-member limit and no per-seat charge. Add the dispatchers and technicians the business actually employs.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I stop paying?</h3>
+          <p>Your data is never held hostage. If a subscription lapses or is cancelled, you keep read access to everything and drop back to Free limits for creating new records. Cancelling mid-period keeps Pro running until the period you paid for ends.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Which currencies can I invoice in?</h3>
+          <p>S Invoice documents can be USD, CAD, EUR or GBP, and online card payments work in all four. The currency is stamped when the document is created and never converted afterwards. In-person card payments are USD only for now.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do both products work on iPhone?</h3>
+          <p>Yes — both run on the web and on iPhone. There is no Android app, and we will not claim one until there is.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I use both products at once?</h3>
+          <p>Yes. A workspace with both keeps its S Invoice side working exactly as before. Customers are shared across both; invoices raised against dispatched jobs stay on the S Protocol side so your invoicing list does not fill up with operational paperwork.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section class="band-paper" id="contact">
+    <div class="shell contact-wrap">
+      <div class="band-head is-flush">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="band-title">Build with us — or just say hello.</h2>
+        <p class="band-sub">Want to run your business on S Protocol, start invoicing with S Invoice, or request a workflow? Send a note and we&rsquo;ll get back to you.</p>
+        <div class="contact-apps">
+          <a href="https://app.s-protocol.com" class="btn btn-sp" target="_blank" rel="noopener">Open S Protocol</a>
+          <a href="https://invoice.s-protocol.com" class="btn btn-si-outline" target="_blank" rel="noopener">Open S Invoice</a>
+        </div>
+        <p class="contact-store">
+          <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" target="_blank" rel="noopener">
+            <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-39.3.6-79.4 22.9-101.6 58.3-43.4 70.2-11.1 173.9 31.2 230.9 20.7 27.9 45.3 59.2 77.6 58 31.2-1.2 42.9-20.2 80.6-20.2 37.4 0 48.2 20.2 80.6 19.6 33.3-.5 54.4-28.4 75-56.4 23.7-32.6 33.3-64.2 33.8-65.8-.7-.3-65-25-65.2-99.4zM263.4 74.6c17.1-20.7 28.6-49.5 25.5-78.6-24.6 1-54.4 16.4-72.1 37.1-15.9 18.3-29.8 47.6-26.1 75.6 27.4 2.2 55.6-14.4 72.7-34.1z"/></svg>
+            S Protocol on the App Store
+          </a>
+        </p>
+      </div>
+
       <div class="contact-card">
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
@@ -448,7 +1231,7 @@
             <textarea id="contact-message" name="message" rows="4" placeholder="Tell us about your business, or the workflow you&rsquo;d like to see."></textarea>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-neutral-solid">Send Message</button>
             <span class="form-note">We typically respond within one business day.</span>
           </div>
         </form>
@@ -456,68 +1239,90 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="cta-band" id="cta">
-    <div class="cta-aura" aria-hidden="true"></div>
-    <div class="container cta-inner">
-      <picture>
-        <source srcset="assets/brand/app-icon.webp" type="image/webp" />
-        <img src="assets/brand/app-icon.png" alt="" aria-hidden="true" class="cta-icon" width="64" height="64" />
-      </picture>
-      <h2 class="cta-headline">Run your service business <br />from one place.</h2>
-      <p class="cta-sub">One connected platform for jobs, customers, invoices, payments, and your team. Start with the Free plan and upgrade when your business needs more.</p>
-      <div class="cta-actions">
-        <a href="https://app.s-protocol.com/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get started</a>
-        <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" class="btn btn-glass btn-lg" target="_blank" rel="noopener">
-          <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-39.3.6-79.4 22.9-101.6 58.3-43.4 70.2-11.1 173.9 31.2 230.9 20.7 27.9 45.3 59.2 77.6 58 31.2-1.2 42.9-20.2 80.6-20.2 37.4 0 48.2 20.2 80.6 19.6 33.3-.5 54.4-28.4 75-56.4 23.7-32.6 33.3-64.2 33.8-65.8-.7-.3-65-25-65.2-99.4zM263.4 74.6c17.1-20.7 28.6-49.5 25.5-78.6-24.6 1-54.4 16.4-72.1 37.1-15.9 18.3-29.8 47.6-26.1 75.6 27.4 2.2 55.6-14.4 72.7-34.1z"/></svg>
-          Download on the App Store
-        </a>
+  <!-- ══════════ CLOSING CTA ══════════ -->
+  <section class="closing" id="cta">
+    <div class="shell">
+      <div class="closing-head">
+        <h2 class="band-title">Start where the business actually is.</h2>
+        <p class="band-sub">Both are free to begin, on the web and on iPhone. Neither one asks for a card to find out whether it fits.</p>
+      </div>
+      <div class="closing-cards">
+        <div class="closing-card closing-sp">
+          <img src="assets/brand/app-icon.webp" alt="" width="52" height="52" />
+          <div>
+            <strong>S Protocol</strong>
+            <span>Jobs, schedules, technicians, money.</span>
+          </div>
+          <a href="https://app.s-protocol.com/signup/s-protocol" class="btn btn-sp" target="_blank" rel="noopener">Start with S Protocol</a>
+        </div>
+        <div class="closing-card closing-si">
+          <img src="assets/brand/s-invoice-icon.webp" alt="" width="52" height="52" class="is-tile" />
+          <div>
+            <strong>S Invoice</strong>
+            <span>Estimates, invoices, getting paid.</span>
+          </div>
+          <a href="https://invoice.s-protocol.com/signup" class="btn btn-si" target="_blank" rel="noopener">Start invoicing free</a>
+        </div>
       </div>
     </div>
   </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer">
+    <div class="shell footer-grid">
       <div class="footer-brand">
         <picture>
           <source srcset="assets/brand/logo-footer.webp" type="image/webp" />
           <img src="assets/brand/logo-footer.png" alt="S Protocol" class="footer-logo" width="190" height="32" />
         </picture>
-        <p class="footer-tag">The service-business operating platform. Start with the Free plan, or start simpler with S&nbsp;Invoice — and grow into the full platform when you&rsquo;re ready.</p>
+        <p class="footer-tag">Two products for service businesses: S Invoice for the estimates and the invoicing, S Protocol for running the whole operation. Same foundation, same company.</p>
         <div class="footer-app-links">
           <a href="https://app.s-protocol.com" target="_blank" rel="noopener">Open S&nbsp;Protocol</a>
           <a href="https://invoice.s-protocol.com" target="_blank" rel="noopener">Open S&nbsp;Invoice</a>
         </div>
       </div>
-      <nav class="footer-col" aria-label="Products">
-        <h4>Products</h4>
-        <a href="/">S Protocol</a>
-        <a href="/s-invoice">S Invoice</a>
-        <a href="#features">Features</a>
-        <a href="#integrations">Integrations</a>
+
+      <nav class="footer-col" aria-label="S Protocol">
+        <h2 class="footer-head"><img src="assets/brand/app-icon.webp" alt="" width="18" height="18" />S Protocol</h2>
+        <a href="#s-protocol">Overview</a>
+        <a href="#how-it-works">Dispatch &amp; scheduling</a>
         <a href="#pricing">Pricing</a>
+        <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" target="_blank" rel="noopener">iPhone app</a>
       </nav>
-      <nav class="footer-col" aria-label="Account">
-        <h4>Account</h4>
-        <a href="https://app.s-protocol.com" target="_blank" rel="noopener">Sign in</a>
-        <a href="https://app.s-protocol.com/signup" target="_blank" rel="noopener">Create account</a>
-        <a href="https://apps.apple.com/us/app/s-protocol/id6763838117" target="_blank" rel="noopener">iOS App</a>
+
+      <nav class="footer-col" aria-label="S Invoice">
+        <h2 class="footer-head"><img src="assets/brand/s-invoice-icon.webp" alt="" width="18" height="18" class="is-tile" />S Invoice</h2>
+        <a href="/s-invoice">Overview</a>
+        <a href="#s-invoice-story">Estimates &amp; invoices</a>
+        <a href="#s-invoice-pricing">Pricing</a>
+        <a href="https://invoice.s-protocol.com" target="_blank" rel="noopener">Open on iPhone or web</a>
       </nav>
+
+      <nav class="footer-col" aria-label="Compare">
+        <h2 class="footer-head">Compare</h2>
+        <a href="#compare">Which product</a>
+        <a href="#growth">Growth path</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
       <nav class="footer-col" aria-label="Company">
-        <h4>Company</h4>
+        <h2 class="footer-head">Company</h2>
         <a href="#contact">Contact</a>
         <a href="mailto:support@s-protocol.com">support@s-protocol.com</a>
       </nav>
+
       <nav class="footer-col" aria-label="Legal">
-        <h4>Legal</h4>
+        <h2 class="footer-head">Legal</h2>
         <a href="/terms">Terms of Service</a>
         <a href="/privacy">Privacy Policy</a>
+        <span class="footer-fine">One set of documents covers both products. Subscriptions bought through the App&nbsp;Store are billed by Apple and managed in your Apple account.</span>
       </nav>
     </div>
-    <div class="container footer-bottom">
+
+    <div class="shell footer-bottom">
       <span>&copy; 2026 Elevate Repair LLC. S&nbsp;Protocol and S&nbsp;Invoice are Elevate Repair LLC products.</span>
       <span class="footer-origin">Born in appliance repair. Built for service businesses.</span>
     </div>
