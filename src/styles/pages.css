@@ -224,7 +224,7 @@ html:not(.js) .toggle-group { display: none; }
 .faq-hub__cat + .faq-hub__cat { margin-top: 56px; }
 .faq-hub__title { margin-bottom: 12px; }
 .faq__text { min-width: 0; }
-.faq__tag { display: inline-block; margin-left: 10px; padding: 1px 8px; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); font-family: var(--ff-mono); font-weight: 500; font-size: 0.6875rem; letter-spacing: .08em; line-height: 18px; text-transform: uppercase; color: var(--c-muted); white-space: nowrap; vertical-align: 2px; }
+.faq__tag { display: inline-block; margin-left: 10px; padding: 1px 8px; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); font-family: var(--ff-mono); font-weight: 500; font-size: 0.75rem; letter-spacing: .08em; line-height: 18px; text-transform: uppercase; color: var(--c-muted); white-space: nowrap; vertical-align: 2px; }
 
 /* ---------------------------------------------------------------- industry pages */
 .ind-stage { position: relative; padding-bottom: 40px; }
