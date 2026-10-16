@@ -188,7 +188,8 @@ const DESCRIPTION = `Create estimates and invoices, send a link your customer ca
 
 export const meta = {
   route: R, page: 's_invoice', title: TITLE, description: DESCRIPTION,
-  preloads: preloadPhoto({ id: 'SOLO-02', page: R, section: 'Hero', sizes: HERO_SIZES }),
+  // The H1's italic word can rewrap the hero when Newsreader italic swaps in late (Lighthouse CLS 0.14): preload it here.
+  preloads: html`<link rel="preload" href="/assets/fonts/newsreader-500-italic.woff2" as="font" type="font/woff2" crossorigin>${preloadPhoto({ id: 'SOLO-02', page: R, section: 'Hero', sizes: HERO_SIZES })}`,
   jsonld: graph(webPage(R, TITLE, DESCRIPTION, { about: { '@id': 'https://s-protocol.com/s-invoice#app' } }), sInvoiceAppPage()),
 };
 

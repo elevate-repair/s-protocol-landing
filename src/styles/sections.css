@@ -526,7 +526,7 @@
 @media (min-width: 1024px) {
   .legal-layout { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; }
   .legal-layout__toc { grid-column: 1 / 4; }
-  .legal-layout__toc .legal-toc { position: sticky; top: calc(var(--header-h) + 24px); max-height: calc(100vh - var(--header-h) - 48px); overflow-y: auto; padding: 0; background: none; border: 0; }
+  .legal-layout__toc .legal-toc { position: sticky; top: calc(var(--header-h) + 24px); max-height: calc(100vh - var(--header-h) - 48px); overflow-y: auto; margin-left: -6px; padding: 4px 6px; background: none; border: 0; }
   .legal { grid-column: 4 / 12; }
 }
 @media (min-width: 1280px) { .legal-layout__toc { grid-column: 1 / 3; } .legal { grid-column: 3 / 11; } }
