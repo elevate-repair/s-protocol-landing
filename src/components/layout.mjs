@@ -195,10 +195,12 @@ ${meta.description ? html`<meta name="twitter:description" content="${meta.ogDes
 <link rel="preload" href="/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
 ${meta.preloads ?? ''}
 <link rel="stylesheet" href="/assets/css/site.css">
+<noscript><style>.faq__a[hidden]{display:grid!important;content-visibility:visible!important;height:auto!important;padding-bottom:24px!important;overflow:visible!important}</style></noscript>
 <script>${raw(meta.headScript)}</script>
 ${meta.headExtra ?? ''}
 <script src="/clarity.js" defer></script>
 <script type="module" src="/assets/js/main.js"></script>
+${(meta.scripts ?? []).map((src) => html`<script type="module" src="${src}"></script>`)}
 ${ld.map((j) => html`<script type="application/ld+json">${raw(JSON.stringify(j, null, 2).replace(/</g, '\\u003c'))}</script>`)}
 </head>
 <body data-page="${meta.page}">

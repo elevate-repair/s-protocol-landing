@@ -1,16 +1,17 @@
-// `/s-protocol` — product-pages-spec.md A1–A12 (night-stage operations platform). Same D-01 / D-30 adaptations as the
-// homepage (real app labels only; HTML replicas of existing web screens until the captures exist; no device images)
-// plus the owner-decision safe defaults D-02 (one combined role card), D-03 (earnings named only), D-04 (price book as
-// a list of services and prices), D-05 ("Analytics and reporting") and D-06 (Quo wording) — status §12.
-import { html, trackAttrs } from '../lib/html.mjs';
-import { icon } from '../lib/icons.mjs';
-import { SP, strings, ctaPattern } from '../lib/data.mjs';
+// `/s-protocol` — product-pages-spec.md A1–A12 (night-stage operations platform). Same corrections as the homepage
+// (D-01, owner-approved: real app labels only; S Protocol screens are real captures of the web app with the fictional
+// demo dataset; estimates belong to the customer) plus the owner-decision safe defaults D-02 (one combined role card),
+// D-03 (earnings named only), D-04 (price book as a list of services and prices), D-05 ("Analytics and reporting") and
+// D-06 (Quo wording) — IMPLEMENTATION_STATUS.md §12.
+import { html } from '../lib/html.mjs';
+import { SP, strings } from '../lib/data.mjs';
 import { photo } from '../lib/images.mjs';
+import { ring } from '../lib/ui-shots.mjs';
 import { graph, sProtocolApp, webPage } from '../lib/seo.mjs';
 import { tm, eyebrow, ctaLink, sectionHead, featureRow, textLink, iconTile } from '../components/ui.mjs';
-import { uiFrame, uiCrop, appStoreBadge, replicaBody } from '../components/media.mjs';
-import { boardReplica, BOARD_LABEL, jobRecordReplica, estimateReplica, jobInvoiceReplica } from '../components/replicas.mjs';
-import { pricingPair, finePrint, faqList, paymentCompare, ctaStage, integrationCards, subnav } from '../components/blocks.mjs';
+import { shotFrame, shotCrop, artFrame } from '../components/media.mjs';
+import { pricingPair, finePrint, faqList, ctaStage, integrationCards, subnav } from '../components/blocks.mjs';
+import { technicianSection, moneySection } from '../components/sections.mjs';
 
 const R = '/s-protocol';
 const mono = (text, cls = '') => html`<p class="mono-caption${cls ? ' ' + cls : ''}">${tm(text)}</p>`;
@@ -28,13 +29,12 @@ function hero() {
     </div>
     <div class="hero__stage sp-stage" data-reveal-group>
       <figure class="sp-stage__tile">
-        ${photo({ id: 'OFFICE-02', page: R, section: 'Hero', sizes: '(min-width: 1024px) 280px, 0px', cls: 'photo--tile', priority: true })}
+        ${photo({ id: 'OFFICE-02', page: R, section: 'Hero', sizes: '(min-width: 1024px) 280px, 0px', cls: 'photo--tile', eager: true })}
         <figcaption class="mono-caption mono-caption--night">DISPATCH · THE OFFICE</figcaption>
       </figure>
-      <figure class="ui-frame ui-frame--dark ui-frame--hero-board" data-reveal>
-        <div class="ui-frame__bar" aria-hidden="true"><span class="ui-frame__dots"><i></i><i></i><i></i></span><span class="ui-frame__host">app.s-protocol.com</span></div>
-        <div class="board-scroll board-scroll--hero" data-board-scroll tabindex="0" role="region" aria-label="Dispatch board sample — scroll sideways">${replicaBody(BOARD_LABEL, boardReplica({ withRail: false }), 'ui-frame__body')}</div>
-      </figure>
+      <div class="sp-stage__board" data-reveal>${artFrame({ dark: true, cls: 'ui-frame--hero-board',
+        wide: { id: 'sp-schedule-today-night', sizes: '(min-width: 1280px) 660px, (min-width: 1024px) 400px, calc(100vw - 64px)', priority: true },
+        narrow: { id: 'sp-dispatch-today-night', sizes: 'calc(100vw - 42px)', visible: 0.6 } })}</div>
     </div>
   </div>
 </section>`;
@@ -43,44 +43,31 @@ function hero() {
 // ------------------------------------------------------------------ A3 Dispatch & scheduling
 function dispatch() {
   const rows = [
-    { title: 'Technician columns', body: 'Each technician gets a column for the day, in time order, with live updates from their iPhone.', visual: uiCrop({ label: 'Dispatch board crop (sample workspace): the day’s columns for technicians M. Ruiz and D. Kaur next to the Unassigned group', content: boardReplica({ cols: ['ruiz', 'kaur'], withRail: false, head: false }), cls: 'ui-crop--dark ui-crop--row' }) },
-    { title: 'The Unassigned group', body: 'New jobs wait there until someone assigns them to a technician.', visual: uiCrop({ label: 'Dispatch board crop (sample workspace): the Unassigned group with two Pending jobs — a website lead and an inbound call', content: boardReplica({ cols: [], withRail: false, head: false, cls: 'rp-board--lane' }), cls: 'ui-crop--dark ui-crop--row ui-crop--narrow' }) },
-    { title: 'The schedule', body: 'Pick the slot, pick the technician — the schedule and the board update together.', visual: uiCrop({ label: 'Job #4417 “Dryer not heating” booked for technician M. Ruiz on Thursday, August 14 at 8:00 AM (sample workspace)', content: html`<div class="rp-static" data-step="2">${jobRecordReplica()}</div>`, cls: 'ui-crop--row ui-crop--record' }) },
+    { title: 'A section for every technician', body: 'Each technician’s jobs for the day in time order, with the customer, the job, the phone number and the status.',
+      visual: shotCrop({ id: 'sp-schedule-today-light', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, calc(100vw - 40px)', cls: 'ui-crop--row' }) },
+    { title: 'The Unassigned group', body: 'New jobs wait under “Unassigned — needs tech assignment” until someone assigns them to a technician.',
+      visual: shotCrop({ id: 'sp-dispatch-today', sizes: '(min-width: 768px) 400px, calc(100vw - 40px)', cls: 'ui-crop--row ui-crop--portrait', overlays: ring('sp-dispatch-today', 'unassigned', { pad: 0.6 }) }) },
+    { title: 'The schedule', body: 'Pick the slot, pick the technician — the schedule and the board update together.',
+      visual: shotCrop({ id: 'sp-job-4417', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, calc(100vw - 40px)', cls: 'ui-crop--row', visible: 0.62, overlays: ring('sp-job-4417', 'sched', { pad: 0.6 }) }) },
   ];
   return html`<section class="section section--paper" id="dispatch" aria-labelledby="dispatch-title">
   <div class="container">
-    ${sectionHead({ eyebrow: 'DISPATCH & SCHEDULING', title: 'The morning starts on the board.', id: 'dispatch-title', lead: 'Who’s working, what’s booked, what’s running late and what’s still unassigned — on one screen the whole office shares.', cls: 'section-head--7' })}
+    ${sectionHead({ eyebrow: 'DISPATCH & SCHEDULING', title: 'The morning starts on the board.', id: 'dispatch-title', lead: 'Who’s working, what’s booked, what needs attention and what’s still unassigned — on one screen the whole office shares.', cls: 'section-head--7' })}
     <div class="alt-rows">${rows.map((r, i) => html`<div class="alt-row${i % 2 ? ' alt-row--flip' : ''}">
       <div class="alt-row__text"><p class="mono-label">0${i + 1}</p><h3 class="h3-serif">${r.title}</h3><p>${tm(r.body)}</p></div>
       <div class="alt-row__visual" data-reveal>${r.visual}</div>
     </div>`)}</div>
+    <p class="footnote alt-rows__note">Real screens of the S Protocol web app, with a sample workspace.</p>
   </div>
 </section>`;
 }
 
 // ------------------------------------------------------------------ A4 Technician app
-function technicianApp() {
-  const badge = ctaPattern(R, 'A4 Technician app');
-  return html`<section class="section section--white" id="technician-app" aria-labelledby="tech-title">
-  <div class="container split split--visual-left">
-    <div class="split__visual tech-stage" data-reveal>
-      <figure class="tech-stage__photo">
-        ${photo({ id: 'IND-ELEC-01', page: R, section: 'Technician app', sizes: '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) 400px, calc(100vw - 40px)', cls: 'photo--panel' })}
-        <figcaption class="mono-caption">ON THE JOB · S Protocol for <span class="tm">iPhone</span></figcaption>
-      </figure>
-    </div>
-    <div class="split__text">
-      ${sectionHead({ eyebrow: 'S PROTOCOL FOR iPhone', title: 'Everything the tech needs, nothing they don’t.', id: 'tech-title', lead: 'Their day in order, the customer’s history, notes and photos, and payment at the door — on the same record the office sees.' })}
-      <div class="feature-rows">
-        ${featureRow({ icon: 'camera', title: 'Notes and photos', body: 'Before-and-after photos and notes stay in the customer’s history.' })}
-        ${featureRow({ icon: 'history', title: 'The customer’s history', body: 'Previous visits and what was paid, right on the job.' })}
-        ${featureRow({ icon: 'credit-card', title: 'Payment at the door', body: 'Tap to Pay on iPhone or a card reader, in USD, or record a cash payment.' })}
-      </div>
-      <div class="download-row">${appStoreBadge(badge)}<p>S Protocol runs on <span class="tm">iPhone</span> and on the web. There’s no Android app.</p></div>
-    </div>
-  </div>
-</section>`;
-}
+const technicianApp = () => technicianSection({
+  route: R, badgeSection: 'A4 Technician app', tone: 'white', photoSlot: { id: 'IND-ELEC-01', page: R, section: 'Technician app' },
+  eyebrowText: 'S PROTOCOL FOR iPhone', title: 'Everything the tech needs, nothing they don’t.',
+  lead: 'Their day in order, notes and photos, the customer’s signature and payment at the door — on the same record the office sees.',
+});
 
 // ------------------------------------------------------------------ A5 Customers & history
 function customers() {
@@ -92,47 +79,18 @@ function customers() {
   return html`<section class="section section--paper" id="customers" aria-labelledby="cust-title">
   <div class="container split split--visual-right split--5-7">
     <div class="split__text">
-      ${sectionHead({ eyebrow: 'CUSTOMERS', title: 'The history is there when they call back.', id: 'cust-title', lead: 'Every client record keeps the full job history, notes and photos — so the next visit starts from what you already know.' })}
+      ${sectionHead({ eyebrow: 'CUSTOMERS', title: 'The history is there when they call back.', id: 'cust-title', lead: 'Every client record keeps the contact details, notes and the full job history — so the next visit starts from what you already know.' })}
       <ul class="fact-list">${items.map(([name, tag, line]) => html`<li class="fact-list__row"><p class="fact-list__name">${name}${tag ? html` <span class="fact-list__tag">(${tag})</span>` : ''}</p>${line ? html`<p class="fact-list__line">${line}</p>` : ''}</li>`)}</ul>
     </div>
     <div class="split__visual" data-reveal>
-      ${uiFrame({ label: 'S Protocol job record for R. Alvarez (sample workspace) with the customer’s history: this visit and two previous paid visits', content: html`<div class="rp-static" data-step="5">${jobRecordReplica()}</div>`, cls: 'ui-frame--record' })}
+      ${shotFrame({ id: 'sp-client-alvarez', sizes: '(min-width: 768px) 400px, calc(100vw - 40px)', cls: 'ui-frame--client' })}
     </div>
   </div>
 </section>`;
 }
 
 // ------------------------------------------------------------------ A6 Money
-function money() {
-  return html`<section class="section section--white" id="payments" aria-labelledby="money-title">
-  <div class="container">
-    ${sectionHead({ eyebrow: 'ESTIMATES · INVOICES · PAYMENTS', title: 'Quote it, bill it, collect it — on the same job.', id: 'money-title', lead: 'Build the estimate on the job. Approved work converts straight to the invoice. Your customer pays online from the invoice link — or your technician takes the card at the door.', cls: 'section-head--7' })}
-    <div class="money-cards money-cards--four">
-      <article class="money-card" data-reveal>
-        <div class="money-card__visual">${uiCrop({ label: 'Estimate for the job “Dryer not heating” with three line items and the total', content: estimateReplica(), cls: 'ui-crop--card' })}</div>
-        <div class="money-card__text"><p class="mono-label">ESTIMATE</p><h3 class="h3-serif">Priced on the job</h3><p>Line items and notes live on the job record. When the customer says yes, the estimate becomes the invoice — nothing retyped.</p></div>
-      </article>
-      <article class="money-card" data-reveal>
-        <div class="money-card__visual">${uiCrop({ label: 'Customer-facing invoice #2184 for “Dryer not heating” with the line items, the balance due and a Pay button', content: jobInvoiceReplica(), cls: 'ui-crop--card' })}</div>
-        <div class="money-card__text"><p class="mono-label">INVOICE</p><h3 class="h3-serif">An invoice they can pay from their phone</h3><p>Send a link or a PDF. Your customer opens it, sees the work and pays by card.</p><p class="footnote">Online card payments run on Stripe, connected with you during setup.</p></div>
-      </article>
-      <article class="money-card money-card--ttp" data-reveal>
-        <div class="money-card__visual money-card__visual--text"><p class="mono-label">IN PERSON · USD</p><p class="ttp-title">Tap to Pay on <span class="tm">iPhone</span> and card readers</p></div>
-        <div class="money-card__text"><p class="mono-label">PAYMENT</p><h3 class="h3-serif">Take the card at the door</h3><p>Take the payment on the <span class="tm">iPhone</span> already in the technician’s hand — no card reader to buy, carry or charge. Card readers work too. In-person payments are in USD.</p></div>
-      </article>
-      <article class="money-card money-card--ttp" id="reports" data-reveal>
-        <div class="money-card__visual money-card__visual--text">${iconTile('chart-column')}<p class="ttp-title">Analytics and reporting</p></div>
-        <div class="money-card__text"><p class="mono-label">REPORTS</p><h3 class="h3-serif">Know what came in</h3><p>Analytics and reporting on jobs, invoices and payments.</p></div>
-      </article>
-    </div>
-    <div class="money-compare">
-      <h3 class="mono-label money-compare__title">WHERE EACH PAYMENT FEATURE LIVES</h3>
-      ${paymentCompare()}
-      <p class="money-compare__link">${textLink({ label: 'Compare everything →', href: '/compare', track: 'section_link_click', props: { section: 'payments', link: 'compare' } })}</p>
-    </div>
-  </div>
-</section>`;
-}
+const money = () => moneySection({ reports: true, compare: textLink({ label: 'Compare everything →', href: '/compare', track: 'section_link_click', props: { section: 'payments', link: 'compare' } }) });
 
 // ------------------------------------------------------------------ A7 Team & roles
 function team() {

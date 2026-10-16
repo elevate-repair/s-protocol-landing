@@ -1,5 +1,6 @@
-/* Interim product-UI replicas (D-30 fallback): faithful HTML versions of existing app screens with the fictional demo
-   dataset. Inner markup is aria-hidden; the replica root carries role="img" + aria-label. Replaced by real captures later. */
+/* Product-UI replicas for the screens the offline app copy cannot show (D-30 fallback): the S Protocol estimate and
+   customer-facing invoice, the S Invoice invoice and web home — faithful HTML versions of existing app screens with the
+   fictional demo dataset. Inner markup is aria-hidden; the replica root carries role="img" + aria-label. */
 .replica { font-family: var(--ff-sans); font-size: 0.8125rem; line-height: 1.4; color: var(--c-ink); text-align: left; }
 .rp-mono { font-family: var(--ff-mono); font-size: 0.6875rem; letter-spacing: .02em; }
 .rp-dim { color: var(--c-muted); }
@@ -18,82 +19,10 @@
 .rp-btn { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
 .rp-btn--primary { background: var(--c-primary); color: var(--c-white); }
 
-/* ---------------------------------------------------------------- dispatch board (dark) */
-.rp-board { display: grid; grid-template-columns: 168px minmax(0, 1fr); min-height: 100%; background: var(--c-night-2); color: var(--c-night-text); }
-.rp-board--bare { grid-template-columns: minmax(0, 1fr); }
-.rp-rail { display: grid; align-content: start; gap: 2px; padding: 14px 10px; border-right: 1px solid var(--c-night-line); }
+/* ---------------------------------------------------------------- app navigation rail (S Invoice web home) */
 .rp-rail__brand { display: flex; align-items: center; gap: 8px; margin: 0 4px 12px; font-weight: 600; font-size: 0.8125rem; }
 .rp-rail__brand img { border-radius: 6px; }
 .rp-rail__item { padding: 6px 10px; border-radius: 8px; font-size: 0.75rem; color: var(--c-night-text-2); }
-.rp-rail__item.is-active { background: var(--x-icon-tile-dark); color: var(--c-link-night); font-weight: 600; }
-.rp-board__main { padding: 16px; min-width: 0; }
-.rp-board--bare .rp-board__main { padding: 12px; }
-.rp-board__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.rp-board__head > div { display: grid; gap: 2px; }
-.rp-board__head strong { font-size: 0.9375rem; }
-.rp-board .rp-dim, .rp-board .rp-mono.rp-dim { color: var(--c-night-text-3); }
-.rp-board__cols { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 12px; align-items: start; }
-.rp-col { display: grid; gap: 8px; padding: 10px; border-radius: 12px; background: var(--c-night); border: 1px solid var(--c-night-line); min-width: 0; }
-.rp-col--unassigned { border-style: dashed; }
-.rp-col__head { position: relative; display: flex; align-items: center; gap: 8px; padding: 2px 2px 4px; }
-.rp-col__head > span:not(.rp-count):not(.marker) { display: grid; }
-.rp-col__head strong { font-size: 0.8125rem; }
-.rp-col__head--plain { justify-content: space-between; }
-.rp-avatar { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--x-icon-tile-dark); color: var(--c-link-night); font-size: 0.625rem; font-weight: 700; flex: none; }
-.rp-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 20px; padding: 0 6px; border-radius: var(--r-pill); background: var(--c-warning-bg); color: var(--c-warning); font-size: 0.6875rem; font-weight: 700; }
-.rp-job { display: grid; gap: 3px; padding: 10px; border-radius: 10px; background: var(--c-night-3); border: 1px solid var(--c-night-line); min-width: 0; }
-.rp-job__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 6px; margin-bottom: 2px; }
-.rp-job__top .rp-mono { white-space: nowrap; }
-.rp-job__top .rp-mono { color: var(--c-night-text-3); }
-.rp-job strong { font-size: 0.8125rem; font-weight: 600; color: var(--c-night-text); }
-.rp-job__who { font-size: 0.71875rem; color: var(--c-night-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.rp-board .rp-job__ok { justify-self: start; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; line-height: 20px; align-items: center; height: 20px; padding: 0 8px; margin-top: 4px; border-radius: var(--r-pill); background: var(--c-success-bg); color: var(--c-success); font-size: 0.6875rem; font-weight: 600; }
-.rp-job__money { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 4px; font-size: 0.6875rem; color: var(--c-night-text-2); }
-.rp-job__money .rp-job__ok { margin-top: 0; flex: none; }
-.rp-job__money > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rp-chipwrap { position: relative; display: inline-flex; }
-.marker--board { position: absolute; z-index: 2; top: -4px; left: -34px; }
-.marker--inline { position: static; width: 24px; height: 24px; font-size: 0.6875rem; margin-left: auto; }
-.rp-col__title { display: inline-flex; align-items: center; gap: 8px; }
-.rp-col__title .marker--inline { margin-left: 0; }
-
-/* ---------------------------------------------------------------- job record #4417 (light) */
-.rp-record { padding: 20px; background: var(--c-white); }
-.rp-record__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.rp-record__head > div { display: grid; gap: 2px; }
-.rp-record__head strong { font-size: 1rem; }
-.rp-record__head > div > span { font-size: 0.75rem; color: var(--c-muted); }
-.rp-state { display: inline-flex; border-radius: var(--r-pill); }
-.rp-tabs { display: flex; gap: 20px; margin: 14px 0; border-bottom: 1px solid var(--c-line); }
-.rp-tabs span { padding: 8px 0; margin-bottom: -1px; font-size: 0.78125rem; font-weight: 600; color: var(--c-muted); border-bottom: 2px solid transparent; }
-.rp-record__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.rp-cell { display: grid; gap: 4px; align-content: start; padding: 12px; border: 1px solid var(--c-line); border-radius: 10px; min-width: 0; transition: box-shadow 160ms var(--ease-out); }
-.rp-cell--wide { grid-column: 1 / -1; }
-.rp-cell strong { font-size: 0.84375rem; }
-.rp-cell .rp-dim { font-size: 0.75rem; }
-.rp-tech { display: block; }
-.rp-big { font-size: 1.125rem; font-weight: 600; }
-.rp-note { display: block; font-size: 0.78125rem; color: var(--c-body); }
-.rp-thumbs { display: flex; gap: 8px; margin-top: 4px; }
-.rp-thumbs i { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 8px; background: var(--c-paper-2); color: var(--c-muted); }
-.rp-visit { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-top: 1px solid var(--c-line); font-size: 0.75rem; }
-.rp-visit:first-of-type { border-top: 0; }
-/* step states (data-step on an ancestor; step 1 by default) */
-.rp-when-2, .rp-when-3, .rp-when-4only, .rp-when-5, .rp-state .rp-chip--scheduled { display: none; }
-:is([data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]) .rp-when-1,
-:is([data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]) .rp-state .rp-chip--pending { display: none; }
-:is([data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]) :is(.rp-when-2, .rp-state .rp-chip--scheduled) { display: inline-flex; }
-:is([data-step="3"], [data-step="4"], [data-step="5"]) .rp-when-3 { display: contents; }
-:is([data-step="3"], [data-step="4"], [data-step="5"]) .rp-when-pre3,
-:is([data-step="4"], [data-step="5"]) .rp-when-pre4,
-[data-step="5"] .rp-when-pre5, [data-step="5"] .rp-when-4only { display: none; }
-[data-step="4"] .rp-when-4only, [data-step="5"] .rp-when-5 { display: inline; }
-[data-step="5"] .rp-visit.rp-when-5 { display: flex; }
-.rp-tabs [data-tab="overview"], [data-step="4"] .rp-tabs [data-tab="invoice"], [data-step="5"] .rp-tabs [data-tab="history"] { color: var(--c-ink); border-bottom-color: var(--c-primary); }
-:is([data-step="4"], [data-step="5"]) .rp-tabs [data-tab="overview"] { color: var(--c-muted); border-bottom-color: transparent; }
-/* the highlight ring moves to the region the selected step describes (homepage §5 fallback) */
-.flow[data-step="1"] [data-hl="lead"], .flow[data-step="2"] [data-hl="booked"], .flow[data-step="3"] [data-hl="onsite"],
-.flow[data-step="4"] [data-hl="invoice"], .flow[data-step="5"] [data-hl="paid"], .rp-static[data-step="2"] [data-hl="booked"] { border-color: var(--c-primary); box-shadow: 0 0 0 1px var(--c-primary); }
 
 /* ---------------------------------------------------------------- estimate + job invoice (S Protocol) */
 .rp-sheet { padding: 18px; background: var(--c-white); }

@@ -1,7 +1,8 @@
 // Site behavior — progressive enhancement only: every section is complete and readable without this file.
-// Header state, dropdown disclosures (homepage-spec.md §1), sheets (menu + chooser), billing toggle (§11), FAQ (§13),
-// the one-record explorer (§5), the mobile board window (§6), the sticky sub-nav (A2), scroll reveal (design-system §9),
-// small disclosures and the legacy-anchor event. Tracking goes through track.js (conversion-and-tracking.md §4–5).
+// Header state, dropdown disclosures (homepage-spec.md §1), sheets (menu + chooser), billing toggles (§11, /pricing C1),
+// FAQ accordions and /faq deep links (§13, M2), the one-record explorer (§5), the sticky sub-navs (A2, /faq
+// categories), scroll reveal (design-system §9), small disclosures and the legacy-anchor event.
+// Tracking goes through track.js (conversion-and-tracking.md §4–5). The contact form lives in contact.js (/contact).
 import { track } from './track.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -165,6 +166,7 @@ function initPricing() {
 // ------------------------------------------------------------------ FAQ accordion: all answers visible without JS
 function initFaq() {
   const supportsUntilFound = 'onbeforematch' in document.body;
+  const openers = new Map(); // faq item id (the /faq hub's DOM ids) → open it
   for (const faq of $$('[data-faq]')) {
     const dflt = faq.dataset.defaultOpen;
     for (const btn of $$('.faq__q button', faq)) {
@@ -180,8 +182,23 @@ function initFaq() {
       set(btn.dataset.faqId === dflt);
       btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true', { announce: true }));
       panel.addEventListener('beforematch', () => set(true));
+      const item = btn.closest('.faq__item');
+      if (item && item.id) openers.set(item.id, () => set(true));
     }
   }
+  if (!openers.size) return;
+  // /faq#per-technician opens that answer and brings it into view (scroll-padding keeps it clear of the header)
+  const fromHash = () => {
+    let id = '';
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const open = openers.get(id);
+    if (!open) return;
+    open();
+    const el = document.getElementById(id);
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ block: 'start', behavior: 'auto' }));
+  };
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
 }
 
 // ------------------------------------------------------------------ one-record explorer (tabs, automatic activation)
@@ -189,13 +206,19 @@ function initFlow() {
   for (const flow of $$('[data-flow]')) {
     const tabs = $$('[role="tab"]', flow);
     const panel = $('[role="tabpanel"]', flow);
-    const shot = $('[data-replica]', panel);
+    const lead = $('.flow__pic--lead img', panel); // the new-lead record (step 1)
+    const job = $('.flow__pic--job img', panel);   // the booked record (steps 2–5)
     const caption = $('[data-flow-caption]', flow);
     const select = (tab, method) => {
       tabs.forEach((t) => { const on = t === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
       flow.dataset.step = tab.dataset.step;
       panel.setAttribute('aria-labelledby', tab.id);
-      if (shot) shot.setAttribute('aria-label', tab.dataset.alt);
+      const first = tab.dataset.step === '1';
+      for (const [img, on] of [[lead, first], [job, !first]]) {
+        if (!img) continue;
+        img.alt = on ? tab.dataset.alt : '';
+        if (on) img.removeAttribute('aria-hidden'); else img.setAttribute('aria-hidden', 'true');
+      }
       if (caption) caption.textContent = tab.dataset.caption;
       if (method) track('flow_step_select', { step: tab.dataset.key, method });
     };
@@ -213,43 +236,26 @@ function initFlow() {
   }
 }
 
-// ------------------------------------------------------------------ board windows: keyboard-scrollable only when they scroll
-function initBoards() {
-  for (const box of $$('[data-board-scroll]')) {
-    let sent = false;
-    const sync = () => {
-      const scrolls = box.scrollWidth > box.clientWidth + 2;
-      if (scrolls) box.setAttribute('tabindex', '0'); else box.removeAttribute('tabindex');
-    };
-    sync();
-    window.addEventListener('resize', sync, { passive: true });
-    box.addEventListener('scroll', () => {
-      if (sent) return;
-      const max = box.scrollWidth - box.clientWidth;
-      if (max > 0 && box.scrollLeft / max >= 0.3) { sent = true; track('board_scroll'); }
-    }, { passive: true });
-  }
-}
-
-// ------------------------------------------------------------------ sticky sub-nav: active pill follows the scroll
+// ------------------------------------------------------------------ sticky sub-navs: the active pill follows the scroll
 function initSubnav() {
-  const nav = $('[data-subnav]');
-  if (!nav || !('IntersectionObserver' in window)) return;
-  const pills = $$('.subnav__pill', nav);
-  const byId = new Map(pills.map((p) => [p.getAttribute('href').slice(1), p]));
-  const visible = new Map();
-  const activate = (id) => {
-    pills.forEach((p) => { const on = p === byId.get(id); p.classList.toggle('is-active', on); if (on) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current'); });
-    const pill = byId.get(id);
-    const list = $('.subnav__list', nav);
-    if (pill && list && list.scrollWidth > list.clientWidth) list.scrollTo({ left: pill.offsetLeft - 24, behavior: reduced.matches ? 'auto' : 'smooth' });
-  };
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) visible.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null);
-    const shown = [...visible.entries()].filter(([, top]) => top !== null).sort((a, b) => a[1] - b[1]);
-    if (shown.length) activate(shown[0][0]);
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  for (const id of byId.keys()) { const s = document.getElementById(id); if (s) io.observe(s); }
+  if (!('IntersectionObserver' in window)) return;
+  for (const nav of $$('[data-subnav]')) {
+    const pills = $$('[data-subnav-link]', nav).length ? $$('[data-subnav-link]', nav) : $$('.subnav__pill', nav);
+    const byId = new Map(pills.map((p) => [p.getAttribute('href').slice(1), p]));
+    const visible = new Map();
+    const activate = (id) => {
+      pills.forEach((p) => { const on = p === byId.get(id); p.classList.toggle('is-active', on); if (on) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current'); });
+      const pill = byId.get(id);
+      const list = pill && pill.closest('ul');
+      if (pill && list && list.scrollWidth > list.clientWidth) list.scrollTo({ left: pill.offsetLeft - 24, behavior: reduced.matches ? 'auto' : 'smooth' });
+    };
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) visible.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null);
+      const shown = [...visible.entries()].filter(([, top]) => top !== null).sort((a, b) => a[1] - b[1]);
+      if (shown.length) activate(shown[0][0]);
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    for (const id of byId.keys()) { const s = document.getElementById(id); if (s) io.observe(s); }
+  }
 }
 
 // ------------------------------------------------------------------ scroll reveal: visuals only, once, max 4 staggered
@@ -306,6 +312,6 @@ function initLegacy() {
   try { const { from, to } = JSON.parse(raw); track('legacy_anchor_redirect', { from, to }); } catch (_) { /* ignore */ }
 }
 
-for (const fn of [initHeader, initDropdowns, initSheets, initPricing, initFaq, initFlow, initBoards, initSubnav, initReveal, initDisclosures, initLegacy]) {
+for (const fn of [initHeader, initDropdowns, initSheets, initPricing, initFaq, initFlow, initSubnav, initReveal, initDisclosures, initLegacy]) {
   try { fn(); } catch (err) { if (window.console) console.error(err); }
 }

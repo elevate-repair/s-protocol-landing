@@ -1,16 +1,20 @@
-// Homepage (`/`) — homepage-spec.md §1–§15, in the definitive section order. Copy is the spec's final copy; the
-// adaptations forced by the app's real labels (D-01: the app has no "Needs tech", "Dispatched", "En route" or "On site"
-// status, technicians never change a job's status, and jobs are assigned from the job form, not dragged) and by the
-// owner-decision safe defaults (D-07, D-08, D-13, D-15, D-30) are listed in IMPLEMENTATION_STATUS.md §12.
+// Homepage (`/`) — homepage-spec.md §1–§15, in the definitive section order. Copy is the spec's final copy, corrected to
+// what the app really does (D-01, owner-approved in Pass 2: job statuses Scheduled / Pending / Closed / Cancelled /
+// Unable to Complete, technicians never change a job's status, jobs are assigned — not dragged — the office does not
+// see an arrival status, technicians cannot open client records, and estimates belong to the customer and convert to
+// an invoice). S Protocol screens are real captures of the web app with the fictional demo dataset; the estimate and
+// the customer-facing invoices stay labeled replicas. Every adaptation is listed in IMPLEMENTATION_STATUS.md §12.
 import { html, raw, trackAttrs } from '../lib/html.mjs';
 import { icon } from '../lib/icons.mjs';
 import { SP, SI, strings, ctaPattern, site } from '../lib/data.mjs';
 import { photo, preloadPhoto } from '../lib/images.mjs';
+import { shot, ring, center, region } from '../lib/ui-shots.mjs';
 import { graph, organization, website, sProtocolApp, sInvoiceAppHome, webPage } from '../lib/seo.mjs';
-import { tm, eyebrow, ctaLink, chip, factChip, iconTile, featureRow, ledger, sectionHead, check } from '../components/ui.mjs';
-import { uiFrame, uiCrop, docCard, appStoreBadge, replicaBody } from '../components/media.mjs';
-import { boardReplica, BOARD_LABEL, jobRecordReplica, estimateReplica, jobInvoiceReplica, invoiceDocReplica, DOC_LABEL } from '../components/replicas.mjs';
-import { pricingPair, finePrint, faqList, paymentCompare, ctaStage } from '../components/blocks.mjs';
+import { tm, eyebrow, ctaLink, chip, factChip, sectionHead, check, ledger } from '../components/ui.mjs';
+import { docCard, shotFrame } from '../components/media.mjs';
+import { invoiceDocReplica, DOC_LABEL } from '../components/replicas.mjs';
+import { pricingPair, finePrint, faqList, ctaStage } from '../components/blocks.mjs';
+import { boardSection, technicianSection, moneySection, originSection, officeTile } from '../components/sections.mjs';
 
 const R = '/';
 const HERO_SIZES = '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) 704px, calc(100vw - 40px)';
@@ -24,17 +28,17 @@ function hero() {
     <div class="hero__text">
       ${eyebrow('FIELD SERVICE SOFTWARE · WEB + iPhone')}
       <h1 class="display hero__title" id="hero-title"><span class="hero__line">Book the job.</span> <span class="hero__line">Send the tech.</span> <em class="hero__line">Get paid.</em></h1>
-      <p class="lead hero__lead">S Protocol keeps every job on one record — the call or web lead, the schedule, the dispatch board, the technician’s updates, the estimate, the invoice and the payment — with one price for your whole team.</p>
+      <p class="lead hero__lead">S Protocol keeps every job on one record — the call or web lead, the schedule, the dispatch board, the technician’s notes, the invoice and the payment — with one price for your whole team.</p>
       <div class="cta-row hero__ctas">${ctaLink(R, 'Start free', { section: '§2 Hero' })}${ctaLink(R, 'See pricing', { section: '§2 Hero' })}</div>
       <p class="microcopy">${strings.s_protocol_microcopy}</p>
       <p class="hero__lane">Billing only for your own work? ${ctaLink(R, 'S Invoice starts free, then $4.99/mo →', { section: '§2 Hero (solo lane)', cls: 'text-link--inline' })}</p>
     </div>
     <div class="hero__stage" data-reveal-group>
       ${photo({ id: 'HERO-01', page: R, section: 'Hero', sizes: HERO_SIZES, cls: 'hero__photo', priority: true })}
-      <span class="job-chip hero__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--ok"></i><span class="job-chip__text">Arrived · AC not cooling · 8:06 AM · M. Ruiz</span></span>
+      <span class="job-chip hero__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--scheduled"></i><span class="job-chip__text">Scheduled · AC not cooling · M. Ruiz</span></span>
       <div class="hero__board" data-reveal>
-        ${uiFrame({ dark: true, label: 'S Protocol dispatch board (sample workspace) showing two technicians’ jobs and the Unassigned group', content: boardReplica({ cols: ['ruiz', 'kaur'], withRail: false, head: false }), cls: 'ui-frame--crop' })}
-        ${mono('THE OFFICE · DISPATCH BOARD')}
+        ${shotFrame({ id: 'sp-schedule-today-light', sizes: '(min-width: 1280px) 440px, 340px', media: '(min-width: 1024px)', eager: true, cls: 'ui-frame--crop' })}
+        ${mono('THE OFFICE · TODAY’S SCHEDULE')}
       </div>
     </div>
   </div>
@@ -64,14 +68,14 @@ function proof() {
 
 // ------------------------------------------------------------------ §4 Product chooser
 function chooser() {
-  const spBullets = ['Jobs, scheduling and a live dispatch board', 'Technician app for iPhone — arrival, notes, photos, payment at the door', 'Estimates, invoices and online card payments', 'Tap to Pay on iPhone and card readers (USD)', 'Owner, dispatcher and technician roles — no per-seat fees'];
+  const spBullets = ['Jobs, scheduling and a live dispatch board', 'Technician app for iPhone — notes, photos, signature, payment at the door', 'Estimates, invoices and online card payments', 'Tap to Pay on iPhone and card readers (USD)', 'Owner, dispatcher and technician roles — no per-seat fees'];
   const siBullets = ['Estimates that convert to invoices in one step', 'A payment link your customer opens on any phone', 'Online card payments through Stripe', 'Partial payments, deposits and refunds', 'Reports, plus customer statements on iPhone', 'Documents in USD, CAD, EUR or GBP'];
   return html`<section class="section section--paper" id="choose" aria-labelledby="choose-title">
   <div class="container">
     ${sectionHead({ eyebrow: 'TWO PRODUCTS · ONE WORKSPACE', title: 'Run the operation, or just send the invoice.', id: 'choose-title', lead: 'If you schedule other people’s work, start with S Protocol. If you bill for your own, start with S Invoice — and add the operations side later on the same workspace.', cls: 'section-head--7' })}
     <div class="choose-grid">
       <article class="product-card product-card--night" id="s-protocol" aria-labelledby="pc-sp">
-        <div class="product-card__media">${uiFrame({ dark: true, label: 'S Protocol dispatch board crop (sample workspace): one technician’s column and the Unassigned group', content: boardReplica({ cols: ['ruiz'], withRail: false, head: false }), cls: 'ui-frame--card' })}</div>
+        <div class="product-card__media">${shotFrame({ id: 'sp-schedule-today-night', sizes: '(min-width: 1024px) 508px, (min-width: 768px) 640px, 480px', dark: true, cls: 'ui-frame--card' })}</div>
         <div class="product-card__body">
           <div class="product-card__id">${appIcon('s_protocol', 36)}<div><h3 class="product-card__name" id="pc-sp">S Protocol</h3><p class="eyebrow eyebrow--accent">RUN THE WHOLE BUSINESS</p></div></div>
           <ul class="checks checks--dark">${spBullets.map((b) => check(b, { dark: true }))}</ul>
@@ -102,12 +106,21 @@ function chooser() {
 }
 
 // ------------------------------------------------------------------ §5 One record — the five-step explorer
+// The panel is the real job record J-4417: the new-lead state for step 1, the booked record for steps 2–5, with a ring
+// on the part of the screen each step describes (and, below 1024, a 2× zoom centered on it).
+const LEAD = 'sp-job-4417-pending';
+const JOB = 'sp-job-4417';
 const STEPS = [
-  { key: 'lead', idx: '01 · LEAD', chip: ['Pending', 'pending'], title: 'The customer calls — or your website form arrives', body: 'It lands as a lead with the address and the problem already attached.', note: 'Website lead intake is set up with you; calls through Quo are by request.', alt: 'S Protocol job record for “Dryer not heating”: a website lead received at 8:42 AM with the address and the problem attached, status Pending, no technician assigned yet.' },
-  { key: 'booked', idx: '02 · BOOKED', chip: ['Scheduled', 'scheduled'], title: 'Job booked', body: 'Pick the slot, pick the technician. The schedule and the dispatch board update together.', alt: 'S Protocol job record for “Dryer not heating”: status Scheduled, technician M. Ruiz, Thursday, August 14 at 8:00 AM.' },
-  { key: 'onsite', idx: '03 · ON SITE', chip: ['Arrived 8:06 AM', 'arrived'], title: 'The technician works', body: 'Arrival, notes and photos from their iPhone. The office sees it without asking.', alt: 'S Protocol job record for “Dryer not heating”: the technician arrived at 8:06 AM and added a repair note and two job photos.' },
-  { key: 'invoice', idx: '04 · ESTIMATE → INVOICE', chip: ['Sent', 'sent'], title: 'Estimate becomes the invoice', body: 'Approved work converts straight to an invoice against the same job.', alt: 'S Protocol job record for “Dryer not heating”: invoice #2184 created from the estimate and sent, with the balance due.' },
-  { key: 'paid', idx: '05 · PAID', chip: ['Paid', 'paid'], title: 'Paid and filed', body: 'Card, Tap to Pay on iPhone or cash. It reconciles to the invoice and stays in the customer’s history.', note: 'In-person payments are USD.', alt: 'S Protocol job record for “Dryer not heating”: invoice #2184 paid, with this visit and two previous paid visits in the customer’s history.' },
+  { key: 'lead', idx: '01 · LEAD', chip: ['Pending', 'pending'], title: 'The customer calls — or your website form arrives', body: 'It lands as a lead with the address and the problem already attached.', note: 'Website lead intake is set up with you; calls through Quo are by request.', ring: [LEAD, 'lead'],
+    alt: 'S Protocol job record J-4417 for R. Alvarez as a new lead: status Pending, no date and no technician yet, with the service address, 128 Elmwood Ave, and the customer’s problem, “Dryer not heating”, already attached.' },
+  { key: 'booked', idx: '02 · BOOKED', chip: ['Scheduled', 'scheduled'], title: 'Job booked', body: 'Pick the slot, pick the technician. The schedule and the dispatch board update together.', ring: [JOB, 'sched'],
+    alt: 'The same job record, now Scheduled: August 14, 8:00–10:00 AM, technician M. Ruiz, with buttons to message the staff and the customer and to notify the technician.' },
+  { key: 'onsite', idx: '03 · ON THE JOB', chip: ['Scheduled', 'scheduled'], title: 'The technician works', body: 'Notes, photos and the customer’s signature from their iPhone — on the record the office sees.', ring: [JOB, 'notes'],
+    alt: 'The Signature and Notes tabs of the job record, where the customer’s signature and the job’s notes are kept.' },
+  { key: 'invoice', idx: '04 · INVOICE', chip: ['Sent', 'sent'], title: 'The invoice comes from the job', body: 'Create the invoice from the job record, then send it as a link or a PDF.', ring: [JOB, 'invoice'],
+    alt: 'The Create invoice button on the job record, which starts the invoice from this job.' },
+  { key: 'paid', idx: '05 · PAID', chip: ['Paid', 'paid'], title: 'Paid and filed', body: 'Card, Tap to Pay on iPhone or cash. It reconciles to the invoice and stays in the customer’s history.', note: 'In-person payments are USD.', ring: [JOB, 'paid'],
+    alt: 'The Payments tab of the job record, where the payment is recorded against the invoice.' },
 ];
 const LEDGER = [
   ['OPERATIONS', 'ops', ['Jobs', 'Scheduling', 'Dispatch board', 'Technician mobile workflow', 'Price book'], 'See dispatch →'],
@@ -115,6 +128,24 @@ const LEDGER = [
   ['MONEY', 'money', ['Estimates', 'Invoices', 'Card and online payments', 'Tap to Pay on iPhone', 'Analytics and reporting'], 'See payments →'],
   ['TEAM', 'team', ['Owner, dispatcher and technician roles', 'Team chat on the job', 'Technician earnings', 'No per-seat pricing', 'Web and iPhone'], 'See team & roles →'],
 ];
+const FLOW_SIZES = '(min-width: 1280px) 690px, (min-width: 1024px) 60vw, calc(200vw - 80px)';
+function flowShot() {
+  // per step: the zoom center and a scale (at most 2×) that keeps the whole ringed region inside the window
+  const zoom = STEPS.map((st, i) => {
+    const c = center(st.ring[0], st.ring[1]);
+    const r = region(st.ring[0], st.ring[1]);
+    const s = r ? Math.min(2, 88 / (r.w + 1.6), 88 / (r.h + 1.6)) : 1.6;
+    return `--c${i + 1}x:${c.x};--c${i + 1}y:${c.y};--s${i + 1}:${s.toFixed(2)}`;
+  }).join(';');
+  return html`<figure class="ui-frame ui-frame--shot ui-frame--flow">
+  <div class="ui-frame__bar" aria-hidden="true"><span class="ui-frame__dots"><i></i><i></i><i></i></span><span class="ui-frame__host">app.s-protocol.com</span></div>
+  <div class="ui-frame__body shot-body flow__shot"><div class="shot-stage flow__zoom" style="${zoom}">
+    ${shot(LEAD, { sizes: FLOW_SIZES, cls: 'flow__pic--lead', alt: STEPS[0].alt })}
+    ${shot(JOB, { sizes: FLOW_SIZES, cls: 'flow__pic--job', alt: '', imgAttrs: { 'aria-hidden': 'true' } })}
+    ${STEPS.map((st, i) => ring(st.ring[0], st.ring[1], { step: i + 1 }))}
+  </div></div>
+</figure>`;
+}
 function oneRecord() {
   const tab = (s, i) => html`<button class="flow__tab" type="button" role="tab" id="flow-tab-${s.key}" aria-selected="${i === 0 ? 'true' : 'false'}" aria-controls="flow-panel" tabindex="${i === 0 ? '0' : '-1'}" data-step="${i + 1}" data-key="${s.key}" data-alt="${s.alt}" data-caption="STEP ${i + 1} OF 5 · ${s.idx.split(' · ').slice(1).join(' · ')}">
     <span class="flow__top"><span class="flow__index">${s.idx}</span>${chip(s.chip[0], s.chip[1], { cls: 'flow__chip' })}</span>
@@ -124,12 +155,13 @@ function oneRecord() {
   </button>`;
   return html`<section class="section section--white" id="how-it-works" aria-labelledby="hiw-title">
   <div class="container">
-    ${sectionHead({ eyebrow: 'HOW THE WORK MOVES', title: 'One record follows the job from the phone call to the payment.', id: 'hiw-title', lead: 'Nothing gets retyped between stages. The customer, the technician, the estimate and the invoice stay on the same thread — so the history is still there a year later when the customer calls back.', cls: 'section-head--7' })}
+    ${sectionHead({ eyebrow: 'HOW THE WORK MOVES', title: 'One record follows the job from the phone call to the payment.', id: 'hiw-title', lead: 'Nothing gets retyped between stages. The customer, the technician, the notes and the invoice stay on the same job — so the history is still there a year later when the customer calls back.', cls: 'section-head--7' })}
     <div class="flow" data-flow data-step="1">
       <div class="flow__tabs" role="tablist" aria-orientation="vertical" aria-label="The five moments of one job">${STEPS.map(tab)}</div>
       <div class="flow__panel" id="flow-panel" role="tabpanel" aria-labelledby="flow-tab-lead" tabindex="0">
-        ${uiFrame({ label: STEPS[0].alt, content: jobRecordReplica(), cls: 'ui-frame--flow', bodyCls: 'flow__shot' })}
+        ${flowShot()}
         <p class="mono-caption flow__caption" aria-hidden="true" data-flow-caption>STEP 1 OF 5 · LEAD</p>
+        <p class="flow__source">The real job record in the S Protocol web app (sample workspace).</p>
       </div>
     </div>
     <div class="rec-ledger">${LEDGER.map(([label, id, rows, link]) => html`<div class="rec-ledger__col" data-disclosure>
@@ -143,90 +175,15 @@ function oneRecord() {
 }
 
 // ------------------------------------------------------------------ §6 Dispatch board (night stage #1)
-const CALLOUTS = [
-  ['A column for every technician', 'Each tech’s day in order, with live updates from their iPhone.'],
-  ['Nothing sits unassigned', 'New jobs wait in the Unassigned group until someone assigns them to a technician.'],
-  ['The office sees the day change', 'Pending, scheduled, arrived, paid — the board updates as the work happens, so nobody has to call to ask.'],
-];
 function dispatch() {
-  return html`<section class="section section--night" id="dispatch" aria-labelledby="dispatch-title">
-  <div class="container">
-    <div class="dispatch-head">
-      <div class="dispatch-head__text">
-        ${sectionHead({ eyebrow: 'DISPATCH BOARD', tone: 'night', title: 'Every job, every technician, one board.', id: 'dispatch-title', lead: 'The morning starts here: who’s working, what’s booked, what’s running late and what’s still unassigned — without a group chat and three calendars.', leadCls: 'lead--night', cls: 'section-head--night' })}
-        <div class="cta-row">${ctaLink(R, 'Start free', { section: '§6 Dispatch' })}${ctaLink(R, 'Tour the board →', { section: '§6 Dispatch' })}</div>
-      </div>
-      <figure class="dispatch-head__tile">
-        ${photo({ id: 'OFFICE-01', page: R, section: 'Dispatch board (dark stage)', sizes: '(min-width: 1280px) 384px, (min-width: 1024px) 218px, (min-width: 768px) 704px, 0px', cls: 'photo--tile' })}
-        <figcaption class="mono-caption mono-caption--night">THE OFFICE</figcaption>
-      </figure>
-    </div>
-  </div>
-  <div class="container container--wide board-stage" data-reveal>
-    <p class="board-hint mono-caption mono-caption--night" aria-hidden="true">SWIPE TO SEE THE WHOLE BOARD →</p>
-    <figure class="ui-frame ui-frame--dark ui-frame--board">
-      <div class="ui-frame__bar" aria-hidden="true"><span class="ui-frame__dots"><i></i><i></i><i></i></span><span class="ui-frame__host">app.s-protocol.com</span></div>
-      <div class="board-scroll" data-board-scroll tabindex="0" role="region" aria-label="Dispatch board sample — scroll sideways">${replicaBody(BOARD_LABEL, boardReplica({ markers: true }), 'ui-frame__body')}</div>
-    </figure>
-  </div>
-  <div class="container">
-    <ol class="callouts">${CALLOUTS.map(([t, b], i) => html`<li class="callout"><span class="marker" aria-hidden="true">${i + 1}</span><h3 class="callout__title">${t}</h3><p class="callout__body">${tm(b)}</p></li>`)}</ol>
-    <p class="stage-note">Sample workspace. Board shown on the web app; technicians update it from S Protocol for <span class="tm">iPhone</span>.</p>
-  </div>
-</section>`;
+  return boardSection({ route: R, title: 'Every job, every technician, one board.', lead: 'The morning starts here: who’s working, what’s booked, what needs attention and what’s still unassigned — without a group chat and three calendars.', ctaSection: '§6 Dispatch', tile: officeTile() });
 }
 
 // ------------------------------------------------------------------ §7 Technician app
-function technicianApp() {
-  const badge = ctaPattern(R, '§7 Technician app');
-  return html`<section class="section section--paper" id="technician-app" aria-labelledby="tech-title">
-  <div class="container split split--visual-left">
-    <div class="split__visual tech-stage" data-reveal>
-      <figure class="tech-stage__photo">
-        ${photo({ id: 'MOBILE-01', page: R, section: 'Technician app (iPhone)', sizes: '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) 400px, calc(100vw - 40px)', cls: 'photo--panel' })}
-        <figcaption class="mono-caption">ON THE JOB · S Protocol for <span class="tm">iPhone</span></figcaption>
-      </figure>
-    </div>
-    <div class="split__text">
-      ${sectionHead({ eyebrow: 'THE TECHNICIAN APP', title: 'The job, in the technician’s pocket.', id: 'tech-title', lead: 'S Protocol for iPhone gives each technician their day in order, the customer’s history before the knock, a place for notes and photos, and a way to take payment at the door — on the same job record the office sees.' })}
-      <div class="feature-rows">
-        ${featureRow({ icon: 'camera', title: 'Notes and photos on the job', body: 'Before-and-after photos and notes stay in the customer’s history.' })}
-        ${featureRow({ icon: 'history', title: 'The history before the knock', body: 'Previous visits and what was paid, right on the job.' })}
-        ${featureRow({ icon: 'credit-card', title: 'Payment at the door', body: 'Take the card with Tap to Pay on iPhone or a card reader (USD), or record a cash payment.' })}
-      </div>
-      <div class="download-row">${appStoreBadge(badge)}<p>S Protocol runs on <span class="tm">iPhone</span> and on the web. There’s no Android app.</p></div>
-    </div>
-  </div>
-</section>`;
-}
+const technicianApp = () => technicianSection({ route: R, badgeSection: '§7 Technician app', photoSlot: { id: 'MOBILE-01', page: R, section: 'Technician app (iPhone)' } });
 
 // ------------------------------------------------------------------ §8 Money
-function money() {
-  return html`<section class="section section--white" id="payments" aria-labelledby="money-title">
-  <div class="container">
-    ${sectionHead({ eyebrow: 'ESTIMATES · INVOICES · PAYMENTS', title: 'Quote it, bill it, collect it — on the same job.', id: 'money-title', lead: 'Build the estimate on the job. Approved work converts straight to the invoice. Your customer pays online from the invoice link — or your technician takes the card at the door.', cls: 'section-head--7' })}
-    <div class="money-cards">
-      <article class="money-card" data-reveal>
-        <div class="money-card__visual">${uiCrop({ label: 'Estimate for the job “Dryer not heating” with three line items and the total', content: estimateReplica(), cls: 'ui-crop--card' })}</div>
-        <div class="money-card__text"><p class="mono-label">ESTIMATE</p><h3 class="h3-serif">Priced on the job</h3><p>Line items and notes live on the job record. When the customer says yes, the estimate becomes the invoice — nothing retyped.</p></div>
-      </article>
-      <article class="money-card" data-reveal>
-        <div class="money-card__visual">${uiCrop({ label: 'Customer-facing invoice #2184 for “Dryer not heating” with the line items, the balance due and a Pay button', content: jobInvoiceReplica(), cls: 'ui-crop--card' })}</div>
-        <div class="money-card__text"><p class="mono-label">INVOICE</p><h3 class="h3-serif">An invoice they can pay from their phone</h3><p>Send a link or a PDF. Your customer opens it, sees the work and pays by card.</p><p class="footnote">Online card payments run on Stripe, connected with you during setup.</p></div>
-      </article>
-      <article class="money-card money-card--ttp" data-reveal>
-        <div class="money-card__visual money-card__visual--text"><p class="mono-label">IN PERSON · USD</p><p class="ttp-title">Tap to Pay on <span class="tm">iPhone</span> and card readers</p></div>
-        <div class="money-card__text"><p class="mono-label">PAYMENT</p><h3 class="h3-serif">Take the card at the door</h3><p>Take the payment on the <span class="tm">iPhone</span> already in the technician’s hand — no card reader to buy, carry or charge. Card readers work too. In-person payments are in USD.</p></div>
-      </article>
-    </div>
-    <div class="money-compare">
-      <h3 class="mono-label money-compare__title">WHERE EACH PAYMENT FEATURE LIVES</h3>
-      ${paymentCompare()}
-      <p class="money-compare__link">${ctaLink(R, 'Compare everything →', { section: '§8 Money' })}</p>
-    </div>
-  </div>
-</section>`;
-}
+const money = () => moneySection({ compare: ctaLink(R, 'Compare everything →', { section: '§8 Money' }) });
 
 // ------------------------------------------------------------------ §9 S Invoice spotlight
 function sInvoiceSpotlight() {
@@ -271,7 +228,7 @@ const CARDS = [
 function industries() {
   const card = (c) => {
     const inner = html`${photo({ id: c.id, page: R, section: 'Industries (bento)', sizes: c.sizes, cls: 'bento__photo', decorative: true })}
-      ${c.k === 'a' ? html`<span class="job-chip bento__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--ok"></i><span class="job-chip__text">Arrived · Dryer not heating</span></span>` : ''}
+      ${c.k === 'a' ? html`<span class="job-chip bento__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--scheduled"></i><span class="job-chip__text">Scheduled · Dryer not heating</span></span>` : ''}
       <span class="bento__text"><span class="bento__label">${c.label}</span><span class="bento__desc">${c.d}</span></span>
       ${c.link ? icon('arrow-right', { size: 20, cls: 'bento__arrow' }) : ''}`;
     if (!c.link) return html`<li class="bento__item bento__item--${c.k}"><div class="bento__card">${inner}</div></li>`;
@@ -309,22 +266,13 @@ function pricingPreview() {
 
 // ------------------------------------------------------------------ §12 Built by a service business (ink)
 function about() {
-  return html`<section class="section section--ink" id="about" aria-labelledby="about-title">
-  <div class="container about">
-    <div class="about__text">
-      ${eyebrow('WHERE THIS CAME FROM', { tone: 'ink' })}
-      <h2 class="h2 h2--ink about__title" id="about-title">Built by people running the jobs. The first workspace was <em>an appliance repair business</em> — and it still runs on this.</h2>
-      <p class="about__body">Every workflow here started as a problem somebody had on a Tuesday morning: a technician stuck without the history, an invoice nobody chased, a job assigned twice. That’s why the dispatch board looks the way it does — and why S Invoice exists separately for people who only need the paperwork.</p>
-      <p>${ctaLink(R, 'Read the story →', { section: '§12 Built by a service business' })}</p>
-    </div>
-    <dl class="facts">
+  const facts = html`<dl class="facts">
       <div class="facts__row"><dt>COMPANY</dt><dd>${site.organization.legal_name}</dd></div>
       <div class="facts__row"><dt>PRODUCTS</dt><dd>S Protocol and S Invoice</dd></div>
       <div class="facts__row"><dt>RUNS ON</dt><dd>The web and <span class="tm">iPhone</span></dd></div>
       <div class="facts__row"><dt>SUPPORT</dt><dd>${ctaLink(R, 'support@s-protocol.com', { section: '§12 Facts ledger', cls: 'text-link--plain' })}<span class="facts__note">We typically respond within one business day.</span></dd></div>
-    </dl>
-  </div>
-</section>`;
+    </dl>`;
+  return originSection({ route: R, linkSection: '§12 Built by a service business', facts });
 }
 
 // ------------------------------------------------------------------ §13 FAQ

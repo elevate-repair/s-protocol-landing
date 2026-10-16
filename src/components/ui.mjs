@@ -35,7 +35,7 @@ export function textLink({ label, href, dark = false, track = null, props = {}, 
 }
 
 const STYLE = {
-  'primary-lg': ['btn', 'primary', 'lg'], 'primary-md': ['btn', 'primary', 'md'], 'secondary-lg': ['btn', 'secondary', 'lg'],
+  'primary-lg': ['btn', 'primary', 'lg'], 'primary-md': ['btn', 'primary', 'md'], 'secondary-lg': ['btn', 'secondary', 'lg'], 'secondary-md': ['btn', 'secondary', 'md'],
   'secondary-on-dark-lg': ['btn', 'on-dark', 'lg'], 'primary-lg-full': ['btn', 'primary', 'lg', true], 'secondary-lg-full': ['btn', 'secondary', 'lg', true],
   'text-link': ['link', false], 'text-link-on-dark': ['link', true], 'text-link-lg': ['link', false],
 };

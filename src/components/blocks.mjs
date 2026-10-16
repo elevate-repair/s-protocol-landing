@@ -7,21 +7,26 @@ import { photo } from '../lib/images.mjs';
 import { ctaLink, tm, check, eyebrow } from './ui.mjs';
 
 // ------------------------------------------------------------------ pricing
+/** The Monthly / Yearly radiogroup (BillingToggle). Hidden without JS, where the monthly state shows both prices. */
+export const billingToggle = (id, yearlyLabel) => html`<div class="billing-toggle" role="radiogroup" aria-label="Billing period" id="${id}">
+    <button type="button" role="radio" aria-checked="true" data-period="monthly">Monthly</button>
+    <button type="button" role="radio" aria-checked="false" tabindex="-1" data-period="yearly">${yearlyLabel}</button>
+  </div>`;
+
 /**
  * Free + Pro cards with a Monthly/Yearly radiogroup. product: 's_protocol' | 's_invoice'. Prices come only from
  * pricing.json. Without JS the monthly state shows both prices in text and the toggle stays hidden.
+ * standalone: false — the cards answer a page-level toggle (an ancestor [data-pricing], /pricing C1) and get none of
+ * their own.
  */
-export function pricingPair({ product, route, location, free, pro, toggleId, head = null }) {
+export function pricingPair({ product, route, location, free, pro, toggleId, head = null, standalone = true }) {
   const P = product === 's_protocol' ? SP : SI;
   const yearlyLabel = product === 's_protocol' ? strings.home_toggle_yearly_label : strings.s_invoice_toggle_yearly_label;
   const monthlyLine = product === 's_protocol' ? strings.s_protocol_pro_monthly_line : `or ${P.pro.yearly.display}/year — ${P.pro.yearly.per_month_display}, save ${P.pro.yearly.savings_display}`;
   // S Invoice's yearly state mirrors the S Protocol yearly line, built from the same pricing.json values.
   const yearlyLine = product === 's_protocol' ? strings.s_protocol_pro_yearly_line : `${P.pro.yearly.per_month_display} billed yearly — ${P.pro.yearly.savings_display} less than monthly`;
-  const toggle = html`<div class="billing-toggle" role="radiogroup" aria-label="Billing period" id="${toggleId}">
-    <button type="button" role="radio" aria-checked="true" data-period="monthly">Monthly</button>
-    <button type="button" role="radio" aria-checked="false" tabindex="-1" data-period="yearly">${yearlyLabel}</button>
-  </div>`;
-  return html`<div class="pricing" data-pricing data-location="${location}">
+  const toggle = standalone ? billingToggle(toggleId, yearlyLabel) : '';
+  return html`<div class="pricing"${standalone ? attrs({ 'data-pricing': true, 'data-location': location }) : ''}>
   ${head ? html`<div class="pricing__head">${head}${toggle}</div>` : toggle}
   <div class="pricing__cards">
     <article class="price-card">
@@ -49,14 +54,23 @@ export const finePrint = () => {
 };
 
 // ------------------------------------------------------------------ FAQ
-/** FAQ accordion from faq.json → pages[route]. All answers are visible without JS (JS collapses them, hidden=until-found). */
-export function faqList(route, { defaultOpen = null, idPrefix = 'faq' } = {}) {
-  const items = faqItems(route);
-  return html`<div class="faq" data-faq${attrs({ 'data-default-open': defaultOpen })}>${items.map((it) => html`<div class="faq__item">
-    <h3 class="faq__q"><button type="button" id="${idPrefix}-q-${it.id}" aria-expanded="true" aria-controls="${idPrefix}-a-${it.id}" data-faq-id="${it.id}"><span>${tm(it.question)}</span>${icon('plus', { size: 20, cls: 'faq__icon' })}</button></h3>
-    <div class="faq__a" id="${idPrefix}-a-${it.id}" role="region" aria-labelledby="${idPrefix}-q-${it.id}"><p>${tm(it.answer)}</p>${(it.links ?? []).map((l) => html`<p><a class="text-link" href="${l.href}"${trackAttrs('section_link_click', { section: 'faq', link: l.href.replace(/[^a-z]+/gi, '_').replace(/^_|_$/g, '') })}><span>${l.label.replace(/\s*→$/, '')}</span>${icon('arrow-right', { size: 16, cls: 'text-link__arrow' })}</a></p>`)}</div>
+const PRODUCT_TAG = { s_protocol: 'S Protocol', s_invoice: 'S Invoice' };
+/**
+ * FAQ accordion. The collapsed state is in the HTML (hidden="until-found", so find-in-page still reaches every answer,
+ * and nothing shifts when the script runs); without JS a <noscript> style in the head shows every answer.
+ *   itemIds — each item's DOM id is its faq.json id (the /faq hub's deep links); tags — a product tag after the question
+ *   of an item that applies to one product only (part of the button's accessible name); level — heading level.
+ */
+export function faqAccordion(items, { defaultOpen = null, idPrefix = 'faq', itemIds = false, tags = false, level = 3 } = {}) {
+  const h = raw(`h${level}`);
+  return html`<div class="faq" data-faq${attrs({ 'data-default-open': defaultOpen })}>${items.map((it) => html`<div class="faq__item"${attrs({ id: itemIds ? it.id : null })}>
+    <${h} class="faq__q"><button type="button" id="${idPrefix}-q-${it.id}" aria-expanded="${it.id === defaultOpen ? 'true' : 'false'}" aria-controls="${idPrefix}-a-${it.id}" data-faq-id="${it.id}"><span class="faq__text">${tm(it.question)}${tags && it.applies_to?.length === 1 ? html`<span class="faq__tag"><span class="sr-only">, </span>${PRODUCT_TAG[it.applies_to[0]]}</span>` : ''}</span>${icon('plus', { size: 20, cls: 'faq__icon' })}</button></${h}>
+    <div class="faq__a" id="${idPrefix}-a-${it.id}" role="region" aria-labelledby="${idPrefix}-q-${it.id}"${attrs({ hidden: it.id === defaultOpen ? null : 'until-found' })}><p>${tm(it.answer)}</p>${(it.links ?? []).map((l) => html`<p><a class="text-link" href="${l.href}"${trackAttrs('section_link_click', { section: 'faq', link: l.href.replace(/[^a-z]+/gi, '_').replace(/^_|_$/g, '') })}><span>${l.label.replace(/\s*→$/, '')}</span>${icon('arrow-right', { size: 16, cls: 'text-link__arrow' })}</a></p>`)}</div>
   </div>`)}</div>`;
 }
+
+/** FAQ accordion from faq.json → pages[route] ("confirm" items omitted). */
+export const faqList = (route, opts = {}) => faqAccordion(faqItems(route), opts);
 
 // ------------------------------------------------------------------ compact compare table (homepage §8 / s-protocol A6)
 const PAY_ROWS = [

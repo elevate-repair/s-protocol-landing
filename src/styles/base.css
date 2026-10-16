@@ -16,7 +16,7 @@ h1, h2, h3 { text-wrap: balance; }
 p, li, dd { text-wrap: pretty; }
 em { font-style: italic; }
 sup { font-size: max(.7em, 12px); line-height: 0; }
-[hidden] { display: none !important; }
+[hidden]:not([hidden="until-found"]) { display: none !important; }
 .icon { flex: none; }
 .nowrap { white-space: nowrap; }
 

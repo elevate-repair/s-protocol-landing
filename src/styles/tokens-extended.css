@@ -50,4 +50,7 @@
   --x-ledger-rule-tint: rgba(214,211,203,.6);
   /* remaining-pages-spec.md K — print stylesheet: black text */
   --x-print-text: #000;
+  /* homepage-spec.md §5 — the 2 px primary ring on a real capture gets a soft halo so it reads on any screen; light / night */
+  --x-ring-halo: rgba(37,99,235,.18);
+  --x-ring-halo-night: rgba(74,140,255,.24);
 }

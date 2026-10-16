@@ -56,10 +56,30 @@ const LEGACY = {
 };
 const legacyScript = `(function(l,w){var m=${JSON.stringify(LEGACY)};function go(){var t=m[l.hash];if(l.pathname!=='/'||!t)return;try{w.sessionStorage.setItem('sp_legacy',JSON.stringify({from:'/'+l.hash,to:t.charAt(0)==='#'?'/'+t:t}))}catch(e){}if(t.charAt(0)==='#'){w.history.replaceState(null,'','/'+t);w.addEventListener('DOMContentLoaded',function(){var el=document.getElementById(t.slice(1));if(el)el.scrollIntoView()})}else{l.replace(t)}}go();w.addEventListener('hashchange',go)})(location,window);`;
 
+// ------------------------------------------------------------------ contact endpoint (REPO_AUDIT.md §9 contract)
+// The Apps Script endpoint is never retyped: it is read from the legacy main.js (WEBHOOK_URL) — or from CONTACT_ENDPOINT
+// once the legacy files are retired — and must match the SHA-256 recorded in Stage 1. It is never printed.
+const CONTACT_SHA256 = '22a010ce8cca53034cf0f0fbc8477dd24de00fe1708fd8a4fed665ca6019e2e8';
+async function contactEndpoint() {
+  let url = process.env.CONTACT_ENDPOINT || '';
+  if (!url && existsSync(join(ROOT, 'main.js'))) url = (/var WEBHOOK_URL = '([^']+)';/.exec(await readFile(join(ROOT, 'main.js'), 'utf8')) ?? [])[1] ?? '';
+  if (!url) throw new Error('contact endpoint not found — keep the legacy main.js or set CONTACT_ENDPOINT');
+  if (createHash('sha256').update(url).digest('hex') !== CONTACT_SHA256) throw new Error('contact endpoint does not match the recorded SHA-256 — the form contract would change; stop and ask the owner');
+  return url;
+}
+
 // ------------------------------------------------------------------ pages
 const home = await import('../src/pages/home.mjs');
 const sProtocol = await import('../src/pages/s-protocol.mjs');
 const sInvoice = await import('../src/pages/s-invoice.mjs');
+const pricing = await import('../src/pages/pricing.mjs');
+const compare = await import('../src/pages/compare.mjs');
+const integrations = await import('../src/pages/integrations.mjs');
+const about = await import('../src/pages/about.mjs');
+const contact = await import('../src/pages/contact.mjs');
+const faqHub = await import('../src/pages/faq.mjs');
+const appliance = await import('../src/pages/industries/appliance-repair.mjs');
+const hvac = await import('../src/pages/industries/hvac.mjs');
 const notFound = await import('../src/pages/not-found.mjs');
 const { legalPage } = await import('../src/pages/legal.mjs');
 const terms = await legalPage('/terms');
@@ -69,6 +89,14 @@ const PAGES = [
   { file: 'index.html', mod: home, sitemap: { priority: '1.0', changefreq: 'weekly' } },
   { file: 's-protocol.html', mod: sProtocol, sitemap: { priority: '0.9', changefreq: 'monthly' } },
   { file: 's-invoice.html', mod: sInvoice, sitemap: { priority: '0.9', changefreq: 'monthly' } },
+  { file: 'pricing.html', mod: pricing, sitemap: { priority: '0.9', changefreq: 'monthly' } },
+  { file: 'compare.html', mod: compare, sitemap: { priority: '0.8', changefreq: 'monthly' } },
+  { file: 'industries/appliance-repair.html', mod: appliance, sitemap: { priority: '0.8', changefreq: 'monthly' } },
+  { file: 'industries/hvac.html', mod: hvac, sitemap: { priority: '0.8', changefreq: 'monthly' } },
+  { file: 'integrations.html', mod: integrations, sitemap: { priority: '0.7', changefreq: 'monthly' } },
+  { file: 'faq.html', mod: faqHub, sitemap: { priority: '0.7', changefreq: 'monthly' } },
+  { file: 'about.html', mod: about, sitemap: { priority: '0.6', changefreq: 'monthly' } },
+  { file: 'contact.html', mod: contact, sitemap: { priority: '0.6', changefreq: 'yearly' } },
   { file: 'terms.html', mod: terms, sitemap: { priority: '0.3', changefreq: 'yearly', lastmod: site.legal_lastmod } },
   { file: 'privacy.html', mod: privacy, sitemap: { priority: '0.3', changefreq: 'yearly', lastmod: site.legal_lastmod } },
   { file: '404.html', mod: notFound, sitemap: null },
@@ -78,16 +106,21 @@ const EXTRA_HEAD = '<link rel="modulepreload" href="/assets/js/track.js">';
 for (const p of PAGES) {
   const meta = { ...p.mod.meta, headScript: HEAD + (p.mod.meta.legacyAnchors ? legacyScript : ''), headExtra: raw(EXTRA_HEAD) };
   const out = renderPage(meta, p.mod.render);
+  // every <use href="#i-…"> needs its <symbol> in this page's sprite (icons built outside render() would be missing)
+  const missing = [...new Set([...out.matchAll(/<use href="#(i-[a-z0-9-]+)"/g)].map((m) => m[1]))].filter((id) => !out.includes(`<symbol id="${id}"`));
+  if (missing.length) throw new Error(`${p.file}: icon symbols missing from the sprite: ${missing.join(', ')}`);
   await write(p.file, out);
 }
 
 // ------------------------------------------------------------------ assets
-const CSS_ORDER = ['tokens.css', 'tokens-extended.css', 'fonts.css', 'base.css', 'layout.css', 'components.css', 'replicas.css', 'sections.css'];
+const CSS_ORDER = ['tokens.css', 'tokens-extended.css', 'fonts.css', 'base.css', 'layout.css', 'components.css', 'replicas.css', 'shots.css', 'sections.css', 'pages.css'];
 const css = (await Promise.all(CSS_ORDER.map(async (f) => `/* ${f} */\n${await readFile(join(ROOT, 'src/styles', f), 'utf8')}`))).join('\n');
 const minCss = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n').replace(/\n{2,}/g, '\n').trim() + '\n';
 await write('assets/css/site.css', minCss);
 // shipped JS keeps its code and drops full-line comments (the annotated source stays in src/scripts/)
-for (const f of ['main.js', 'track.js']) await write(`assets/js/${f}`, (await readFile(join(ROOT, 'src/scripts', f), 'utf8')).replace(/^[ \t]*\/\/.*\n/gm, ''));
+const shipJs = async (f) => (await readFile(join(ROOT, 'src/scripts', f), 'utf8')).replace(/^[ \t]*\/\/.*\n/gm, '');
+for (const f of ['main.js', 'track.js']) await write(`assets/js/${f}`, await shipJs(f));
+await write('assets/js/contact.js', (await shipJs('contact.js')).replace("'__CONTACT_ENDPOINT__'", JSON.stringify(await contactEndpoint()).replace(/"/g, "'")));
 await copyDir(join(ROOT, 'src/fonts'), join(OUT, 'assets/fonts'));
 await copyDir(join(ROOT, 'src/brand'), join(OUT, 'assets/brand'));
 await copyDir(join(ROOT, 'src/favicons'), join(OUT, 'assets/favicons'), (n) => n !== 'site.webmanifest');
@@ -101,6 +134,26 @@ manifest.background_color = '#FAF9F6';
 manifest.icons = manifest.icons.map((i) => ({ ...i, src: '/' + i.src.replace('assets/favicons/', 'assets/favicons/app/') }));
 await write('site.webmanifest', JSON.stringify(manifest, null, 2) + '\n');
 await write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${site.origin}/sitemap.xml\n`);
+// Cloudflare Pages response headers (applied only where Pages serves site/). Conservative on purpose: no script CSP
+// (inline head scripts, Clarity, the Cloudflare beacon and the Apps Script form would all need allow-listing and live
+// testing); framing limited to s-protocol.com and its app subdomains; every *.pages.dev preview kept out of search.
+await write('_headers', [
+  '/*',
+  '  X-Content-Type-Options: nosniff',
+  '  Referrer-Policy: strict-origin-when-cross-origin',
+  '  Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=()',
+  "  Content-Security-Policy: frame-ancestors 'self' https://*.s-protocol.com",
+  '  Strict-Transport-Security: max-age=31536000',
+  '/assets/fonts/*',
+  '  Cache-Control: public, max-age=31536000, immutable',
+  '/images/*',
+  '  Cache-Control: public, max-age=604800',
+  'https://:project.pages.dev/*',
+  '  X-Robots-Tag: noindex',
+  'https://:version.:project.pages.dev/*',
+  '  X-Robots-Tag: noindex',
+  '',
+].join('\n'));
 const urls = PAGES.filter((p) => p.sitemap).map((p) => {
   const route = p.mod.meta.route;
   const loc = route === '/' ? `${site.origin}/` : `${site.origin}${route}`;

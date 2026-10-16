@@ -67,6 +67,7 @@ p .text-link:hover, dd .text-link:hover { text-decoration: underline; }
 .job-chip__text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .job-chip__dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--c-status-amber); }
 .job-chip__dot--ok { background: var(--c-success); }
+.job-chip__dot--scheduled { background: var(--c-primary); }
 
 /* ---------------------------------------------------------------- icon tiles, feature rows, checks */
 .icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--r-sm); background: var(--c-tint); color: var(--c-primary); flex: none; }
@@ -186,7 +187,9 @@ p .text-link:hover, dd .text-link:hover { text-decoration: underline; }
 .faq__icon { color: var(--c-muted); transition: transform var(--dur-2) var(--ease-out); }
 .faq__q button[aria-expanded="true"] .faq__icon { transform: rotate(45deg); color: var(--c-ink); }
 .faq__a { padding-bottom: 24px; max-width: 720px; font-size: 1rem; line-height: 1.62; color: var(--c-body); display: grid; gap: 8px; }
-.faq__a .text-link { min-height: 32px; }
+.faq__a .text-link { min-height: 44px; }
+/* a collapsed answer (hidden="until-found") takes no space but stays findable with find-in-page */
+.faq__a[hidden="until-found"] { content-visibility: hidden; height: 0; padding: 0; overflow: hidden; }
 .faq-more { margin-top: 24px; color: var(--c-body); font-size: var(--x-fs-15); }
 
 /* ---------------------------------------------------------------- compact comparison table (design-system.md §8.8) */

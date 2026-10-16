@@ -1,0 +1,52 @@
+/* Real product captures (S Protocol web app, fictional demo dataset — src/lib/ui-shots.mjs): picture sizing, frames,
+   highlight rings and pins, readable-width scroll windows on narrow screens, and the homepage §5 explorer's step states. */
+.shot { display: block; }
+.shot img { display: block; width: 100%; height: auto; }
+.ui-frame--shot .ui-frame__body { container-type: normal; }
+.shot-body { overflow: hidden; }
+.shot-stage { position: relative; }
+/* a window onto the top part of a capture (aspect-ratio set inline from the capture and the visible fraction) */
+.shot-window { position: relative; overflow: hidden; }
+.ui-crop--shot { background: var(--c-white); }
+.ui-crop--shot.ui-crop--dark { background: var(--c-night-2); }
+
+/* highlight ring around a region measured on the real screen */
+.shot-ring { position: absolute; z-index: 1; border: 2px solid var(--c-primary); border-radius: 10px; box-shadow: 0 0 0 4px var(--x-ring-halo); pointer-events: none; }
+:is(.ui-frame--dark, .ui-crop--dark) .shot-ring { border-color: var(--c-accent-night); box-shadow: 0 0 0 4px var(--x-ring-halo-night); }
+/* numbered marker pinned beside a region (the text callouts carry the meaning) */
+.marker--pin { position: absolute; z-index: 2; transform: translate(-100%, -50%); }
+
+/* art direction (artFrame): the wide capture from 768 px up, the narrow one below */
+.art--wide { display: none; }
+@media (min-width: 768px) { .art--wide { display: block; } .art--narrow { display: none; } }
+.marker--pin-right { transform: translate(0, -50%); }
+
+/* ---------------------------------------------------------------- homepage §5 explorer: one record, five steps */
+.flow__pic--job { position: absolute; inset: 0; opacity: 0; transition: opacity var(--dur-3) var(--ease-out); }
+.flow:not([data-step="1"]) .flow__pic--job { opacity: 1; }
+.flow [data-ring] { opacity: 0; transition: opacity var(--dur-3) var(--ease-out); }
+.flow[data-step="1"] [data-ring="1"], .flow[data-step="2"] [data-ring="2"], .flow[data-step="3"] [data-ring="3"],
+.flow[data-step="4"] [data-ring="4"], .flow[data-step="5"] [data-ring="5"] { opacity: 1; }
+/* below 1024 the record is shown at twice its size, centered on the region the selected step describes */
+@media (max-width: 1023.98px) {
+  .flow__zoom {
+    transform-origin: 0 0;
+    transform: translate(clamp(calc(100% - var(--s) * 100%), calc(50% - var(--s) * var(--cx, 50%)), 0%), clamp(calc(100% - var(--s) * 100%), calc(50% - var(--s) * var(--cy, 50%)), 0%)) scale(var(--s));
+    transition: transform var(--dur-4) var(--ease-out);
+  }
+  .flow[data-step="1"] .flow__zoom { --cx: var(--c1x); --cy: var(--c1y); --s: var(--s1, 2); }
+  .flow[data-step="2"] .flow__zoom { --cx: var(--c2x); --cy: var(--c2y); --s: var(--s2, 2); }
+  .flow[data-step="3"] .flow__zoom { --cx: var(--c3x); --cy: var(--c3y); --s: var(--s3, 2); }
+  .flow[data-step="4"] .flow__zoom { --cx: var(--c4x); --cy: var(--c4y); --s: var(--s4, 2); }
+  .flow[data-step="5"] .flow__zoom { --cx: var(--c5x); --cy: var(--c5y); --s: var(--s5, 2); }
+  .flow .shot-ring { border-width: 1px; box-shadow: 0 0 0 2px var(--x-ring-halo); }
+}
+
+/* ---------------------------------------------------------------- placements */
+.flow__source { margin-top: 4px; font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--c-muted); }
+/* homepage §4: the top of the Today schedule; below 768 it keeps a 480 px reading width and is cropped at the right */
+.product-card__media .shot img { width: max(100%, 480px); max-width: none; }
+/* /s-protocol A5: the client record is a narrow panel, shown with a little breathing room */
+.ui-frame--client { max-width: 420px; margin-inline: auto; }
+.ui-frame--client .shot-body { padding: 14px 18px 0; background: var(--c-white); }
+@media (min-width: 1024px) { .ui-frame--client { margin-inline: auto 0; } }
