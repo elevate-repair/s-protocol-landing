@@ -1,0 +1,443 @@
+{
+  "schema": "s-protocol-site/photo-slots@1",
+  "source": "docs/redesign/assets/image-manifest.json (Version 1 placements of the 17 owner-approved photos); used for alt text and layout when a slot is rendered, and to report slots whose originals are not processed yet",
+  "photos": {
+    "HERO-01": {
+      "filename": "hero-01-hvac-technician-condenser",
+      "alt": "HVAC technician in a gray polo checks an outdoor air-conditioning unit with a flashlight beside a white-sided house",
+      "decorative": false,
+      "creator": "Kathleen Austin Kuhn",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/technician-inspecting-outdoor-hvac-unit-32497161/",
+      "original": {
+        "width": 5472,
+        "height": 3648
+      }
+    },
+    "OFFICE-01": {
+      "filename": "office-01-dispatcher-phone-laptop",
+      "alt": "Office manager talks on the phone while working on a laptop in a small office",
+      "decorative": false,
+      "creator": "Vitaly Gariev",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/woman-working-and-talking-on-phone-at-office-22046242/",
+      "original": {
+        "width": 3840,
+        "height": 2160
+      }
+    },
+    "OFFICE-02": {
+      "filename": "office-02-office-manager-call-notes",
+      "alt": "Office manager on a phone call takes notes at her desk",
+      "decorative": false,
+      "creator": "Kaboompics (Karolina Grabowska)",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/thoughtful-businesswoman-talking-on-smartphone-and-taking-notes-4476631/",
+      "original": {
+        "width": 3625,
+        "height": 5437
+      }
+    },
+    "MOBILE-01": {
+      "filename": "mobile-01-technician-van-phone",
+      "alt": "Technician in a cap checks his phone from the driver's seat of a work van",
+      "decorative": false,
+      "creator": "Artem Podrez",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/man-sitting-inside-the-vehicle-while-using-his-smartphone-5025642/",
+      "original": {
+        "width": 6144,
+        "height": 3456
+      }
+    },
+    "SINV-01": {
+      "filename": "sinv-01-handyman-hammer-wall",
+      "alt": "Handyman in a gray T-shirt drives a nail into a white wall with a hammer",
+      "decorative": false,
+      "creator": "Anete Lusina",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/man-hammering-nail-into-wall-during-housework-4792525/",
+      "original": {
+        "width": 4016,
+        "height": 6016
+      }
+    },
+    "SOLO-02": {
+      "filename": "solo-02-cleaner-van-equipment",
+      "alt": "Cleaning professional in a red uniform stands with a vacuum and ladder at her open van",
+      "decorative": false,
+      "creator": "Tima Miroshnichenko",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/woman-holding-a-white-vacuum-6196239/",
+      "original": {
+        "width": 3677,
+        "height": 5515
+      }
+    },
+    "CREW-01": {
+      "filename": "crew-01-deck-framing-crew",
+      "alt": "Crew framing a wooden deck in front of a house",
+      "decorative": false,
+      "creator": "TROY ALLEN",
+      "license": "Unsplash License",
+      "source_page_url": "https://unsplash.com/photos/construction-workers-building-a-wooden-deck-outdoors-Dbn68nqrA14",
+      "original": {
+        "width": 3776,
+        "height": 6720
+      }
+    },
+    "CTA-01": {
+      "filename": "cta-01-roofing-crew-brick-home",
+      "alt": "",
+      "decorative": true,
+      "creator": "Ryan Stephens",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/roof-repair-and-construction-in-fort-worth-33404981/",
+      "original": {
+        "width": 8256,
+        "height": 5504
+      }
+    },
+    "IND-APPL-01": {
+      "filename": "ind-appl-01-laundry-room-washer-dryer",
+      "alt": "Laundry room with a front-load washer and dryer beside a utility sink",
+      "decorative": false,
+      "creator": "Curtis Adams",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/front-load-washing-machine-beside-white-window-blinds-3935334/",
+      "original": {
+        "width": 5000,
+        "height": 3333
+      }
+    },
+    "IND-APPL-02": {
+      "filename": "ind-appl-02-kitchen-stainless-refrigerator",
+      "alt": "Kitchen with a stainless-steel refrigerator and wall oven",
+      "decorative": false,
+      "creator": "Curtis Adams",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/empty-modern-kitchen-area-3958962/",
+      "original": {
+        "width": 5000,
+        "height": 3333
+      }
+    },
+    "IND-HVAC-01": {
+      "filename": "ind-hvac-01-rooftop-condensing-unit",
+      "alt": "Technician works on an open commercial air-conditioning unit on a rooftop",
+      "decorative": false,
+      "creator": "José Andrés Pacheco Cortes",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/man-drilling-an-aircon-casing-5463581/",
+      "original": {
+        "width": 5025,
+        "height": 4000
+      }
+    },
+    "IND-PLMB-01": {
+      "filename": "ind-plmb-01-bathroom-moisture-check",
+      "alt": "Technician kneels beside a toilet and checks the floor with a handheld moisture meter",
+      "decorative": false,
+      "creator": "Kathleen Austin Kuhn",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/senior-man-conducting-bathroom-inspection-with-device-32497162/",
+      "original": {
+        "width": 5472,
+        "height": 3648
+      }
+    },
+    "IND-ELEC-01": {
+      "filename": "ind-elec-01-electrician-breaker-panel",
+      "alt": "Electrician inspects an open residential breaker panel in a garage",
+      "decorative": false,
+      "creator": "Kathleen Austin Kuhn",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/electrician-inspecting-residential-fuse-box-area-32497160/",
+      "original": {
+        "width": 3600,
+        "height": 2395
+      }
+    },
+    "IND-HNDY-01": {
+      "filename": "ind-hndy-01-tradesperson-ladder-roofline",
+      "alt": "Tradesperson with tool bags climbs a ladder toward a roofline",
+      "decorative": false,
+      "creator": "Daniel & Hannah Snipes",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/skilled-roofer-climbing-ladder-for-repair-38346734/",
+      "original": {
+        "width": 4365,
+        "height": 6548
+      }
+    },
+    "IND-GC-01": {
+      "filename": "ind-gc-01-carpenter-framing-sky",
+      "alt": "Carpenter in a hard hat hammers wood framing against a blue sky",
+      "decorative": false,
+      "creator": "Josh Olalde",
+      "license": "Unsplash License",
+      "source_page_url": "https://unsplash.com/photos/a-man-in-a-hard-hat-and-safety-gear-working-on-a-wooden-structure-EWoU3snzadU",
+      "original": {
+        "width": 5790,
+        "height": 3860
+      }
+    },
+    "IND-CLEAN-01": {
+      "filename": "ind-clean-01-cleaning-crew-arriving",
+      "alt": "Cleaning crew in red uniforms carries equipment toward a house",
+      "decorative": false,
+      "creator": "Tima Miroshnichenko",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/back-view-of-workers-walking-towards-a-house-6196685/",
+      "original": {
+        "width": 3769,
+        "height": 5653
+      }
+    },
+    "IND-LAND-01": {
+      "filename": "ind-land-01-zero-turn-mower",
+      "alt": "Landscaper mows grass on a commercial zero-turn mower",
+      "decorative": false,
+      "creator": "Luis Negron",
+      "license": "Pexels License",
+      "source_page_url": "https://www.pexels.com/photo/a-person-mowing-the-lawn-grass-13630739/",
+      "original": {
+        "width": 4000,
+        "height": 6000
+      }
+    }
+  },
+  "slots": [
+    {
+      "id": "HERO-01",
+      "page": "/",
+      "section": "Hero",
+      "desktop_aspect": "4:5",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "HERO-01",
+      "page": "/industries/hvac",
+      "section": "Hero",
+      "desktop_aspect": "16:10",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "OFFICE-01",
+      "page": "/",
+      "section": "Dispatch board (dark stage)",
+      "desktop_aspect": "4:3",
+      "mobile_aspect": "16:9 full-width tile at 768–1023px; hidden (not rendered) < 768px",
+      "desktop_min_width": 1024,
+      "reused_on": [
+        "/industries/appliance-repair H3 · The board for same-day calls",
+        "/industries/hvac I2 · The board in a heat wave"
+      ]
+    },
+    {
+      "id": "OFFICE-02",
+      "page": "/s-protocol",
+      "section": "Hero",
+      "desktop_aspect": "3:4",
+      "mobile_aspect": "hidden",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "MOBILE-01",
+      "page": "/",
+      "section": "Technician app (iPhone)",
+      "desktop_aspect": "4:5",
+      "mobile_aspect": "3:2",
+      "desktop_min_width": 768,
+      "reused_on": [
+        "/industries/appliance-repair H4 · Technician app"
+      ]
+    },
+    {
+      "id": "MOBILE-01",
+      "page": "/s-invoice",
+      "section": "Who it's for",
+      "desktop_aspect": "3:4",
+      "mobile_aspect": "3:4",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "SINV-01",
+      "page": "/",
+      "section": "S Invoice spotlight",
+      "desktop_aspect": "4:5",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "SINV-01",
+      "page": "/s-invoice",
+      "section": "Who it's for",
+      "desktop_aspect": "3:4",
+      "mobile_aspect": "3:4",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "SOLO-02",
+      "page": "/s-invoice",
+      "section": "Hero",
+      "desktop_aspect": "4:5",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "CREW-01",
+      "page": "/s-protocol",
+      "section": "Team & roles",
+      "desktop_aspect": "3:4",
+      "mobile_aspect": "16:10",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "CTA-01",
+      "page": "/",
+      "section": "Final CTA",
+      "desktop_aspect": "21:9",
+      "mobile_aspect": "16:10 band above the navy content",
+      "desktop_min_width": 1024,
+      "reused_on": [
+        "/s-protocol A12 · Final CTA",
+        "/s-invoice B10 · Final CTA",
+        "/pricing C8 · Final CTA",
+        "/compare D7 · Final CTA",
+        "/integrations E5 · CTA band",
+        "/about F5 · CTA band",
+        "/faq M3 · Final CTA",
+        "/industries/appliance-repair H8 · CTA band",
+        "/industries/hvac I7 · CTA band"
+      ]
+    },
+    {
+      "id": "IND-APPL-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈1.19:1 (588×496 at 1440)",
+      "mobile_aspect": "16:10 (full-width first card)",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-APPL-01",
+      "page": "/industries/appliance-repair",
+      "section": "Hero",
+      "desktop_aspect": "16:10",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-APPL-02",
+      "page": "/industries/appliance-repair",
+      "section": "\"A typical day\" (second visual)",
+      "desktop_aspect": "3:2",
+      "mobile_aspect": "3:2",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "IND-HVAC-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈0.57:1 (282×496)",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-HVAC-01",
+      "page": "/industries/hvac",
+      "section": "Commercial & rooftop work",
+      "desktop_aspect": "4:3",
+      "mobile_aspect": "4:3",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "IND-PLMB-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "1.2:1",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-ELEC-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "1.2:1",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-ELEC-01",
+      "page": "/s-protocol",
+      "section": "Technician app",
+      "desktop_aspect": "4:5",
+      "mobile_aspect": "3:2",
+      "desktop_min_width": 768,
+      "reused_on": []
+    },
+    {
+      "id": "IND-HNDY-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈1:1.06 (282×300)",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-GC-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈1:1.06",
+      "mobile_aspect": "16:10 (full-width last card)",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-CLEAN-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈1:1.06",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-LAND-01",
+      "page": "/",
+      "section": "Industries (bento)",
+      "desktop_aspect": "≈1:1.06",
+      "mobile_aspect": "4:5",
+      "desktop_min_width": 1024,
+      "reused_on": []
+    },
+    {
+      "id": "IND-LAND-01",
+      "page": "/s-invoice",
+      "section": "Who it's for",
+      "desktop_aspect": "3:4",
+      "mobile_aspect": "3:4",
+      "desktop_min_width": 768,
+      "reused_on": []
+    }
+  ]
+}

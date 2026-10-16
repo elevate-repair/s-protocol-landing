@@ -1,0 +1,133 @@
+{
+  "schema": "s-protocol-redesign/navigation@1",
+  "spec": "homepage-spec.md §1 (header), §15 (footer); sitemap.md §2 (navigation model). Labels are final copy. Tracking attributes follow conversion-and-tracking.md §5.",
+  "header": {
+    "logo": { "href": "/", "aria_label": "S Protocol home", "height_px": { "desktop": 32, "mobile": 28 } },
+    "primary": [
+      {
+        "id": "products", "label": "Products", "type": "dropdown", "panel_width_px": 440,
+        "track_open": { "track": "nav_open", "menu": "products" },
+        "items": [
+          { "label": "S Protocol", "description": "Jobs, scheduling, dispatch, technicians, payments", "href": "/s-protocol", "icon": "s_protocol_app_icon", "track": { "track": "nav_click", "menu": "products", "item": "s_protocol" } },
+          { "label": "S Invoice", "description": "Estimates, invoices and getting paid", "href": "/s-invoice", "icon": "s_invoice_app_icon", "track": { "track": "nav_click", "menu": "products", "item": "s_invoice" } },
+          { "divider": true },
+          { "label": "Compare the two", "href": "/compare", "icon": "arrow-right", "track": { "track": "nav_click", "menu": "products", "item": "compare" } },
+          { "divider": true },
+          { "group_label": "OPEN THE APP" },
+          { "label": "S Protocol ↗", "href": "https://app.s-protocol.com", "sr_context": "opens the S Protocol app", "track": { "track": "app_open_click", "product": "s_protocol", "location": "header_products" } },
+          { "label": "S Invoice ↗", "href": "https://invoice.s-protocol.com", "sr_context": "opens the S Invoice app", "track": { "track": "app_open_click", "product": "s_invoice", "location": "header_products" } }
+        ]
+      },
+      {
+        "id": "industries", "label": "Industries", "type": "dropdown", "panel_width_px": 320,
+        "track_open": { "track": "nav_open", "menu": "industries" },
+        "items": [
+          { "label": "Appliance repair", "href": "/industries/appliance-repair", "track": { "track": "nav_click", "menu": "industries", "item": "appliance_repair" } },
+          { "label": "HVAC", "href": "/industries/hvac", "track": { "track": "nav_click", "menu": "industries", "item": "hvac" } },
+          { "divider": true },
+          { "label": "All the trades we fit", "href": "/#industries", "track": { "track": "nav_click", "menu": "industries", "item": "all_trades" } }
+        ],
+        "note": "Add Plumbing, Electrical and Handyman only when those pages ship (not in Version 1)."
+      },
+      { "id": "pricing", "label": "Pricing", "type": "link", "href": "/pricing", "track": { "track": "nav_click", "menu": "primary", "item": "pricing" } },
+      { "id": "integrations", "label": "Integrations", "type": "link", "href": "/integrations", "track": { "track": "nav_click", "menu": "primary", "item": "integrations" } }
+    ],
+    "right": [
+      {
+        "id": "signin", "label": "Sign in", "type": "dropdown", "style": "secondary_md", "panel_width_px": 300, "align": "right",
+        "track_open": { "track": "nav_open", "menu": "signin" },
+        "items": [
+          { "label": "S Protocol", "meta": "app.s-protocol.com ↗", "href": "https://app.s-protocol.com", "sr_context": "opens the S Protocol app", "track": { "track": "app_open_click", "product": "s_protocol", "location": "header_signin" } },
+          { "label": "S Invoice", "meta": "invoice.s-protocol.com ↗", "href": "https://invoice.s-protocol.com", "sr_context": "opens the S Invoice app", "track": { "track": "app_open_click", "product": "s_invoice", "location": "header_signin" } }
+        ]
+      },
+      {
+        "id": "start_free", "label": "Start free", "type": "chooser", "style": "primary_md", "panel_width_px": 380, "align": "right",
+        "track_open": { "track": "nav_open", "menu": "start_free" },
+        "heading": "START FREE — NO CARD",
+        "options": [
+          { "product": "s_protocol", "label": "S Protocol", "line": "Run the whole business", "meta": "Free · Pro $24.99/mo", "href": "https://app.s-protocol.com/signup/s-protocol", "track": { "track": "signup_click", "product": "s_protocol", "location": "header_chooser" } },
+          { "product": "s_invoice", "label": "S Invoice", "line": "Bill for your own work", "meta": "Free · Pro $4.99/mo", "href": "https://invoice.s-protocol.com/signup", "track": { "track": "signup_click", "product": "s_invoice", "location": "header_chooser" } }
+        ],
+        "footer_link": { "label": "Not sure? Compare them →", "href": "/compare", "track": { "track": "nav_click", "menu": "start_free", "item": "compare" } },
+        "context_overrides": {
+          "s_protocol": { "applies_to_routes": ["/s-protocol", "/industries/appliance-repair", "/industries/hvac"], "type": "link", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "track": { "track": "signup_click", "product": "s_protocol", "location": "header" } },
+          "s_invoice": { "applies_to_routes": ["/s-invoice"], "type": "link", "label": "Start free", "href": "https://invoice.s-protocol.com/signup", "track": { "track": "signup_click", "product": "s_invoice", "location": "header" } }
+        }
+      }
+    ]
+  },
+  "mobile_menu": {
+    "trigger": { "aria_label": "Open menu", "icon": "menu", "size_px": 44 },
+    "start_free_button": "Opens the same chooser as a bottom sheet (or the context override link on product/industry pages).",
+    "sections": [
+      { "type": "product_cards", "items": [
+        { "label": "S Protocol", "meta": "Web · iPhone · Free · $24.99/mo", "href": "/s-protocol", "track": { "track": "nav_click", "menu": "mobile", "item": "s_protocol" } },
+        { "label": "S Invoice", "meta": "Web · iPhone · Free · $4.99/mo", "href": "/s-invoice", "track": { "track": "nav_click", "menu": "mobile", "item": "s_invoice" } }
+      ] },
+      { "type": "links", "items": [
+        { "label": "Compare", "href": "/compare" },
+        { "label": "Pricing", "href": "/pricing" },
+        { "label": "Industries", "type": "expandable", "items": [
+          { "label": "Appliance repair", "href": "/industries/appliance-repair" },
+          { "label": "HVAC", "href": "/industries/hvac" },
+          { "label": "All the trades we fit", "href": "/#industries" }
+        ] },
+        { "label": "Integrations", "href": "/integrations" },
+        { "label": "About", "href": "/about" },
+        { "label": "Contact", "href": "/contact" },
+        { "label": "FAQ", "href": "/faq" }
+      ], "track": { "track": "nav_click", "menu": "mobile" } },
+      { "type": "signin", "items": [
+        { "label": "Sign in to S Protocol ↗", "href": "https://app.s-protocol.com", "track": { "track": "app_open_click", "product": "s_protocol", "location": "mobile_menu" } },
+        { "label": "Sign in to S Invoice ↗", "href": "https://invoice.s-protocol.com", "track": { "track": "app_open_click", "product": "s_invoice", "location": "mobile_menu" } }
+      ] },
+      { "type": "legal_small", "items": [ { "label": "Terms", "href": "/terms" }, { "label": "Privacy", "href": "/privacy" } ] }
+    ]
+  },
+  "footer": {
+    "brand_blurb": "Two products for service businesses: S Invoice for the estimates and the invoicing, S Protocol for running the whole operation. Same foundation, same company.",
+    "columns": [
+      { "heading": "PRODUCTS", "links": [
+        { "label": "S Protocol", "href": "/s-protocol" },
+        { "label": "S Invoice", "href": "/s-invoice" },
+        { "label": "Pricing", "href": "/pricing" },
+        { "label": "Compare", "href": "/compare" },
+        { "label": "Integrations", "href": "/integrations" }
+      ] },
+      { "heading": "INDUSTRIES", "links": [
+        { "label": "Appliance repair", "href": "/industries/appliance-repair" },
+        { "label": "HVAC", "href": "/industries/hvac" },
+        { "label": "All trades", "href": "/#industries" }
+      ] },
+      { "heading": "APPS", "links": [
+        { "label": "Open S Protocol ↗", "href": "https://app.s-protocol.com", "track": { "track": "app_open_click", "product": "s_protocol", "location": "footer" } },
+        { "label": "Open S Invoice ↗", "href": "https://invoice.s-protocol.com", "track": { "track": "app_open_click", "product": "s_invoice", "location": "footer" } },
+        { "label": "S Protocol for iPhone ↗", "href": "https://apps.apple.com/us/app/s-protocol/id6763838117", "sr_context": "on the App Store", "track": { "track": "app_store_click", "product": "s_protocol", "location": "footer", "type": "text_link" } },
+        { "label": "S Invoice for iPhone ↗", "href": "https://apps.apple.com/us/app/sinvoice-fast-invoice-maker/id6799751085", "sr_context": "on the App Store", "track": { "track": "app_store_click", "product": "s_invoice", "location": "footer", "type": "text_link" } }
+      ] },
+      { "heading": "COMPANY", "links": [
+        { "label": "About", "href": "/about" },
+        { "label": "Contact", "href": "/contact" },
+        { "label": "FAQ", "href": "/faq" },
+        { "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "track": { "track": "email_click", "location": "footer" } }
+      ] },
+      { "heading": "LEGAL", "links": [
+        { "label": "Terms of Service", "href": "/terms" },
+        { "label": "Privacy Policy", "href": "/privacy" }
+      ] }
+    ],
+    "default_link_track": { "track": "footer_link_click", "link": "<slug of the label>" },
+    "legal_block": [
+      "© {current year} Elevate Repair LLC. S Protocol and S Invoice are Elevate Repair LLC products.",
+      "One set of Terms and Privacy Policy covers both products. Subscriptions bought through the App Store are billed by Apple and managed in your Apple account.",
+      "Apple, the Apple logo and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc., registered in the U.S. and other countries.",
+      "{Tap to Pay on iPhone legal line — exact wording from Apple's Tap to Pay on iPhone Marketing Guide; owner decision D-15. Until the owner supplies it, omit this line and keep every Tap to Pay on iPhone mention text-only.}"
+    ],
+    "no_social_icons": true
+  },
+  "breadcrumbs": {
+    "/industries/appliance-repair": [ { "label": "Home", "href": "/" }, { "label": "Industries", "href": "/#industries" }, { "label": "Appliance repair" } ],
+    "/industries/hvac": [ { "label": "Home", "href": "/" }, { "label": "Industries", "href": "/#industries" }, { "label": "HVAC" } ]
+  }
+}

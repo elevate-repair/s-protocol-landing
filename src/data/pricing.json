@@ -1,0 +1,70 @@
+{
+  "schema": "s-protocol-redesign/pricing@1",
+  "verified_on": "2026-10-15",
+  "currency": "USD",
+  "source": "Live site, both App Store listings and both signup pages on 2026-10-15 (competitor-research.md §2.1). These numbers mirror the apps. Do not change any value without the owner; if the repository or the live apps show different values, stop and ask.",
+  "products": {
+    "s_protocol": {
+      "name": "S Protocol",
+      "positioning": "Run the whole business — jobs, scheduling, dispatch, technicians, payments",
+      "signup_url": "https://app.s-protocol.com/signup/s-protocol",
+      "free": {
+        "price": 0,
+        "display_price": "$0",
+        "card_required": false,
+        "allowance": { "jobs": 5, "invoices": 5, "recorded_payments": 5 },
+        "allowance_is_one_time": true,
+        "all_features_unlocked": true,
+        "records_stay_readable": true
+      },
+      "pro": {
+        "monthly": { "price": 24.99, "display": "$24.99", "unit": "month", "short": "$24.99/mo" },
+        "yearly": { "price": 249.99, "display": "$249.99", "unit": "year", "short": "$249.99/yr", "per_month_equivalent": 20.83, "per_month_display": "$20.83/mo", "savings_vs_monthly": 49.89, "savings_display": "$49.89" },
+        "per_seat_fee": false,
+        "team_member_limit": null
+      }
+    },
+    "s_invoice": {
+      "name": "S Invoice",
+      "positioning": "Bill for your own work — estimates, invoices, getting paid",
+      "signup_url": "https://invoice.s-protocol.com/signup",
+      "free": {
+        "price": 0,
+        "display_price": "$0",
+        "card_required": false,
+        "allowance": { "invoices": 3, "recorded_payments": 3 },
+        "allowance_is_one_time": true,
+        "estimates_free_until_converted": true,
+        "records_stay_readable": true
+      },
+      "pro": {
+        "monthly": { "price": 4.99, "display": "$4.99", "unit": "month", "short": "$4.99/mo" },
+        "yearly": { "price": 49.99, "display": "$49.99", "unit": "year", "short": "$49.99/yr", "per_month_equivalent": 4.17, "per_month_display": "$4.17/mo", "savings_vs_monthly": 9.89, "savings_display": "$9.89" }
+      }
+    }
+  },
+  "terms": {
+    "pro_free_trial": false,
+    "free_plan_is_the_trial": true,
+    "renewal": "Subscriptions renew until canceled.",
+    "cancel": "Cancel anytime; Pro runs to the end of the period you paid for.",
+    "lapse": "If billing lapses, you keep read access to everything and drop back to Free limits for creating new records.",
+    "app_store_billing": "Subscriptions bought through the App Store are billed by Apple and managed in your Apple account.",
+    "legal": { "terms": "/terms", "privacy": "/privacy", "last_updated": "July 19, 2026", "covers_both_products": true }
+  },
+  "display_strings": {
+    "s_protocol_microcopy": "FREE PLAN · NO CARD · PRO $24.99/MO · NO PER-SEAT FEES",
+    "s_protocol_microcopy_short": "FREE PLAN · NO CARD · NO PER-SEAT FEES",
+    "s_invoice_microcopy": "FREE FOR YOUR FIRST 3 INVOICES · NO CARD · PRO $4.99/MO",
+    "home_toggle_yearly_label": "Yearly — save $49.89",
+    "s_invoice_toggle_yearly_label": "Yearly — save $9.89",
+    "s_protocol_pro_monthly_line": "or $249.99/year — $20.83/mo, save $49.89",
+    "s_protocol_pro_yearly_line": "$20.83/mo billed yearly — $49.89 less than monthly",
+    "s_invoice_pro_yearly_line": "$49.99/year — $4.17/mo, $9.89 less than monthly",
+    "fine_print_short": "Prices in USD. Subscriptions renew until canceled. If you subscribe through the App Store, Apple handles the billing and you manage the subscription in your Apple account. By subscribing you agree to the Terms of Service and Privacy Policy, which cover S Protocol and S Invoice alike."
+  },
+  "arithmetic_check": {
+    "s_protocol": "12 × 24.99 = 299.88; 299.88 − 249.99 = 49.89; 249.99 ÷ 12 = 20.8325 → 20.83",
+    "s_invoice": "12 × 4.99 = 59.88; 59.88 − 49.99 = 9.89; 49.99 ÷ 12 = 4.1658 → 4.17"
+  }
+}

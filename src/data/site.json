@@ -1,0 +1,19 @@
+{
+  "schema": "s-protocol-site/site@1",
+  "origin": "https://s-protocol.com",
+  "lastmod": "2026-10-16",
+  "legal_lastmod": "2026-07-19",
+  "organization": {
+    "name": "S Protocol",
+    "legal_name": "Elevate Repair LLC",
+    "email": "support@s-protocol.com",
+    "response_time": "We typically respond within one business day."
+  },
+  "google_site_verification": "3WADm3AJeTcGOfuZgEue5JDBfN6L91X_JyDMQ-gTzAc",
+  "og_image": { "url": "https://s-protocol.com/assets/brand/og-image.png", "width": 1200, "height": 630 },
+  "launch_routes": [
+    "/", "/s-protocol", "/s-invoice", "/pricing", "/compare", "/integrations", "/about", "/contact", "/faq",
+    "/industries/appliance-repair", "/industries/hvac", "/terms", "/privacy"
+  ],
+  "note": "launch_routes is the Version 1 sitemap (sitemap.md §1). The build lists only the routes it actually emits in sitemap.xml, so a route that is not built yet never appears there."
+}

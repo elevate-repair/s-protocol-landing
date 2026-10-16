@@ -1,0 +1,53 @@
+/* Values the specs fix that are not tokens (design-system.md, "Values the specs fix that are not tokens").
+   Each is defined once, with the spec line it comes from. Components use var(--…) only; tokens.css stays verbatim. */
+:root {
+  /* design-system.md §7.2 — browser-frame dots, light / dark */
+  --x-frame-dot-light: #D9D6CE;
+  --x-frame-dot-dark: #2A3756;
+  /* design-system.md §8.1 — primary disabled */
+  --x-primary-disabled: #A9BCEB;
+  /* homepage-spec.md §1 — header background after 8 px of scroll */
+  --x-header-scrolled: rgba(255,255,255,.92);
+  /* design-system.md §8.1 — secondary button on dark: default / hover / active fills, border */
+  --x-on-dark-fill: rgba(255,255,255,.06);
+  --x-on-dark-fill-hover: rgba(255,255,255,.12);
+  --x-on-dark-fill-active: rgba(255,255,255,.16);
+  --x-on-dark-border: rgba(255,255,255,.18);
+  /* homepage-spec.md §6 — OFFICE-01 photo tile radius and border; product-pages-spec.md A1 — OFFICE-02 tile border */
+  --x-r-tile: 16px;
+  --x-tile-border: rgba(255,255,255,.12);
+  --x-tile-border-strong: rgba(255,255,255,.14);
+  /* homepage-spec.md §6 — dark-stage shadow (the sh-ui equivalent on night) */
+  --x-sh-stage-dark: 0 40px 80px -40px rgba(0,0,0,.6);
+  /* homepage-spec.md §3 (proof statement 26 px), §4 (card title 22 px), §8.2 (descriptor 15 px), §4/§9 (price 28 / 32 px) */
+  --x-fs-15: 0.9375rem;
+  --x-fs-22: 1.375rem;
+  --x-fs-26: 1.625rem;
+  --x-fs-28: 1.75rem;
+  --x-fs-32: 2rem;
+  /* design-system.md §8.2 / homepage-spec.md §10 — industry-card label gradient, fixed in px from the bottom */
+  --x-bento-gradient: linear-gradient(0deg, rgba(11,18,32,.86) 0, rgba(11,18,32,.78) 60px, rgba(11,18,32,.72) 100px, rgba(11,18,32,.60) 120px, rgba(11,18,32,0) 220px);
+  /* homepage-spec.md §14 — final-CTA overlay (≥1280) and its 1024 variant; choice-row fill */
+  --x-cta-gradient: linear-gradient(90deg, rgba(11,18,32,.94) 0%, rgba(11,18,32,.86) 42%, rgba(11,18,32,.55) 100%);
+  --x-cta-gradient-1024: linear-gradient(90deg, rgba(11,18,32,.94) 0%, rgba(11,18,32,.88) 60%, rgba(11,18,32,.60) 100%);
+  --x-cta-row: rgba(22,33,58,.72);
+  /* design-system.md §5 — inner outline on photo panels */
+  --x-photo-outline: rgba(20,22,26,.06);
+  /* design-system.md §6 — dark icon tile background */
+  --x-icon-tile-dark: rgba(74,140,255,.12);
+  /* design-system.md §8.10 — input focus ring */
+  --x-input-ring: rgba(37,99,235,.25);
+  /* design-system.md §8.3 — status chips Partial and Draft */
+  --x-chip-partial-bg: #DFE9FC;
+  --x-chip-partial: #1E56D6;
+  --x-chip-draft-bg: #EDEEEA;
+  --x-chip-draft: #585F6B;
+  /* design-system.md §9 — mobile sheet scrim (40%) */
+  --x-scrim: rgba(11,18,32,.40);
+  /* design-system.md §8.4 — segmented-control track on dark */
+  --x-track-dark: rgba(255,255,255,.08);
+  /* homepage-spec.md §9 — S Invoice ledger rule, line-strong at 60% */
+  --x-ledger-rule-tint: rgba(214,211,203,.6);
+  /* remaining-pages-spec.md K — print stylesheet: black text */
+  --x-print-text: #000;
+}

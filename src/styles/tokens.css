@@ -1,0 +1,91 @@
+/* S Protocol marketing site — design tokens (generated; see docs/redesign/design-system.md) */
+:root {
+  --c-ink: #14161A; /* Primary text & headings on light surfaces (kept from current brand) */
+  --c-body: #55635F; /* Body copy on light surfaces (kept) */
+  --c-muted: #6F6A5F; /* Captions, eyebrows, meta on light (kept) */
+  --c-paper: #FAF9F6; /* Default page canvas — warm off-white (kept) */
+  --c-paper-2: #F3F1EC; /* Muted section / card fill, segmented-control track */
+  --c-white: #FFFFFF; /* "Spec band" sections, cards, inputs */
+  --c-line: #E7E6E1; /* Hairlines, card borders (kept) */
+  --c-line-strong: #D6D3CB; /* Input borders, hover borders, table header rule */
+  --c-tint: #EAF0FD; /* S Invoice identity background; info alert bg (kept --si-tint) */
+  --c-primary: #2563EB; /* Primary buttons, links, active states — same blue as the product apps */
+  --c-primary-hover: #1D4ED8; /* Primary hover */
+  --c-primary-active: #1E40AF; /* Primary pressed */
+  --c-primary-soft: #DCE7FD; /* Selected chip / tab tint on light */
+  --c-link: #1D4ED8; /* Inline text links on light (higher contrast than primary) */
+  --c-night: #0B1220; /* Dark product-stage sections */
+  --c-night-deep: #070C18; /* Footer background (kept --sp-bg) */
+  --c-night-2: #111A2E; /* Panels on night */
+  --c-night-3: #16213A; /* Cards on night */
+  --c-night-line: #22304D; /* Borders on night */
+  --c-night-text: #E8EDF5; /* Primary text on night (kept) */
+  --c-night-text-2: #A9B6CC; /* Secondary text on night */
+  --c-night-text-3: #8392AE; /* Tertiary text on night (replaces failing #5A6E90) */
+  --c-accent-night: #4A8CFF; /* Italic accent words / large display accents on night (kept --sp-accent) */
+  --c-link-night: #8AB4FF; /* Links, focus ring and small accent text on night */
+  --c-ink-bg: #15171B; /* Editorial dark section (origin story) */
+  --c-ink-bg-text: #F3F1EC; /* Text on ink-bg */
+  --c-ink-bg-text-2: #B5B0A5; /* Secondary text and eyebrows on ink-bg */
+  --c-ink-bg-line: #2C2F35; /* Hairlines on ink-bg (decorative) */
+  --c-success: #0F7A46; /* Success text/icons on light (AA) */
+  --c-success-bg: #E4F3EB; /* Success surface */
+  --c-warning: #B54708; /* Warning text on light */
+  --c-warning-bg: #FEF4E4; /* Warning surface */
+  --c-error: #B42318; /* Error text/icons, invalid input border */
+  --c-error-bg: #FBEAEA; /* Error surface */
+  --c-info: #1E56D6; /* Info text */
+  --c-info-bg: #EAF0FD; /* Info surface */
+  --c-status-paid: #178C54; /* Product status chip fill text "Paid" (UI replicas only, large/bold) */
+  --c-status-amber: #CC8508; /* App amber status dot/fill only (UI replicas) — never text; "Needs tech" chip text = --c-warning on --c-warning-bg */
+  --c-focus: #2563EB; /* Focus ring on light surfaces */
+  --c-focus-night: #8AB4FF; /* Focus ring on night surfaces */
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fs-display: clamp(2.75rem, 1.55rem + 3.75vw, 4.75rem); --lh-display: 1.02; --ls-display: -0.022em;
+  --fs-h2: clamp(2.125rem, 1.45rem + 2.1vw, 3.25rem); --lh-h2: 1.08; --ls-h2: -0.018em;
+  --fs-h3-serif: clamp(1.375rem, 1.2rem + 0.55vw, 1.75rem); --lh-h3-serif: 1.18; --ls-h3-serif: -0.012em;
+  --fs-h3-sans: clamp(1.125rem, 1.07rem + 0.2vw, 1.25rem); --lh-h3-sans: 1.3; --ls-h3-sans: -0.01em;
+  --fs-lead: clamp(1.0625rem, 0.99rem + 0.3vw, 1.25rem); --lh-lead: 1.5; --ls-lead: 0;
+  --fs-body: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem); --lh-body: 1.62; --ls-body: 0;
+  --fs-small: 0.875rem; --lh-small: 1.5; --ls-small: 0;
+  --fs-caption: 0.8125rem; --lh-caption: 1.45; --ls-caption: 0;
+  --fs-eyebrow: 0.75rem; --lh-eyebrow: 1.4; --ls-eyebrow: 0.12em;
+  --fs-button-lg: 1rem; --lh-button-lg: 1; --ls-button-lg: -0.005em;
+  --fs-button-md: 0.9375rem; --lh-button-md: 1; --ls-button-md: 0;
+  --fs-price: clamp(2.75rem, 2.2rem + 1.6vw, 3.5rem); --lh-price: 1; --ls-price: -0.02em;
+  --measure-display: 15ch; --measure-h2: 22ch; --measure-lead: 54ch; --measure-body: 64ch;
+  --s-0: 0px;
+  --s-4: 4px;
+  --s-8: 8px;
+  --s-12: 12px;
+  --s-16: 16px;
+  --s-20: 20px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-40: 40px;
+  --s-48: 48px;
+  --s-56: 56px;
+  --s-64: 64px;
+  --s-80: 80px;
+  --s-96: 96px;
+  --s-128: 128px;
+  --s-160: 160px;
+  --container: 1200px; --container-wide: 1320px;
+  --gutter-x: 20px; --grid-gap: 16px; --section-y: 72px;
+  --r-xs: 6px; --r-sm: 10px; --r-input: 12px; --r-ui: 14px; --r-card: 20px; --r-photo: 24px; --r-panel: 32px; --r-pill: 999px;
+  --sh-1: 0 1px 2px rgba(20,22,26,.06), 0 1px 1px rgba(20,22,26,.04);
+  --sh-2: 0 10px 28px -12px rgba(20,22,26,.20);
+  --sh-ui: 0 28px 60px -28px rgba(11,18,32,.40), 0 2px 6px rgba(11,18,32,.08);
+  --sh-pop: 0 18px 44px -14px rgba(11,18,32,.30), 0 0 0 1px rgba(20,22,26,.06);
+  --ease-out: cubic-bezier(.22,.61,.36,1); --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-1: 120ms; --dur-2: 200ms; --dur-3: 320ms; --dur-4: 480ms;
+  --z-header: 50; --z-dropdown: 60; --z-popover: 70; --z-sheet: 80; --z-toast: 90;
+  --header-h: 64px;
+}
+@media (max-width: 359px) { :root { --fs-display: 2.5rem; } } /* keeps the 3-line hero H1 intact at 320px */
+@media (min-width: 768px) { :root { --gutter-x: 32px; --grid-gap: 20px; --section-y: 96px; } }
+@media (min-width: 1024px) { :root { --gutter-x: 40px; --grid-gap: 24px; --section-y: 112px; --header-h: 72px; } }
+@media (min-width: 1280px) { :root { --section-y: 128px; } }
+@media (prefers-reduced-motion: reduce) { :root { --dur-1: 0ms; --dur-2: 0ms; --dur-3: 0ms; --dur-4: 0ms; } }
