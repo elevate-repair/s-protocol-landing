@@ -1,0 +1,151 @@
+{
+  "schema": "s-protocol-redesign/cta-map@1",
+  "rules": [
+    "Every call to action and section link on the Version 1 pages, with its exact label, destination, style and tracking attributes.",
+    "Labels are final copy. Destinations must be byte-identical (no query parameters, no trailing slashes added).",
+    "Tracking: render 'track' as data-track and every key in 'props' as data-<key> on the same <a>/<button> (conversion-and-tracking.md §4–5). Every link to a signup URL fires signup_click.",
+    "Header, mobile menu and footer links live in content/navigation.json and are not repeated here.",
+    "Labels in angle brackets (<…>) are patterns, not literal copy. QA (docs/redesign/tools/qa-content.mjs) checks every literal label below exists on its page and points to this href."
+  ],
+  "pages": {
+    "/": [
+      { "section": "§2 Hero", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "hero" } },
+      { "section": "§2 Hero", "label": "See pricing", "href": "/pricing", "style": "secondary-lg", "track": "hero_cta_click", "props": { "cta": "see_pricing" } },
+      { "section": "§2 Hero (solo lane)", "label": "S Invoice starts free, then $4.99/mo →", "href": "/s-invoice", "style": "text-link", "track": "hero_cta_click", "props": { "cta": "s_invoice_lane", "product": "s_invoice" }, "note": "The link text follows the plain text 'Billing only for your own work?'" },
+      { "section": "§3 Proof strip", "label": "See pricing →", "href": "/pricing", "style": "text-link", "track": "section_link_click", "props": { "section": "why", "link": "pricing" } },
+      { "section": "§4 Chooser — S Protocol card", "label": "Start S Protocol free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "chooser" } },
+      { "section": "§4 Chooser — S Protocol card", "label": "Tour S Protocol →", "href": "/s-protocol", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "choose", "link": "tour_s_protocol" } },
+      { "section": "§4 Chooser — S Invoice card", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "chooser" } },
+      { "section": "§4 Chooser — S Invoice card", "label": "See S Invoice →", "href": "/s-invoice", "style": "text-link", "track": "section_link_click", "props": { "section": "choose", "link": "see_s_invoice" } },
+      { "section": "§4 Growth-path band", "label": "How it works →", "href": "/compare#growth-path", "style": "text-link", "track": "section_link_click", "props": { "section": "choose", "link": "growth_path" } },
+      { "section": "§5 Ledger", "label": "See dispatch →", "href": "/s-protocol#dispatch", "style": "text-link", "track": "section_link_click", "props": { "section": "how_it_works", "link": "dispatch" } },
+      { "section": "§5 Ledger", "label": "See customers →", "href": "/s-protocol#customers", "style": "text-link", "track": "section_link_click", "props": { "section": "how_it_works", "link": "customers" } },
+      { "section": "§5 Ledger", "label": "See payments →", "href": "/s-protocol#payments", "style": "text-link", "track": "section_link_click", "props": { "section": "how_it_works", "link": "payments" } },
+      { "section": "§5 Ledger", "label": "See team & roles →", "href": "/s-protocol#team", "style": "text-link", "track": "section_link_click", "props": { "section": "how_it_works", "link": "team" } },
+      { "section": "§5 Ledger footnote", "label": "See integrations →", "href": "/integrations", "style": "text-link", "track": "section_link_click", "props": { "section": "how_it_works", "link": "integrations" } },
+      { "section": "§6 Dispatch", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-md", "track": "signup_click", "props": { "product": "s_protocol", "location": "dispatch" } },
+      { "section": "§6 Dispatch", "label": "Tour the board →", "href": "/s-protocol#dispatch", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "dispatch", "link": "tour_board" } },
+      { "section": "§7 Technician app", "label": "<official App Store badge — img alt \"Download on the App Store\">", "href": "https://apps.apple.com/us/app/s-protocol/id6763838117", "style": "app-store-badge", "track": "app_store_click", "props": { "product": "s_protocol", "location": "technician_app", "type": "badge" } },
+      { "section": "§8 Money", "label": "Compare everything →", "href": "/compare", "style": "text-link", "track": "section_link_click", "props": { "section": "payments", "link": "compare" } },
+      { "section": "§9 S Invoice spotlight", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "s_invoice_spotlight" } },
+      { "section": "§9 S Invoice spotlight", "label": "See S Invoice", "href": "/s-invoice", "style": "secondary-lg", "track": "section_cta_click", "props": { "section": "s_invoice", "cta": "see_s_invoice" } },
+      { "section": "§9 S Invoice spotlight", "label": "S Invoice for iPhone — “SInvoice” on the App Store ↗", "href": "https://apps.apple.com/us/app/sinvoice-fast-invoice-maker/id6799751085", "style": "text-link", "track": "app_store_click", "props": { "product": "s_invoice", "location": "s_invoice_spotlight", "type": "text_link" } },
+      { "section": "§9 Growth note", "label": "How it works →", "href": "/compare#growth-path", "style": "text-link", "track": "section_link_click", "props": { "section": "s_invoice", "link": "growth_path" } },
+      { "section": "§10 Industries — card A", "label": "<whole card: Appliance repair + descriptor>", "href": "/industries/appliance-repair", "style": "industry-card", "track": "industry_card_click", "props": { "industry": "appliance_repair" } },
+      { "section": "§10 Industries — card B", "label": "<whole card: HVAC + descriptor>", "href": "/industries/hvac", "style": "industry-card", "track": "industry_card_click", "props": { "industry": "hvac" } },
+      { "section": "§10 Industries", "label": "Compare the products →", "href": "/compare", "style": "text-link", "track": "section_link_click", "props": { "section": "industries", "link": "compare" } },
+      { "section": "§11 Pricing — Free card", "label": "Create a free workspace", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "secondary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "free" } },
+      { "section": "§11 Pricing — Pro card", "label": "Start with S Protocol", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "pro", "period": "<monthly|yearly — current toggle state>" } },
+      { "section": "§11 S Invoice band", "label": "S Invoice pricing →", "href": "/pricing#s-invoice", "style": "text-link", "track": "section_link_click", "props": { "section": "pricing", "link": "s_invoice_pricing" } },
+      { "section": "§11 Links row", "label": "See full pricing →", "href": "/pricing", "style": "text-link", "track": "section_link_click", "props": { "section": "pricing", "link": "full_pricing" } },
+      { "section": "§11 Links row", "label": "Compare products →", "href": "/compare", "style": "text-link", "track": "section_link_click", "props": { "section": "pricing", "link": "compare" } },
+      { "section": "§12 Built by a service business", "label": "Read the story →", "href": "/about", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "about", "link": "about" } },
+      { "section": "§12 Facts ledger", "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "style": "text-link-on-dark", "track": "email_click", "props": { "location": "home_about" } },
+      { "section": "§13 FAQ side note", "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "style": "text-link", "track": "email_click", "props": { "location": "home_faq" } },
+      { "section": "§13 FAQ side note", "label": "send us a note →", "href": "/contact", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "contact" } },
+      { "section": "§13 Under the list", "label": "see all questions →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "faq_page" } },
+      { "section": "§14 Final CTA — S Protocol row", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } },
+      { "section": "§14 Final CTA — S Invoice row", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } },
+      { "section": "§14 Final CTA", "label": "Not sure? Compare the two →", "href": "/compare", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "start", "link": "compare" } }
+    ],
+    "/s-protocol": [
+      { "section": "A1 Hero", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "page_hero" } },
+      { "section": "A1 Hero", "label": "See pricing", "href": "/pricing#s-protocol", "style": "secondary-on-dark-lg", "track": "hero_cta_click", "props": { "cta": "see_pricing", "product": "s_protocol" } },
+      { "section": "A2 Sub-nav", "label": "<pills: Dispatch · Technician app · Customers · Money · Team · Integrations · Pricing · FAQ>", "href": "<#dispatch · #technician-app · #customers · #payments · #team · #integrations · #pricing · #faq>", "style": "subnav-pill", "track": "subnav_click", "props": { "target": "<anchor id>" } },
+      { "section": "A4 Technician app", "label": "<official App Store badge — img alt \"Download on the App Store\">", "href": "https://apps.apple.com/us/app/s-protocol/id6763838117", "style": "app-store-badge", "track": "app_store_click", "props": { "product": "s_protocol", "location": "technician_app", "type": "badge" } },
+      { "section": "A9 Integrations summary", "label": "<integration name — whole card>", "href": "</integrations#stripe | #tap-to-pay-on-iphone | #website-leads | #quo | #thumbtack | #api>", "style": "integration-card", "track": "integration_card_click", "props": { "integration": "<stripe|tap_to_pay_on_iphone|website_leads|quo|thumbtack|api>" } },
+      { "section": "A10 Pricing — Free", "label": "Create a free workspace", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "secondary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "free" } },
+      { "section": "A10 Pricing — Pro", "label": "Start with S Protocol", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "pro", "period": "<toggle state>" } },
+      { "section": "A10 Pricing", "label": "See full pricing →", "href": "/pricing", "style": "text-link", "track": "section_link_click", "props": { "section": "pricing", "link": "full_pricing" } },
+      { "section": "A11 FAQ", "label": "See all questions →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "faq_page" } },
+      { "section": "A12 Final CTA", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } }
+    ],
+    "/s-invoice": [
+      { "section": "B1 Hero", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "page_hero" } },
+      { "section": "B1 Hero", "label": "See pricing", "href": "/pricing#s-invoice", "style": "secondary-lg", "track": "hero_cta_click", "props": { "cta": "see_pricing", "product": "s_invoice" } },
+      { "section": "B6 Web and iPhone", "label": "<official App Store badge — img alt \"Download on the App Store\">", "href": "https://apps.apple.com/us/app/sinvoice-fast-invoice-maker/id6799751085", "style": "app-store-badge", "track": "app_store_click", "props": { "product": "s_invoice", "location": "mobile_section", "type": "badge" } },
+      { "section": "B7 Pricing — Free", "label": "Send your first invoice", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-lg-full", "track": "signup_click", "props": { "product": "s_invoice", "location": "pricing_card", "plan": "free" } },
+      { "section": "B7 Pricing — Pro", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg-full", "track": "signup_click", "props": { "product": "s_invoice", "location": "pricing_card", "plan": "pro", "period": "<toggle state>" } },
+      { "section": "B8 Grow into S Protocol", "label": "How it works →", "href": "/compare#growth-path", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "family", "link": "growth_path" } },
+      { "section": "B9 FAQ", "label": "See all questions →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "faq_page" } },
+      { "section": "B10 Final CTA", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } },
+      { "section": "B10 Final CTA", "label": "Need dispatch too? See S Protocol →", "href": "/s-protocol", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "cta", "link": "s_protocol" } }
+    ],
+    "/pricing": [
+      { "section": "C1 Hero", "label": "<jump chip: S Protocol>", "href": "#s-protocol", "style": "chip-link", "track": "section_link_click", "props": { "section": "pricing_hero", "link": "s_protocol" } },
+      { "section": "C1 Hero", "label": "<jump chip: S Invoice>", "href": "#s-invoice", "style": "chip-link", "track": "section_link_click", "props": { "section": "pricing_hero", "link": "s_invoice" } },
+      { "section": "C2 S Protocol — Free", "label": "Create a free workspace", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "secondary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "free" } },
+      { "section": "C2 S Protocol — Pro", "label": "Start with S Protocol", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg-full", "track": "signup_click", "props": { "product": "s_protocol", "location": "pricing_card", "plan": "pro", "period": "<toggle state>" } },
+      { "section": "C3 S Invoice — Free", "label": "Send your first invoice", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-lg-full", "track": "signup_click", "props": { "product": "s_invoice", "location": "pricing_card", "plan": "free" } },
+      { "section": "C3 S Invoice — Pro", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg-full", "track": "signup_click", "props": { "product": "s_invoice", "location": "pricing_card", "plan": "pro", "period": "<toggle state>" } },
+      { "section": "C5 Pro at a glance", "label": "See the full comparison →", "href": "/compare", "style": "text-link", "track": "section_link_click", "props": { "section": "included", "link": "compare" } },
+      { "section": "C7 FAQ", "label": "See all questions →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "faq_page" } },
+      { "section": "C8 Final CTA", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } },
+      { "section": "C8 Final CTA", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } },
+      { "section": "C8 Final CTA", "label": "Not sure? Compare the two →", "href": "/compare", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "start", "link": "compare" } }
+    ],
+    "/compare": [
+      { "section": "D2 Path card — S Invoice", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "compare_paths" } },
+      { "section": "D2 Path card — S Protocol", "label": "Start S Protocol free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "compare_paths" } },
+      { "section": "D3 Table footer row", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-md", "track": "signup_click", "props": { "product": "s_invoice", "location": "compare_table" } },
+      { "section": "D6 FAQ", "label": "See all questions →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "faq", "link": "faq_page" } },
+      { "section": "D7 Final CTA", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } },
+      { "section": "D7 Final CTA", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } }
+    ],
+    "/integrations": [
+      { "section": "E2 Cards (Available with setup)", "label": "Set it up with us →", "href": "/contact", "style": "text-link", "track": "integration_card_click", "props": { "integration": "<stripe|tap_to_pay_on_iphone|website_leads>" } },
+      { "section": "E2 Cards (By request)", "label": "Ask about it →", "href": "/contact", "style": "text-link", "track": "integration_card_click", "props": { "integration": "<quo|thumbtack|api>" } },
+      { "section": "E5 CTA band", "label": "Ask about an integration", "href": "/contact", "style": "primary-lg", "track": "section_cta_click", "props": { "section": "integrations_cta", "cta": "ask_integration" } },
+      { "section": "E5 CTA band", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } }
+    ],
+    "/about": [
+      { "section": "F4 The company", "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "style": "text-link", "track": "email_click", "props": { "location": "about" } },
+      { "section": "F4 The company", "label": "Terms", "href": "/terms", "style": "text-link", "track": "section_link_click", "props": { "section": "company", "link": "terms" } },
+      { "section": "F4 The company", "label": "Privacy Policy", "href": "/privacy", "style": "text-link", "track": "section_link_click", "props": { "section": "company", "link": "privacy" } },
+      { "section": "F5 CTA band", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } },
+      { "section": "F5 CTA band", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } },
+      { "section": "F5 CTA band", "label": "Not sure? Compare the two →", "href": "/compare", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "start", "link": "compare" } }
+    ],
+    "/contact": [
+      { "section": "G1 Form", "label": "Send message", "href": "<form submit — the existing endpoint, unchanged>", "style": "primary-lg", "track": "contact_submit", "props": { "status": "<success|error — fired from the existing submit handler's result, never from the click>" } },
+      { "section": "G2 Email", "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "style": "text-link", "track": "email_click", "props": { "location": "contact" } },
+      { "section": "G2 Already a customer?", "label": "Sign in to S Protocol ↗", "href": "https://app.s-protocol.com", "style": "text-link", "track": "app_open_click", "props": { "product": "s_protocol", "location": "contact" } },
+      { "section": "G2 Already a customer?", "label": "Sign in to S Invoice ↗", "href": "https://invoice.s-protocol.com", "style": "text-link", "track": "app_open_click", "props": { "product": "s_invoice", "location": "contact" } },
+      { "section": "G2 Before you sign up", "label": "See pricing →", "href": "/pricing", "style": "text-link", "track": "section_link_click", "props": { "section": "contact_other", "link": "pricing" } },
+      { "section": "G2 Before you sign up", "label": "Read the FAQ →", "href": "/faq", "style": "text-link", "track": "section_link_click", "props": { "section": "contact_other", "link": "faq" } }
+    ],
+    "/faq": [
+      { "section": "M1 Hero", "label": "<jump chip per category>", "href": "<#pricing | #free-plan | #billing | #platforms | #payments | #integrations>", "style": "chip-link", "track": "section_link_click", "props": { "section": "faq_hero", "link": "<category id>" } },
+      { "section": "M1 Hero", "label": "support@s-protocol.com", "href": "mailto:support@s-protocol.com", "style": "text-link", "track": "email_click", "props": { "location": "faq_page" } },
+      { "section": "M3 Final CTA", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } },
+      { "section": "M3 Final CTA", "label": "Start S Invoice free", "href": "https://invoice.s-protocol.com/signup", "style": "secondary-on-dark-lg", "track": "signup_click", "props": { "product": "s_invoice", "location": "final_cta" } },
+      { "section": "M3 Final CTA", "label": "Not sure? Compare the two →", "href": "/compare", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "start", "link": "compare" } }
+    ],
+    "/industries/appliance-repair": [
+      { "section": "H1 Hero", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "industry_hero" } },
+      { "section": "H1 Hero", "label": "See pricing", "href": "/pricing#s-protocol", "style": "secondary-lg", "track": "hero_cta_click", "props": { "cta": "see_pricing", "product": "s_protocol" } },
+      { "section": "H3 Board (reuses homepage §6)", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-md", "track": "signup_click", "props": { "product": "s_protocol", "location": "dispatch" } },
+      { "section": "H3 Board", "label": "Tour the board →", "href": "/s-protocol#dispatch", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "dispatch", "link": "tour_board" } },
+      { "section": "H4 Technician app", "label": "<official App Store badge — img alt \"Download on the App Store\">", "href": "https://apps.apple.com/us/app/s-protocol/id6763838117", "style": "app-store-badge", "track": "app_store_click", "props": { "product": "s_protocol", "location": "technician_app", "type": "badge" } },
+      { "section": "H6 Where S Protocol started", "label": "Read the story →", "href": "/about", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "origin", "link": "about" } },
+      { "section": "H8 CTA band", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } }
+    ],
+    "/industries/hvac": [
+      { "section": "I1 Hero", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "industry_hero" } },
+      { "section": "I1 Hero", "label": "See pricing", "href": "/pricing#s-protocol", "style": "secondary-lg", "track": "hero_cta_click", "props": { "cta": "see_pricing", "product": "s_protocol" } },
+      { "section": "I2 Board (homepage §6 pattern)", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-md", "track": "signup_click", "props": { "product": "s_protocol", "location": "dispatch" } },
+      { "section": "I2 Board", "label": "Tour the board →", "href": "/s-protocol#dispatch", "style": "text-link-on-dark", "track": "section_link_click", "props": { "section": "dispatch", "link": "tour_board" } },
+      { "section": "I5 Crews, not seats", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-md", "track": "signup_click", "props": { "product": "s_protocol", "location": "industry_section" } },
+      { "section": "I7 CTA band", "label": "Start free", "href": "https://app.s-protocol.com/signup/s-protocol", "style": "primary-lg", "track": "signup_click", "props": { "product": "s_protocol", "location": "final_cta" } }
+    ],
+    "/404": [
+      { "section": "J Link list", "label": "Home", "href": "/", "style": "text-link-lg" },
+      { "section": "J Link list", "label": "S Protocol", "href": "/s-protocol", "style": "text-link-lg" },
+      { "section": "J Link list", "label": "S Invoice", "href": "/s-invoice", "style": "text-link-lg" },
+      { "section": "J Link list", "label": "Pricing", "href": "/pricing", "style": "text-link-lg" },
+      { "section": "J Link list", "label": "Compare the products", "href": "/compare", "style": "text-link-lg" },
+      { "section": "J Link list", "label": "Sign in to S Protocol ↗", "href": "https://app.s-protocol.com", "style": "text-link-lg", "track": "app_open_click", "props": { "product": "s_protocol", "location": "not_found" } },
+      { "section": "J Link list", "label": "Sign in to S Invoice ↗", "href": "https://invoice.s-protocol.com", "style": "text-link-lg", "track": "app_open_click", "props": { "product": "s_invoice", "location": "not_found" } }
+    ]
+  }
+}

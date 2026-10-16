@@ -1,0 +1,92 @@
+/* Product-UI replicas for the screens the offline app copy cannot show (D-30 fallback): the S Protocol estimate and
+   customer-facing invoice, the S Invoice invoice and web home — faithful HTML versions of existing app screens with the
+   fictional demo dataset. Inner markup is aria-hidden; the replica root carries role="img" + aria-label. */
+.replica { font-family: var(--ff-sans); font-size: 0.8125rem; line-height: 1.4; color: var(--c-ink); text-align: left; }
+.rp-mono { font-family: var(--ff-mono); font-size: 0.6875rem; letter-spacing: .02em; }
+.rp-dim { color: var(--c-muted); }
+.rp-ok { color: var(--c-success); }
+.rp-warn { color: var(--c-warning); }
+.rp-bad { color: var(--c-error); }
+.rp-label { display: block; font-family: var(--ff-mono); font-size: 0.625rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-muted); }
+.rp-chip { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: var(--r-pill); font-size: 0.6875rem; font-weight: 600; white-space: nowrap; }
+.rp-chip--scheduled { background: var(--c-primary-soft); color: var(--c-primary-hover); }
+.rp-chip--pending { background: var(--c-warning-bg); color: var(--c-warning); }
+.rp-chip--closed, .rp-chip--draft { background: var(--x-chip-draft-bg); color: var(--x-chip-draft); }
+.rp-chip--paid { background: var(--c-success-bg); color: var(--c-success); } /* status-paid is for large/bold text only; small chips use success (AA) */
+.rp-chip--sent { background: var(--c-info-bg); color: var(--c-info); }
+.rp-chip--partial { background: var(--x-chip-partial-bg); color: var(--x-chip-partial); }
+.rp-chip--overdue { background: var(--c-error-bg); color: var(--c-error); }
+.rp-btn { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.rp-btn--primary { background: var(--c-primary); color: var(--c-white); }
+
+/* ---------------------------------------------------------------- app navigation rail (S Invoice web home) */
+.rp-rail__brand { display: flex; align-items: center; gap: 8px; margin: 0 4px 12px; font-weight: 600; font-size: 0.8125rem; }
+.rp-rail__brand img { border-radius: 6px; }
+.rp-rail__item { padding: 6px 10px; border-radius: 8px; font-size: 0.75rem; color: var(--c-night-text-2); }
+
+/* ---------------------------------------------------------------- estimate + job invoice (S Protocol) */
+.rp-sheet { padding: 18px; background: var(--c-white); }
+.rp-sheet__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.rp-sheet__head > div { display: grid; gap: 2px; }
+.rp-sheet__head strong { font-size: 0.9375rem; }
+.rp-lines { display: grid; }
+.rp-lines__head, .rp-lines__row { display: grid; grid-template-columns: minmax(0, 1fr) 36px 76px; gap: 8px; align-items: start; }
+.rp-lines__head { padding-bottom: 6px; font-family: var(--ff-mono); font-size: 0.625rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-muted); border-bottom: 1px solid var(--c-line); }
+.rp-lines__row { padding: 8px 0; font-size: 0.78125rem; border-bottom: 1px solid var(--c-line); }
+.rp-lines__head > span:nth-child(n+2), .rp-lines__row > span:nth-child(n+2) { text-align: right; }
+.rp-lines__note { display: block; font-size: 0.6875rem; color: var(--c-muted); }
+.rp-lines__row strong { font-weight: 600; }
+.rp-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; font-size: 0.875rem; font-weight: 600; }
+.rp-total strong { font-size: 1rem; }
+
+/* ---------------------------------------------------------------- customer-facing invoice document */
+.rp-doc { padding: 22px; background: var(--c-white); color: var(--c-ink); }
+.rp-doc__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.rp-doc__brand { display: flex; align-items: center; gap: 10px; }
+.rp-doc__brand strong { font-size: 0.875rem; }
+.rp-doc__logo { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: var(--c-primary); color: var(--c-white); font-family: var(--ff-display); font-size: 1.125rem; }
+.rp-doc__from { font-size: 0.6875rem; line-height: 1.5; color: var(--c-muted); text-align: right; }
+.rp-doc__title { display: grid; gap: 2px; margin: 18px 0 14px; }
+.rp-doc__title strong { font-family: var(--ff-display); font-weight: 500; font-size: 1.375rem; letter-spacing: -0.01em; }
+.rp-doc__title span { font-family: var(--ff-mono); font-size: 0.6875rem; color: var(--c-muted); }
+.rp-doc__meta { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; margin-bottom: 12px; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); font-size: 0.75rem; }
+.rp-doc__meta > div { display: grid; gap: 2px; }
+.rp-doc__dates { display: grid; gap: 6px; justify-items: end; text-align: right; }
+.rp-doc__dates > span { display: grid; gap: 1px; }
+.rp-doc__paid { font-family: var(--ff-mono); font-weight: 500; font-size: 0.75rem; letter-spacing: .08em; color: var(--c-success); }
+.rp-doc__totals { display: grid; gap: 4px; justify-content: end; margin-top: 10px; font-size: 0.75rem; }
+.rp-doc__totals > div { display: flex; justify-content: space-between; gap: 32px; min-width: 200px; }
+.rp-doc__balance { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--c-paper-2); }
+.rp-doc__balance span { font-family: var(--ff-mono); font-size: 0.6875rem; letter-spacing: .08em; color: var(--c-muted); }
+.rp-doc__balance strong { font-size: 1rem; }
+.rp-doc__foot { margin-top: 12px; font-size: 0.6875rem; color: var(--c-muted); }
+.rp-pay { display: block; margin-top: 12px; padding: 10px; border-radius: 8px; background: var(--c-primary); color: var(--c-white); font-weight: 600; text-align: center; font-size: 0.8125rem; }
+.rp-doc--compact { padding: 18px; }
+.rp-doc--compact .rp-doc__title { margin: 14px 0 10px; }
+.rp-doc--compact .rp-doc__title strong { font-size: 1.125rem; }
+.rp-doc--compact .rp-doc__title span { font-family: var(--ff-sans); font-size: 0.75rem; }
+.rp-doc--mobile { padding: 16px; }
+.rp-doc--mobile .rp-doc__from { display: none; }
+
+/* ---------------------------------------------------------------- S Invoice web home */
+.rp-si { display: grid; grid-template-columns: 148px minmax(0, 1fr); background: var(--c-paper); }
+.rp-si__rail { display: grid; align-content: start; gap: 2px; padding: 14px 10px; background: var(--c-white); border-right: 1px solid var(--c-line); }
+.rp-si__rail .rp-rail__item { color: var(--c-body); }
+.rp-si__rail .rp-rail__item.is-active { background: var(--c-tint); color: var(--c-primary-hover); }
+.rp-si__main { display: grid; gap: 12px; padding: 16px; min-width: 0; }
+.rp-si__greet { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rp-si__greet > div { display: grid; gap: 2px; }
+.rp-si__greet strong { font-size: 0.9375rem; }
+.rp-si__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.rp-si__stats > div { display: grid; gap: 2px; padding: 10px; background: var(--c-white); border: 1px solid var(--c-line); border-radius: 10px; min-width: 0; }
+.rp-si__stats span { font-size: 0.6875rem; color: var(--c-muted); }
+.rp-si__stats strong { font-family: var(--ff-mono); font-size: 0.8125rem; font-weight: 500; }
+.rp-si__cols { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 10px; align-items: start; }
+.rp-card { display: grid; padding: 12px; background: var(--c-white); border: 1px solid var(--c-line); border-radius: 10px; min-width: 0; }
+.rp-card .rp-label { margin-bottom: 6px; }
+.rp-si__row { display: grid; grid-template-columns: 44px minmax(0, 1fr) 76px 64px 56px; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--c-line); font-size: 0.71875rem; }
+.rp-si__row > span:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rp-si__row > span:nth-child(4) { text-align: right; }
+.rp-si__row .rp-chip { justify-self: end; }
+.rp-si__pay { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 0; border-top: 1px solid var(--c-line); font-size: 0.71875rem; }
+.rp-si__pay > span:first-child { display: grid; }

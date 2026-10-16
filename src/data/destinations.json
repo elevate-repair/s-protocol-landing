@@ -1,0 +1,35 @@
+{
+  "schema": "s-protocol-redesign/destinations@1",
+  "verified_on": "2026-10-15",
+  "note": "Every external destination the marketing site may link to. These URLs are production contracts with the apps and the App Store: never change them, never add query parameters (UTM pass-through needs the owner's approval), never invent new ones. If the repository uses a different URL for any of these, stop and ask the owner which one is correct.",
+  "external": {
+    "s_protocol_signup": { "url": "https://app.s-protocol.com/signup/s-protocol", "type": "app_signup", "product": "s_protocol", "opens": "same tab" },
+    "s_invoice_signup": { "url": "https://invoice.s-protocol.com/signup", "type": "app_signup", "product": "s_invoice", "opens": "same tab" },
+    "s_protocol_app": { "url": "https://app.s-protocol.com", "type": "app_signin", "product": "s_protocol", "opens": "same tab" },
+    "s_invoice_app": { "url": "https://invoice.s-protocol.com", "type": "app_signin", "product": "s_invoice", "opens": "same tab" },
+    "app_store_s_protocol": { "url": "https://apps.apple.com/us/app/s-protocol/id6763838117", "type": "app_store", "product": "s_protocol", "listing_name": "S-Protocol: Field Service CRM", "opens": "same tab" },
+    "app_store_s_invoice": { "url": "https://apps.apple.com/us/app/sinvoice-fast-invoice-maker/id6799751085", "type": "app_store", "product": "s_invoice", "listing_name": "SInvoice: Fast Invoice Maker", "opens": "same tab" },
+    "support_email": { "url": "mailto:support@s-protocol.com", "type": "email", "display": "support@s-protocol.com" }
+  },
+  "internal_routes": {
+    "home": "/",
+    "s_protocol": "/s-protocol",
+    "s_invoice": "/s-invoice",
+    "pricing": "/pricing",
+    "compare": "/compare",
+    "integrations": "/integrations",
+    "about": "/about",
+    "contact": "/contact",
+    "faq": "/faq",
+    "industry_appliance_repair": "/industries/appliance-repair",
+    "industry_hvac": "/industries/hvac",
+    "terms": "/terms",
+    "privacy": "/privacy"
+  },
+  "allowed_external_hosts": [
+    "app.s-protocol.com",
+    "invoice.s-protocol.com",
+    "apps.apple.com"
+  ],
+  "canonical_origin": "https://s-protocol.com"
+}

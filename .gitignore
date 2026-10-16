@@ -137,3 +137,14 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# S Protocol redesign (docs/redesign/) — isolated tooling and local-only output.
+# docs/redesign/qa/ is NOT ignored: it holds committed QA evidence.
+docs/redesign/node_modules/
+assets-src/
+.auth/
+.redesign-qa/
+
+# Review preview (scripts/build-preview.mjs) — generated, never committed
+preview/
+preview.zip
