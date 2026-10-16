@@ -75,12 +75,12 @@
   .hero--home .hero__stage { height: 560px; padding: 0; }
   .hero--home .hero__photo { position: absolute; top: 0; right: 0; width: 360px; aspect-ratio: 4 / 5; }
   .hero__chip { display: none; }
-  .hero__board { display: block; position: absolute; left: 0; top: 290px; width: 340px; z-index: 1; }
+  .hero__board { display: block; position: absolute; left: 0; top: 200px; width: 340px; z-index: 1; }
 }
 @media (min-width: 1280px) {
   .hero--home .hero__stage { height: 680px; }
   .hero--home .hero__photo { width: 460px; }
-  .hero__board { top: 340px; width: 440px; }
+  .hero__board { top: 240px; width: 440px; }
 }
 
 /* /s-protocol hero (night): the real Today schedule (Night theme) over the OFFICE-02 tile */
@@ -136,8 +136,9 @@
 @media (min-width: 1024px) { .product-card { border-radius: var(--r-panel); } }
 .product-card--night { background: var(--c-night); color: var(--c-night-text); }
 .product-card--light { background: var(--c-white); border: 1px solid var(--c-line); }
-.product-card__media { height: 200px; overflow: hidden; padding: 24px 24px 0; }
-.product-card--light .product-card__media { background: var(--c-paper-2); }
+.product-card__media { position: relative; height: 200px; overflow: hidden; padding: 24px 24px 0; --media-bg: var(--c-night); }
+.product-card__media::after { content: ''; position: absolute; inset: auto 0 0; height: 56px; background: linear-gradient(to bottom, transparent, var(--media-bg)); pointer-events: none; z-index: 1; }
+.product-card--light .product-card__media { background: var(--c-paper-2); --media-bg: var(--c-paper-2); }
 .product-card__media > * { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .product-card__media--doc .doc-card { max-width: 420px; margin-inline: auto; }
 @media (min-width: 768px) { .product-card__media { height: 240px; padding: 32px 32px 0; } }
@@ -225,7 +226,7 @@
 @media (min-width: 1024px) { .board-stage { margin-top: 64px; } }
 .ui-frame--board { max-width: 1200px; margin-inline: auto; }
 .callouts { display: grid; gap: 28px; margin-top: 40px; }
-.callout { display: grid; gap: 0; justify-items: start; }
+.callout { display: grid; gap: 0; justify-items: start; align-content: start; }
 .callout__title { margin-top: 12px; font-size: 1.125rem; font-weight: 600; color: var(--c-night-text); }
 .callout__body { margin-top: 6px; font-size: 1rem; line-height: 1.6; color: var(--c-night-text-2); max-width: 44ch; }
 @media (min-width: 1024px) { .callouts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }

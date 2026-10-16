@@ -21,7 +21,7 @@ export const officeTile = () => html`<figure class="dispatch-head__tile">
 export const BOARD_CALLOUTS = [
   ['A section for every technician', 'Each tech’s jobs for the day in time order, with the customer, the job, the phone number and the status.'],
   ['Nothing sits unassigned', 'New jobs wait under “Unassigned — needs tech assignment” until someone assigns them to a technician.'],
-  ['The office sees the day change', 'Pending, scheduled and closed — every job’s status is on the board, next to the follow-ups due and the jobs that need attention, so nobody has to call to ask.'],
+  ['Every status on one screen', 'Pending, scheduled and closed — every job’s status sits on the board, next to the follow-ups due and the jobs that need attention.'],
 ];
 const BOARD = 'sp-dispatch-night';
 const BOARD_NARROW = 'sp-dispatch-today-night';

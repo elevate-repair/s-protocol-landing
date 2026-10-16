@@ -1,6 +1,6 @@
 // `/industries/hvac` — industry-pages-spec.md I1–I7, counter-positioned against per-technician pricing. Copy is
 // corrected to what the app really does (no "On site" status and no drag-and-drop columns: jobs are assigned from the
-// unassigned list — D-01, IMPLEMENTATION_STATUS.md §12); maintenance agreements are held back (D-20). Text never sits on
+// Unassigned group — D-01, IMPLEMENTATION_STATUS.md §12); maintenance agreements are held back (D-20). Text never sits on
 // the hero photo.
 import { html } from '../../lib/html.mjs';
 import { SP, strings, site } from '../../lib/data.mjs';
@@ -83,7 +83,7 @@ export const meta = {
 
 export function render() {
   return html`${hero()}
-${boardSection({ route: R, title: 'Every call, every tech, one board.', lead: 'When the unassigned list fills up, the dispatcher sees it first — and assigns each job to the right technician.', ctaSection: 'I2 Board', eyebrowText: 'THE BOARD IN A HEAT WAVE', tile: officeTile() })}
+${boardSection({ route: R, title: 'Every call, every tech, one board.', lead: 'When the Unassigned group fills up, the dispatcher sees it first — and assigns each job to the right technician.', ctaSection: 'I2 Board', eyebrowText: 'THE BOARD IN A HEAT WAVE', tile: officeTile() })}
 ${rooftop()}
 ${moneySection({})}
 ${crews()}

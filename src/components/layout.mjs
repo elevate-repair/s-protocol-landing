@@ -11,7 +11,11 @@ const appIcon = (product, size = 40) => html`<img class="app-icon" src="/assets/
 
 function linkLabel(label, srContext) {
   const [text, arrow] = splitArrow(label);
-  return html`<span>${tm(text)}</span>${srContext ? html`<span class="sr-only"> (${srContext})</span>` : ''}${arrow ? icon(arrow, { size: 16, cls: 'link-arrow' }) : ''}`;
+  if (!arrow) return html`<span>${tm(text)}</span>${srContext ? html`<span class="sr-only"> (${srContext})</span>` : ''}`;
+  // the arrow stays on the line of the label's last word, so a wrapped label never leaves it floating beside the text
+  const t = text.trimEnd();
+  const cut = t.lastIndexOf(' ') + 1;
+  return html`<span>${tm(t.slice(0, cut))}<span class="nowrap">${tm(t.slice(cut))}${icon(arrow, { size: 16, cls: 'link-arrow' })}</span></span>${srContext ? html`<span class="sr-only"> (${srContext})</span>` : ''}`;
 }
 
 function isActive(route, href) {
@@ -86,17 +90,20 @@ function mobileMenu(route) {
   const links = sections.find((s) => s.type === 'links');
   const signin = sections.find((s) => s.type === 'signin');
   const legal = sections.find((s) => s.type === 'legal_small');
-  const linkTrack = (label) => trackAttrs(links.track.track, { menu: links.track.menu, item: slug(label) });
+  // the item name matches the desktop menus' (navigation.json) for the same destination, else the label's slug
+  const desktopItem = new Map();
+  (function walk(o) { if (Array.isArray(o)) o.forEach(walk); else if (o && typeof o === 'object') { if (o.href && o.track?.item) desktopItem.set(o.href, o.track.item); Object.values(o).forEach(walk); } })(nav.header);
+  const linkTrack = (label, href) => trackAttrs(links.track.track, { menu: links.track.menu, item: desktopItem.get(href) ?? slug(label) });
   return html`<div class="sheet sheet--side" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <div class="sheet__scrim" data-sheet-close></div>
     <div class="sheet__panel menu" tabindex="-1">
       <div class="menu__top"><a class="site-header__logo" href="/" aria-label="${nav.header.logo.aria_label}"><img src="/assets/brand/logo-header.webp" width="127" height="28" alt=""></a><button class="sheet__close" type="button" data-sheet-close aria-label="Close menu">${icon('x', { size: 22 })}</button></div>
       <ul class="menu__cards">${cards.items.map((c) => html`<li><a class="menu__card" href="${c.href}"${navTrack(c)}>${appIcon(c.href.includes('invoice') ? 's_invoice' : 's_protocol', 36)}<span><span class="menu__card-name">${c.label}</span><span class="menu__card-meta">${tm(c.meta)}</span></span>${icon('arrow-right', { size: 18 })}</a></li>`)}</ul>
       <ul class="menu__links">${links.items.map((l) => l.type === 'expandable'
-        ? html`<li class="menu__exp"><button class="menu__link" type="button" aria-expanded="false" aria-controls="menu-industries" data-expand>${l.label}${icon('chevron-down', { size: 18, cls: 'menu__chev' })}</button><ul class="menu__sub" id="menu-industries" hidden>${l.items.map((s) => html`<li><a class="menu__link menu__link--sub" href="${s.href}"${linkTrack(s.label)}>${s.label}</a></li>`)}</ul></li>`
-        : html`<li><a class="menu__link${isActive(route, l.href) ? ' is-current' : ''}" href="${l.href}"${linkTrack(l.label)}${attrs({ 'aria-current': isActive(route, l.href) ? 'page' : null })}>${l.label}</a></li>`)}</ul>
+        ? html`<li class="menu__exp"><button class="menu__link" type="button" aria-expanded="false" aria-controls="menu-industries" data-expand>${l.label}${icon('chevron-down', { size: 18, cls: 'menu__chev' })}</button><ul class="menu__sub" id="menu-industries" hidden>${l.items.map((s) => html`<li><a class="menu__link menu__link--sub" href="${s.href}"${linkTrack(s.label, s.href)}>${s.label}</a></li>`)}</ul></li>`
+        : html`<li><a class="menu__link${isActive(route, l.href) ? ' is-current' : ''}" href="${l.href}"${linkTrack(l.label, l.href)}${attrs({ 'aria-current': isActive(route, l.href) ? 'page' : null })}>${l.label}</a></li>`)}</ul>
       <ul class="menu__signin">${signin.items.map((s) => html`<li><a class="menu__link" href="${s.href}"${navTrack(s)}>${linkLabel(s.label)}</a></li>`)}</ul>
-      <p class="menu__legal">${legal.items.map((l, i) => html`${i ? html`<span aria-hidden="true"> · </span>` : ''}<a href="${l.href}">${l.label}</a>`)}</p>
+      <p class="menu__legal">${legal.items.map((l, i) => html`${i ? html`<span aria-hidden="true"> · </span>` : ''}<a href="${l.href}"${linkTrack(l.label, l.href)}>${l.label}</a>`)}</p>
     </div>
   </div>`;
 }
@@ -158,7 +165,8 @@ export function footer() {
 export function documentShell(meta, body) {
   const canonical = meta.route === '/' ? `${site.origin}/` : `${site.origin}${meta.canonicalPath ?? meta.route}`;
   const ld = meta.jsonld ? (Array.isArray(meta.jsonld) ? meta.jsonld : [meta.jsonld]) : [];
-  const og = site.og_image;
+  // per-page share images (seo-accessibility-performance.md §2) fall back to the site default
+  const og = meta.ogImage ?? site.og_image;
   const doc = html`<!doctype html>
 <html lang="en-US">
 <head>
@@ -172,13 +180,13 @@ ${meta.robots && /noindex/.test(meta.robots) ? '' : html`<link rel="canonical" h
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="S Protocol">
-<meta property="og:url" content="${canonical}">
+${meta.robots && /noindex/.test(meta.robots) ? '' : html`<meta property="og:url" content="${canonical}">`}
 <meta property="og:title" content="${meta.ogTitle ?? meta.title}">
 ${meta.description ? html`<meta property="og:description" content="${meta.ogDescription ?? meta.description}">` : ''}
 <meta property="og:image" content="${og.url}">
 <meta property="og:image:width" content="${og.width}">
 <meta property="og:image:height" content="${og.height}">
-<meta property="og:image:alt" content="${meta.ogImageAlt ?? 'S Protocol and S Invoice — software for service businesses'}">
+<meta property="og:image:alt" content="${meta.ogImageAlt ?? site.og_image.alt}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${meta.ogTitle ?? meta.title}">
 ${meta.description ? html`<meta name="twitter:description" content="${meta.ogDescription ?? meta.description}">` : ''}

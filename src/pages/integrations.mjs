@@ -16,7 +16,7 @@ const REQUEST = 'By request';
 
 // remaining-pages-spec.md E2 — full descriptions; Quo is the D-06 safe wording until the owner confirms the behavior.
 const CARDS = [
-  { id: 'stripe', key: 'stripe', icon: 'credit-card', name: 'Stripe', product: 'Both products', status: SETUP, body: 'Card payments from the invoice your customer opens, plus wallets, deposits, part payments and refunds against the original charge. (S Invoice: online card payments are part of Pro.)' },
+  { id: 'stripe', key: 'stripe', icon: 'credit-card', name: 'Stripe', product: 'Both products', status: SETUP, body: 'Card payments from the invoice your customer opens, plus wallets, deposits and part payments. (S Invoice: online card payments are part of Pro.)' },
   { id: 'tap-to-pay-on-iphone', key: 'tap_to_pay_on_iphone', icon: null, name: 'Tap to Pay on iPhone & card readers', product: 'S Protocol', status: SETUP, body: 'Take the payment in person on the iPhone already in the technician’s hand — no card reader to buy, carry or charge. Card readers are supported as well. In-person payments are USD.' },
   { id: 'website-leads', key: 'website_leads', icon: 'inbox', name: 'Website lead intake', product: 'S Protocol', status: SETUP, body: 'An inquiry from your own site arrives as a lead with the address and the problem, ready to become a booked job.' },
   { id: 'quo', key: 'quo', icon: 'phone-call', name: 'Quo — calls & SMS', product: 'S Protocol', status: REQUEST, body: 'Calls and SMS on your business line — by request.' },

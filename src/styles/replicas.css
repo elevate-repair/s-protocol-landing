@@ -33,8 +33,8 @@
 .rp-lines__head, .rp-lines__row { display: grid; grid-template-columns: minmax(0, 1fr) 36px 76px; gap: 8px; align-items: start; }
 .rp-lines__head { padding-bottom: 6px; font-family: var(--ff-mono); font-size: 0.625rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-muted); border-bottom: 1px solid var(--c-line); }
 .rp-lines__row { padding: 8px 0; font-size: 0.78125rem; border-bottom: 1px solid var(--c-line); }
-.rp-lines__head span:nth-child(n+2), .rp-lines__row span:nth-child(n+2) { text-align: right; }
-.rp-lines__row em { display: block; font-style: normal; font-size: 0.6875rem; color: var(--c-muted); }
+.rp-lines__head > span:nth-child(n+2), .rp-lines__row > span:nth-child(n+2) { text-align: right; }
+.rp-lines__note { display: block; font-size: 0.6875rem; color: var(--c-muted); }
 .rp-lines__row strong { font-weight: 600; }
 .rp-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; font-size: 0.875rem; font-weight: 600; }
 .rp-total strong { font-size: 1rem; }

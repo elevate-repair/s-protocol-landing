@@ -37,32 +37,47 @@ export const marker = (n, { x, y, cls = '' } = {}) => html`<span class="marker${
 // ------------------------------------------------------------------ real captures
 const bar = (host) => html`<div class="ui-frame__bar" aria-hidden="true"><span class="ui-frame__dots"><i></i><i></i><i></i></span><span class="ui-frame__host">${host}</span></div>`;
 
-/** The capture plus its overlays; `visible` (0–1) shows only that top fraction of it, at the same scale. */
-function stage(id, { sizes, eager, priority, media, alt, overlays, visible }) {
+/**
+ * The capture plus its overlays. `visible` (0–1) shows only that top fraction of it, at the same scale. `crop`
+ * { x, y, w, h } (fractions of the capture) shows only that region, enlarged to the window's width so the UI text stays
+ * readable on small screens; rings and pins keep their positions on the capture. With a crop, `sizes` must describe the
+ * enlarged image (window width ÷ w).
+ */
+function stage(id, { sizes, eager, priority, media, alt, overlays, visible, crop }) {
   const inner = html`<div class="shot-stage">${shot(id, { sizes, eager, priority, media, alt })}${overlays ?? ''}</div>`;
-  if (!visible || visible >= 1) return inner;
   const m = shotMeta(id);
+  if (crop) {
+    const { x = 0, y = 0, w = 1, h = 1 } = crop;
+    const n = (v) => +v.toFixed(3);
+    return html`<div class="shot-window" style="aspect-ratio:${Math.round(m.width * w)} / ${Math.round(m.height * h)}"><div class="shot-zoom" style="width:${n(100 / w)}%;transform:translate(${n(-x * 100)}%,${n(-y * 100)}%)">${inner}</div></div>`;
+  }
+  if (!visible || visible >= 1) return inner;
   return html`<div class="shot-window" style="aspect-ratio:${m.width} / ${Math.round(m.height * visible)}">${inner}</div>`;
 }
 
 /** A real capture in a browser frame (UiFrame). overlays: rings / pins positioned in percent of the capture. */
-export function shotFrame({ id, sizes, host = 'app.s-protocol.com', dark = false, cls = '', bodyCls = '', overlays = null, eager = false, priority = false, media = null, alt = null, caption = null, visible = null }) {
-  const body = html`<div class="ui-frame__body shot-body${bodyCls ? ' ' + bodyCls : ''}">${stage(id, { sizes, eager, priority, media, alt, overlays, visible })}</div>`;
+export function shotFrame({ id, sizes, host = 'app.s-protocol.com', dark = false, cls = '', bodyCls = '', overlays = null, eager = false, priority = false, media = null, alt = null, caption = null, visible = null, crop = null }) {
+  const body = html`<div class="ui-frame__body shot-body${bodyCls ? ' ' + bodyCls : ''}">${stage(id, { sizes, eager, priority, media, alt, overlays, visible, crop })}</div>`;
   return html`<figure class="ui-frame ui-frame--shot${dark ? ' ui-frame--dark' : ''}${cls ? ' ' + cls : ''}">${bar(host)}${body}${caption ? html`<figcaption class="ui-caption">${caption}</figcaption>` : ''}</figure>`;
 }
 
 /** A focused real capture without browser chrome (UiCrop). */
-export function shotCrop({ id, sizes, cls = '', overlays = null, eager = false, alt = null, dark = false, visible = null }) {
-  return html`<div class="ui-crop ui-crop--shot${dark ? ' ui-crop--dark' : ''}${cls ? ' ' + cls : ''}">${stage(id, { sizes, eager, alt, overlays, visible })}</div>`;
+export function shotCrop({ id, sizes, cls = '', overlays = null, eager = false, alt = null, dark = false, visible = null, crop = null }) {
+  return html`<div class="ui-crop ui-crop--shot${dark ? ' ui-crop--dark' : ''}${cls ? ' ' + cls : ''}">${stage(id, { sizes, eager, alt, overlays, visible, crop })}</div>`;
 }
 
-/**
- * Art-directed capture in one browser frame: `wide` from 768 px up, `narrow` below (each { id, sizes, overlays?,
- * visible?, priority? }). The wide picture carries media="(min-width: 768px)" so phones never download it; the narrow
- * one is lazy inside a container hidden from 768 up, so desktops never download it.
- */
+// Art direction: `wide` from 768 px up, `narrow` below (each { id, sizes, overlays?, visible?, crop?, alt?, priority?,
+// eager? }). Each picture carries its media query, so phones never download the wide one and desktops never the narrow.
+const WIDE = '(min-width: 768px)';
+const NARROW = '(max-width: 767.98px)';
+const artPair = (wide, narrow) => html`<div class="art art--wide">${stage(wide.id, { ...wide, media: WIDE })}</div><div class="art art--narrow">${stage(narrow.id, { ...narrow, media: NARROW })}</div>`;
+
+/** Art-directed capture in one browser frame. */
 export function artFrame({ host = 'app.s-protocol.com', dark = false, cls = '', wide, narrow }) {
-  const w = stage(wide.id, { sizes: wide.sizes, priority: wide.priority, eager: wide.eager, media: '(min-width: 768px)', overlays: wide.overlays, visible: wide.visible });
-  const n = stage(narrow.id, { sizes: narrow.sizes, overlays: narrow.overlays, visible: narrow.visible });
-  return html`<figure class="ui-frame ui-frame--shot${dark ? ' ui-frame--dark' : ''}${cls ? ' ' + cls : ''}">${bar(host)}<div class="ui-frame__body shot-body"><div class="art art--wide">${w}</div><div class="art art--narrow">${n}</div></div></figure>`;
+  return html`<figure class="ui-frame ui-frame--shot${dark ? ' ui-frame--dark' : ''}${cls ? ' ' + cls : ''}">${bar(host)}<div class="ui-frame__body shot-body">${artPair(wide, narrow)}</div></figure>`;
+}
+
+/** Art-directed focused capture without browser chrome. */
+export function artCrop({ dark = false, cls = '', wide, narrow }) {
+  return html`<div class="ui-crop ui-crop--shot${dark ? ' ui-crop--dark' : ''}${cls ? ' ' + cls : ''}">${artPair(wide, narrow)}</div>`;
 }

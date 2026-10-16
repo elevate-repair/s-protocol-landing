@@ -252,7 +252,8 @@ function initSubnav() {
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) visible.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null);
       const shown = [...visible.entries()].filter(([, top]) => top !== null).sort((a, b) => a[1] - b[1]);
-      if (shown.length) activate(shown[0][0]);
+      // nothing in the reading band (above the first section, below the last): no pill is current
+      activate(shown.length ? shown[0][0] : null);
     }, { rootMargin: '-40% 0px -55% 0px' });
     for (const id of byId.keys()) { const s = document.getElementById(id); if (s) io.observe(s); }
   }
@@ -290,7 +291,8 @@ function initDisclosures() {
       const open = !list.classList.contains('is-expanded');
       list.classList.toggle('is-expanded', open);
       btn.setAttribute('aria-expanded', String(open));
-      btn.textContent = open ? '− less' : '+ more';
+      const label = $('[data-more-label]', btn) || btn;
+      label.textContent = open ? '− less' : '+ more';
     });
   }
   for (const col of $$('[data-disclosure]')) {

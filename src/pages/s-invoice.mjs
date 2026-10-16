@@ -59,7 +59,7 @@ function whoFor() {
 const STEPS = [
   ['Send the estimate', 'Price the job with itemized line items and share it with your customer before the work starts.'],
   ['Turn it into an invoice', 'When the work is approved or done, convert the estimate straight into an invoice — no retyping.'],
-  ['Track the payment', 'Collect online through Stripe or record cash and checks. Partial payments and refunds are handled too.'],
+  ['Track the payment', 'Collect online through Stripe or record cash and checks. Partial payments are handled too.'],
 ];
 function howItWorks() {
   return html`<section class="section section--white" id="how-it-works" aria-labelledby="how-title">
@@ -79,7 +79,7 @@ const FEATURES = [
   ['receipt-text', 'Professional invoices', 'Clean, itemized invoices with your logo, brand color, notes and tax settings — shared with customers as polished invoice links.'],
   ['file-pen-line', 'Estimates', 'Quote the work first. Build itemized estimates, send them to the customer and convert an approved estimate into an invoice in one step.'],
   ['contact', 'Customer records', 'Keep every customer’s contact details, documents and billing history in one place — so repeat work starts from what you already know.'],
-  ['split', 'Payment tracking', 'Record payments against every invoice — including partial payments and refunds — and always know what’s outstanding.'],
+  ['split', 'Payment tracking', 'Record payments against every invoice — including partial payments — and always know what’s outstanding.'],
   ['credit-card', 'Online payments with Stripe', 'Connect Stripe to let customers pay invoices online by card. Payments reconcile automatically against the invoice.'],
   ['camera', 'Photos & attachments', 'Attach photos and documents to invoices — before-and-after shots, receipts and paperwork stay with the record they belong to.'],
 ];
@@ -97,7 +97,7 @@ const CALLOUTS = ['Your logo and brand color', 'A plain-language title', 'Line i
 function customerView() {
   return html`<section class="section section--tint" id="customer-view" aria-labelledby="cv-title">
   <div class="container">
-    ${sectionHead({ eyebrow: 'WHAT THE CUSTOMER RECEIVES · THE REAL DOCUMENT', tone: 'tint', title: 'A document that looks like your business, not like a spreadsheet.', id: 'cv-title', lead: 'Send a link or a PDF. Your customer opens it on their phone, sees exactly what the work was, and pays by card without creating an account. You can give the invoice a plain-language title — “Hanging” — while the number stays the number.', cls: 'section-head--7' })}
+    ${sectionHead({ eyebrow: 'WHAT THE CUSTOMER RECEIVES · A SAMPLE DOCUMENT', tone: 'tint', title: 'A document that looks like your business, not like a spreadsheet.', id: 'cv-title', lead: 'Send a link or a PDF. Your customer opens it on their phone, sees exactly what the work was, and pays by card without creating an account. You can give the invoice a plain-language title — “Hanging” — while the number stays the number.', cls: 'section-head--7' })}
     <div class="cv-grid">
       <div class="cv-grid__doc" data-reveal>
         ${docCard({ label: DOC_LABEL, content: invoiceDocReplica({ variant: 'full' }), cls: 'doc-card--full' })}
@@ -115,13 +115,13 @@ function webAndIphone() {
   return html`<section class="section section--white" id="mobile" aria-labelledby="mobile-title">
   <div class="container split split--visual-right">
     <div class="split__text">
-      ${sectionHead({ eyebrow: 'WEB + iPhone', title: html`On the web and on <span class="tm">iPhone</span>.`, id: 'mobile-title', lead: 'S Invoice is designed for small screens first — create an estimate in the driveway, convert it in the kitchen and send the invoice before you leave. Use it in any browser, or with S Invoice for iPhone. Customer statements and the 30-day Trash are on iPhone.' })}
+      ${sectionHead({ eyebrow: 'WEB + iPhone', title: html`On the web and on <span class="tm">iPhone</span>.`, id: 'mobile-title', lead: 'S Invoice is designed for small screens first — create an estimate in the driveway, convert it in the kitchen and send the invoice before you leave. Use it in any browser, or with S Invoice for iPhone. Customer statements are on iPhone.' })}
       <div class="download-row">${appStoreBadge(badge)}<p>Listed on the App Store as “SInvoice: Fast Invoice Maker”.</p></div>
     </div>
     <div class="split__visual">
       ${ledger([
         ['WEB', html`Any browser at <span class="mono-inline">invoice.s-protocol.com</span> — estimates, invoices, customers, payments and reports.`],
-        ['iPhone', 'S Invoice for iPhone — the same workspace, plus customer statements and the 30-day Trash.'],
+        ['iPhone', 'S Invoice for iPhone — the same workspace, plus customer statements.'],
         ['YOUR CUSTOMER', 'Opens the invoice link on any phone and pays by card — no account, no app.'],
       ], { cls: 'ledger--platforms' })}
     </div>
@@ -138,7 +138,7 @@ function pricing() {
     ${pricingPair({
       product: 's_invoice', route: R, location: 's_invoice_page', toggleId: 'si-billing', head,
       free: { label: 'S INVOICE FREE', section: 'B7 Pricing — Free', cta: 'Send your first invoice', items: [`Your first ${a.invoices} invoices and ${a.recorded_payments} recorded payments`, 'A one-time allowance, not a monthly reset', 'Estimates, customers, PDFs and public links included', 'Estimates stay free until converted', 'Whatever you create stays readable, always'] },
-      pro: { label: 'S INVOICE PRO', section: 'B7 Pricing — Pro', cta: 'Start S Invoice free', items: ['Unlimited invoices and recorded payments', 'Online card payments once Stripe is connected', 'Refunds, partial payments and balance tracking', 'Reports, statements and multi-currency documents'] },
+      pro: { label: 'S INVOICE PRO', section: 'B7 Pricing — Pro', cta: 'Start S Invoice free', items: ['Unlimited invoices and recorded payments', 'Online card payments once Stripe is connected', 'Partial payments and balance tracking', 'Reports, statements and multi-currency documents'] },
     })}
     ${finePrint()}
   </div>

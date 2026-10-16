@@ -35,9 +35,10 @@ function hero() {
     </div>
     <div class="hero__stage" data-reveal-group>
       ${photo({ id: 'HERO-01', page: R, section: 'Hero', sizes: HERO_SIZES, cls: 'hero__photo', priority: true })}
-      <span class="job-chip hero__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--scheduled"></i><span class="job-chip__text">Scheduled · AC not cooling · M. Ruiz</span></span>
+      <span class="job-chip hero__chip" aria-hidden="true"><i class="job-chip__dot job-chip__dot--scheduled"></i><span class="job-chip__text">Scheduled · AC not cooling</span></span>
       <div class="hero__board" data-reveal>
-        ${shotFrame({ id: 'sp-schedule-today-light', sizes: '(min-width: 1280px) 440px, 340px', media: '(min-width: 1024px)', eager: true, cls: 'ui-frame--crop' })}
+        ${shotFrame({ id: 'sp-dispatch-today', sizes: '(min-width: 1280px) 440px, 340px', media: '(min-width: 1024px)', eager: true, cls: 'ui-frame--crop', crop: { h: 0.535 },
+          alt: 'Today’s Schedule on the S Protocol Dispatch screen (sample workspace): technician M. Ruiz’s two scheduled jobs, for R. Alvarez and Northside Deli, and D. Kaur’s two jobs, one closed and one scheduled, each with the time, the customer, the phone number and the status' })}
         ${mono('THE OFFICE · TODAY’S SCHEDULE')}
       </div>
     </div>
@@ -49,7 +50,7 @@ function hero() {
 const PROOF = [
   ['PRICING', 'One price for the business', `Pro is ${SP.pro.monthly.short} or ${SP.pro.yearly.short}. Add every dispatcher and technician — no per-seat fees.`, true],
   ['FREE PLAN', 'Start without a card', `Your first ${SP.free.allowance.jobs} jobs, ${SP.free.allowance.invoices} invoices and ${SP.free.allowance.recorded_payments} recorded payments are free, with every feature unlocked.`],
-  ['OFFICE + FIELD', 'Web for the office, iPhone for the van', 'The board, the job record and payments stay in sync between dispatch and technicians.'],
+  ['OFFICE + FIELD', 'Web for the office, iPhone for the van', 'The office and every technician work from the same jobs, records and payments.'],
   ['YOUR RECORDS', 'Never held hostage', 'If billing lapses, everything you created stays readable.'],
 ];
 function proof() {
@@ -68,14 +69,15 @@ function proof() {
 
 // ------------------------------------------------------------------ §4 Product chooser
 function chooser() {
-  const spBullets = ['Jobs, scheduling and a live dispatch board', 'Technician app for iPhone — notes, photos, signature, payment at the door', 'Estimates, invoices and online card payments', 'Tap to Pay on iPhone and card readers (USD)', 'Owner, dispatcher and technician roles — no per-seat fees'];
-  const siBullets = ['Estimates that convert to invoices in one step', 'A payment link your customer opens on any phone', 'Online card payments through Stripe', 'Partial payments, deposits and refunds', 'Reports, plus customer statements on iPhone', 'Documents in USD, CAD, EUR or GBP'];
+  const spBullets = ['Jobs, scheduling and a dispatch board for the whole office', 'Technician app for iPhone — notes, photos, signature, payment at the door', 'Estimates, invoices and online card payments', 'Tap to Pay on iPhone and card readers (USD)', 'Owner, dispatcher and technician roles — no per-seat fees'];
+  const siBullets = ['Estimates that convert to invoices in one step', 'A payment link your customer opens on any phone', 'Online card payments through Stripe', 'Partial payments and deposits', 'Reports, plus customer statements on iPhone', 'Documents in USD, CAD, EUR or GBP'];
   return html`<section class="section section--paper" id="choose" aria-labelledby="choose-title">
   <div class="container">
     ${sectionHead({ eyebrow: 'TWO PRODUCTS · ONE WORKSPACE', title: 'Run the operation, or just send the invoice.', id: 'choose-title', lead: 'If you schedule other people’s work, start with S Protocol. If you bill for your own, start with S Invoice — and add the operations side later on the same workspace.', cls: 'section-head--7' })}
     <div class="choose-grid">
       <article class="product-card product-card--night" id="s-protocol" aria-labelledby="pc-sp">
-        <div class="product-card__media">${shotFrame({ id: 'sp-schedule-today-night', sizes: '(min-width: 1024px) 508px, (min-width: 768px) 640px, 480px', dark: true, cls: 'ui-frame--card' })}</div>
+        <div class="product-card__media">${shotFrame({ id: 'sp-schedule-today-night', sizes: '(min-width: 1024px) 508px, (min-width: 768px) 640px, 480px', dark: true, cls: 'ui-frame--card',
+          alt: 'Today in the S Protocol Schedule, Night theme (sample workspace): technician M. Ruiz’s two scheduled jobs, for R. Alvarez and Northside Deli, and the start of D. Kaur’s day' })}</div>
         <div class="product-card__body">
           <div class="product-card__id">${appIcon('s_protocol', 36)}<div><h3 class="product-card__name" id="pc-sp">S Protocol</h3><p class="eyebrow eyebrow--accent">RUN THE WHOLE BUSINESS</p></div></div>
           <ul class="checks checks--dark">${spBullets.map((b) => check(b, { dark: true }))}</ul>
@@ -88,8 +90,8 @@ function chooser() {
         <div class="product-card__media product-card__media--doc">${docCard({ label: DOC_LABEL, content: invoiceDocReplica({ variant: 'top' }), cls: 'doc-card--crop' })}</div>
         <div class="product-card__body">
           <div class="product-card__id">${appIcon('s_invoice', 36)}<div><h3 class="product-card__name" id="pc-si">S Invoice</h3><p class="eyebrow">CREATE · SEND · GET PAID</p></div></div>
-          <ul class="checks checks--more" data-more>${siBullets.map((b, i) => (i === 5 ? html`<li class="checks__extra">${icon('check', { size: 16, cls: 'check' })}<span>${b}</span></li>` : check(b)))}</ul>
-          <button class="more-btn" type="button" data-more-btn aria-expanded="false" hidden>+ more</button>
+          <ul class="checks checks--more" id="si-more-list" data-more>${siBullets.map((b, i) => (i === 5 ? html`<li class="checks__extra">${icon('check', { size: 16, cls: 'check' })}<span>${b}</span></li>` : check(b)))}</ul>
+          <button class="more-btn" type="button" data-more-btn aria-expanded="false" aria-controls="si-more-list" hidden><span data-more-label>+ more</span><span class="sr-only"> S Invoice features</span></button>
           <p class="product-card__price"><span class="product-card__amount">${SI.pro.monthly.display}</span><span class="product-card__unit">/mo · Free to start</span></p>
           <div class="cta-row">${ctaLink(R, 'Start S Invoice free', { section: '§4 Chooser — S Invoice card' })}${ctaLink(R, 'See S Invoice →', { section: '§4 Chooser — S Invoice card' })}</div>
           <p class="mono-caption">WEB · <span class="tm">iPhone</span></p>
@@ -194,7 +196,7 @@ function sInvoiceSpotlight() {
       ${ledger([
         ['CREATE', 'Estimates that convert to invoices in one step, with your logo, brand color, photos and an optional plain-language title.'],
         ['SEND', 'A link your customer opens on their phone, or a print-ready PDF. No account, no app — and you can see when it was viewed.'],
-        ['GET PAID', 'Card payments through Stripe, partial payments and deposits, refunds against the original charge.'],
+        ['GET PAID', 'Card payments through Stripe, partial payments and deposits.'],
         ['KNOW', 'What’s paid, what’s outstanding and what’s overdue — plus customer statements on iPhone.'],
       ], { cls: 'ledger--tint' })}
       <p class="price-line"><span class="price-line__amount">${SI.pro.monthly.display}</span><span class="price-line__unit">/mo after your first ${SI.free.allowance.invoices} free invoices · or ${SI.pro.yearly.short}</span></p>
@@ -256,7 +258,7 @@ function pricingPreview() {
       free: { label: 'S PROTOCOL FREE', section: '§11 Pricing — Free card', cta: 'Create a free workspace', items: [`Your first ${a.jobs} jobs, ${a.invoices} invoices and ${a.recorded_payments} recorded payments`, 'A one-time allowance for the business, not a monthly reset', 'Every feature unlocked — nothing held back', 'Whatever you create stays readable, always'] },
       pro: { label: 'S PROTOCOL PRO', section: '§11 Pricing — Pro card', cta: 'Start with S Protocol', note: 'Start on Free, then upgrade when you’re ready.', items: ['Unlimited jobs, invoices and payments', raw('Every role and integration included<sup>1</sup>'), 'No per-seat fees and no team-member limit', 'Cancel anytime — Pro runs to the end of the period you paid for', 'If billing lapses, your records are never hidden'] },
     })}
-    <p class="footnote pricing-wrap__foot"><sup>1</sup> Integrations are set up with you or available by request — see <a href="/integrations">Integrations</a>.</p>
+    <p class="footnote pricing-wrap__foot"><sup>1</sup> Integrations are set up with you or available by request — see <a href="/integrations"${trackAttrs('section_link_click', { section: 'pricing', link: 'integrations' })}>Integrations</a>.</p>
     <div class="si-band"><p class="mono-label mono-label--link">S INVOICE</p><p class="si-band__text">Working on your own? S Invoice is free for your first ${SI.free.allowance.invoices} invoices, then ${SI.pro.monthly.short} or ${SI.pro.yearly.short}.</p>${ctaLink(R, 'S Invoice pricing →', { section: '§11 S Invoice band' })}</div>
     ${finePrint()}
     <p class="links-row">${ctaLink(R, 'See full pricing →', { section: '§11 Links row' })}${ctaLink(R, 'Compare products →', { section: '§11 Links row' })}</p>
@@ -285,7 +287,7 @@ function faqSection() {
     </div>
     <div class="faq-layout__list">
       ${faqList(R, { idPrefix: 'home-faq', defaultOpen: 'per-technician' })}
-      <p class="faq-more">More questions on the <a href="/pricing#faq">Pricing</a> and <a href="/compare#faq">Compare</a> pages — or ${ctaLink(R, 'see all questions →', { section: '§13 Under the list', cls: 'text-link--inline' })}</p>
+      <p class="faq-more">More questions on the <a href="/pricing#faq"${trackAttrs('section_link_click', { section: 'faq', link: 'pricing_faq' })}>Pricing</a> and <a href="/compare#faq"${trackAttrs('section_link_click', { section: 'faq', link: 'compare_faq' })}>Compare</a> pages — or ${ctaLink(R, 'see all questions →', { section: '§13 Under the list', cls: 'text-link--inline' })}</p>
     </div>
   </div>
 </section>`;

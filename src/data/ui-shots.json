@@ -33,7 +33,7 @@
       },
       "fallback": "/images/ui/sp-dispatch-night-1280.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:01.451Z"
+      "captured_at": "2026-10-16T19:12:13.440Z"
     },
     "sp-schedule-today-light": {
       "width": 887,
@@ -48,7 +48,7 @@
       },
       "fallback": "/images/ui/sp-schedule-today-light-1280.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:04.293Z"
+      "captured_at": "2026-10-16T19:12:16.170Z"
     },
     "sp-schedule-today-night": {
       "width": 887,
@@ -63,7 +63,7 @@
       },
       "fallback": "/images/ui/sp-schedule-today-night-1280.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:07.091Z"
+      "captured_at": "2026-10-16T19:12:18.804Z"
     },
     "sp-dispatch-today": {
       "width": 506,
@@ -85,7 +85,41 @@
       },
       "fallback": "/images/ui/sp-dispatch-today-1012.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:09.766Z"
+      "captured_at": "2026-10-16T19:12:21.552Z"
+    },
+    "sp-dispatch-today-night": {
+      "width": 506,
+      "height": 796,
+      "alt": "Today’s Schedule on the S Protocol Dispatch screen, Night theme (sample workspace): six jobs grouped under technicians M. Ruiz, D. Kaur and A. Petrov with times, customers, phone numbers and statuses, one job under “Unassigned — needs tech assignment” with an Assign link, and one upcoming job",
+      "theme": "Night",
+      "note": "Dispatch — Today’s Schedule card, Night theme",
+      "regions": {
+        "tech": {
+          "x": 4.15,
+          "y": 8.29,
+          "w": 9.15,
+          "h": 2.01
+        },
+        "unassigned": {
+          "x": 4.15,
+          "y": 70.06,
+          "w": 91.71,
+          "h": 11.04
+        },
+        "chip": {
+          "x": 74.33,
+          "y": 14.21,
+          "w": 16.12,
+          "h": 2.94
+        }
+      },
+      "srcset": {
+        "avif": "/images/ui/sp-dispatch-today-night-480.avif 480w, /images/ui/sp-dispatch-today-night-720.avif 720w, /images/ui/sp-dispatch-today-night-960.avif 960w, /images/ui/sp-dispatch-today-night-1012.avif 1012w",
+        "webp": "/images/ui/sp-dispatch-today-night-480.webp 480w, /images/ui/sp-dispatch-today-night-720.webp 720w, /images/ui/sp-dispatch-today-night-960.webp 960w, /images/ui/sp-dispatch-today-night-1012.webp 1012w"
+      },
+      "fallback": "/images/ui/sp-dispatch-today-night-1012.webp",
+      "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
+      "captured_at": "2026-10-16T19:12:24.337Z"
     },
     "sp-job-4417": {
       "width": 951,
@@ -137,7 +171,7 @@
       },
       "fallback": "/images/ui/sp-job-4417-1280.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:12.755Z"
+      "captured_at": "2026-10-16T19:12:27.255Z"
     },
     "sp-job-4417-pending": {
       "width": 951,
@@ -171,7 +205,7 @@
       },
       "fallback": "/images/ui/sp-job-4417-pending-1280.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:15.584Z"
+      "captured_at": "2026-10-16T19:12:30.214Z"
     },
     "sp-client-alvarez": {
       "width": 340,
@@ -186,41 +220,7 @@
       },
       "fallback": "/images/ui/sp-client-alvarez-680.webp",
       "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:24:18.842Z"
-    },
-    "sp-dispatch-today-night": {
-      "width": 506,
-      "height": 796,
-      "alt": "Today’s Schedule on the S Protocol Dispatch screen, Night theme (sample workspace): six jobs grouped under technicians M. Ruiz, D. Kaur and A. Petrov with times, customers, phone numbers and statuses, one job under “Unassigned — needs tech assignment” with an Assign link, and one upcoming job",
-      "theme": "Night",
-      "note": "Dispatch — Today’s Schedule card, Night theme",
-      "regions": {
-        "tech": {
-          "x": 4.15,
-          "y": 8.29,
-          "w": 9.15,
-          "h": 2.01
-        },
-        "unassigned": {
-          "x": 4.15,
-          "y": 70.06,
-          "w": 91.71,
-          "h": 11.04
-        },
-        "chip": {
-          "x": 74.33,
-          "y": 14.21,
-          "w": 16.12,
-          "h": 2.94
-        }
-      },
-      "srcset": {
-        "avif": "/images/ui/sp-dispatch-today-night-480.avif 480w, /images/ui/sp-dispatch-today-night-720.avif 720w, /images/ui/sp-dispatch-today-night-960.avif 960w, /images/ui/sp-dispatch-today-night-1012.avif 1012w",
-        "webp": "/images/ui/sp-dispatch-today-night-480.webp 480w, /images/ui/sp-dispatch-today-night-720.webp 720w, /images/ui/sp-dispatch-today-night-960.webp 960w, /images/ui/sp-dispatch-today-night-1012.webp 1012w"
-      },
-      "fallback": "/images/ui/sp-dispatch-today-night-1012.webp",
-      "source": "Real S Protocol web screen, captured from a local offline copy of the app with the fictional demo dataset",
-      "captured_at": "2026-10-16T17:53:20.108Z"
+      "captured_at": "2026-10-16T19:12:33.367Z"
     }
   }
 }

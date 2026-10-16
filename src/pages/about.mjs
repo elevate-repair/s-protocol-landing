@@ -5,7 +5,7 @@ import { html } from '../lib/html.mjs';
 import { SP, site } from '../lib/data.mjs';
 import { graph, webPage } from '../lib/seo.mjs';
 import { tm, ctaLink, sectionHead, ledger } from '../components/ui.mjs';
-import { shotFrame } from '../components/media.mjs';
+import { artFrame } from '../components/media.mjs';
 import { pageHero, twoProductCta, ORIGIN_BODY } from '../components/sections.mjs';
 
 const R = '/about';
@@ -13,7 +13,9 @@ const R = '/about';
 function hero() {
   // the page's LCP element: requested early (fetchpriority=high) and never held back by the scroll reveal
   const aside = html`<figure class="about-hero__visual">
-      ${shotFrame({ id: 'sp-job-4417', sizes: '(min-width: 1280px) 588px, (min-width: 1024px) 46vw, calc(100vw - 40px)', visible: 0.62, priority: true })}
+      ${artFrame({ wide: { id: 'sp-job-4417', sizes: '(min-width: 1280px) 588px, (min-width: 1024px) 46vw, 728px', visible: 0.62, priority: true },
+        narrow: { id: 'sp-job-4417', sizes: 'calc((100vw - 42px) * 1.79)', crop: { x: 0.03, y: 0.05, w: 0.56, h: 0.31 }, priority: true,
+          alt: 'S Protocol job record J-4417 for R. Alvarez, Dryer (sample workspace): status Scheduled with technician M. Ruiz, and the Details, Invoice, Payments, Signature and Notes tabs' } })}
       <figcaption class="mono-caption">A REAL JOB RECORD · S PROTOCOL WEB APP · SAMPLE WORKSPACE</figcaption>
     </figure>`;
   return pageHero({

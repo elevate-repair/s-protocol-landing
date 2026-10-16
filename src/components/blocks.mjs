@@ -60,12 +60,13 @@ const PRODUCT_TAG = { s_protocol: 'S Protocol', s_invoice: 'S Invoice' };
  * and nothing shifts when the script runs); without JS a <noscript> style in the head shows every answer.
  *   itemIds — each item's DOM id is its faq.json id (the /faq hub's deep links); tags — a product tag after the question
  *   of an item that applies to one product only (part of the button's accessible name); level — heading level.
+ * Panels carry no region role: with up to 17 answers open, 17 landmarks would crowd the landmark list (WAI-ARIA APG).
  */
 export function faqAccordion(items, { defaultOpen = null, idPrefix = 'faq', itemIds = false, tags = false, level = 3 } = {}) {
   const h = raw(`h${level}`);
   return html`<div class="faq" data-faq${attrs({ 'data-default-open': defaultOpen })}>${items.map((it) => html`<div class="faq__item"${attrs({ id: itemIds ? it.id : null })}>
     <${h} class="faq__q"><button type="button" id="${idPrefix}-q-${it.id}" aria-expanded="${it.id === defaultOpen ? 'true' : 'false'}" aria-controls="${idPrefix}-a-${it.id}" data-faq-id="${it.id}"><span class="faq__text">${tm(it.question)}${tags && it.applies_to?.length === 1 ? html`<span class="faq__tag"><span class="sr-only">, </span>${PRODUCT_TAG[it.applies_to[0]]}</span>` : ''}</span>${icon('plus', { size: 20, cls: 'faq__icon' })}</button></${h}>
-    <div class="faq__a" id="${idPrefix}-a-${it.id}" role="region" aria-labelledby="${idPrefix}-q-${it.id}"${attrs({ hidden: it.id === defaultOpen ? null : 'until-found' })}><p>${tm(it.answer)}</p>${(it.links ?? []).map((l) => html`<p><a class="text-link" href="${l.href}"${trackAttrs('section_link_click', { section: 'faq', link: l.href.replace(/[^a-z]+/gi, '_').replace(/^_|_$/g, '') })}><span>${l.label.replace(/\s*→$/, '')}</span>${icon('arrow-right', { size: 16, cls: 'text-link__arrow' })}</a></p>`)}</div>
+    <div class="faq__a" id="${idPrefix}-a-${it.id}"${attrs({ hidden: it.id === defaultOpen ? null : 'until-found' })}><p>${tm(it.answer)}</p>${(it.links ?? []).map((l) => html`<p><a class="text-link" href="${l.href}"${trackAttrs('section_link_click', { section: 'faq', link: l.href.replace(/[^a-z]+/gi, '_').replace(/^_|_$/g, '') })}><span>${l.label.replace(/\s*→$/, '')}</span>${icon('arrow-right', { size: 16, cls: 'text-link__arrow' })}</a></p>`)}</div>
   </div>`)}</div>`;
 }
 
@@ -122,7 +123,7 @@ export function ctaStage({ route, id, eyebrowText, title, lead, rows = null, sin
 // Names, product tags, statuses and lines from remaining-pages-spec.md E2 (first sentence of each description); Quo uses
 // the D-06 safe default wording until the owner confirms the Quo behavior.
 export const INTEGRATIONS = [
-  { id: 'stripe', key: 'stripe', name: 'Stripe', product: 'Both products', status: 'Available with setup', line: 'Card payments from the invoice your customer opens, plus wallets, deposits, part payments and refunds against the original charge.' },
+  { id: 'stripe', key: 'stripe', name: 'Stripe', product: 'Both products', status: 'Available with setup', line: 'Card payments from the invoice your customer opens, plus wallets, deposits and part payments.' },
   { id: 'tap-to-pay-on-iphone', key: 'tap_to_pay_on_iphone', name: 'Tap to Pay on iPhone & card readers', product: 'S Protocol', status: 'Available with setup', line: 'Take the payment in person on the iPhone already in the technician’s hand — no card reader to buy, carry or charge.' },
   { id: 'website-leads', key: 'website_leads', name: 'Website lead intake', product: 'S Protocol', status: 'Available with setup', line: 'An inquiry from your own site arrives as a lead with the address and the problem, ready to become a booked job.' },
   { id: 'quo', key: 'quo', name: 'Quo — calls & SMS', product: 'S Protocol', status: 'By request', line: 'Calls and SMS on your business line — by request.' },

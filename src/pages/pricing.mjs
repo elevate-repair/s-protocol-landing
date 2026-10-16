@@ -42,7 +42,7 @@ function sProtocol() {
       free: { label: 'S PROTOCOL FREE', section: 'C2 S Protocol — Free', cta: 'Create a free workspace', items: [`Your first ${spa.jobs} jobs, ${spa.invoices} invoices and ${spa.recorded_payments} recorded payments`, 'A one-time allowance for the business, not a monthly reset', 'Every feature unlocked — nothing held back', 'Whatever you create stays readable, always'] },
       pro: { label: 'S PROTOCOL PRO', section: 'C2 S Protocol — Pro', cta: 'Start with S Protocol', note: 'Start on Free, then upgrade when you’re ready.', items: ['Unlimited jobs, invoices and payments', html`Every role and integration included<sup>1</sup>`, 'No per-seat fees and no team-member limit', 'Cancel anytime — Pro runs to the end of the period you paid for', 'If billing lapses, your records are never hidden'] },
     })}
-    <p class="footnote pricing-wrap__foot"><sup>1</sup> Integrations are set up with you or available by request — see <a href="/integrations">Integrations</a>.</p>
+    <p class="footnote pricing-wrap__foot"><sup>1</sup> Integrations are set up with you or available by request — see <a href="/integrations"${trackAttrs('section_link_click', { section: 'pricing', link: 'integrations' })}>Integrations</a>.</p>
   </div>
 </section>`;
 }
@@ -55,7 +55,7 @@ function sInvoice() {
       product: 's_invoice', route: R, location: 'pricing_page', standalone: false,
       head: productRow('s_invoice', 'S Invoice', SI.positioning, 'si-name'),
       free: { label: 'S INVOICE FREE', section: 'C3 S Invoice — Free', cta: 'Send your first invoice', items: [`Your first ${sia.invoices} invoices and ${sia.recorded_payments} recorded payments`, 'A one-time allowance, not a monthly reset', 'Estimates, customers, PDFs and public links included', 'Estimates stay free until converted', 'Whatever you create stays readable, always'] },
-      pro: { label: 'S INVOICE PRO', section: 'C3 S Invoice — Pro', cta: 'Start S Invoice free', items: ['Unlimited invoices and recorded payments', 'Online card payments once Stripe is connected', 'Refunds, partial payments and balance tracking', 'Reports, statements and multi-currency documents'] },
+      pro: { label: 'S INVOICE PRO', section: 'C3 S Invoice — Pro', cta: 'Start S Invoice free', items: ['Unlimited invoices and recorded payments', 'Online card payments once Stripe is connected', 'Partial payments and balance tracking', 'Reports, statements and multi-currency documents'] },
     })}
   </div>
 </section>`;
@@ -144,6 +144,8 @@ const DESCRIPTION = `Public, flat pricing. S Protocol Pro is ${SP.pro.monthly.sh
 
 export const meta = {
   route: R, page: 'pricing', title: TITLE, description: DESCRIPTION,
+  ogImage: { url: `${site.origin}/assets/brand/og-pricing.png`, width: 1200, height: 630 },
+  ogImageAlt: `“Simple prices. No per-seat math.” S Protocol ${SP.pro.monthly.short} for the whole team and S Invoice ${SI.pro.monthly.short}, both free to start, beside the real S Protocol schedule with a sample workspace`,
   jsonld: graph(webPage(R, TITLE, DESCRIPTION, { about: [{ '@id': `${site.origin}/#app` }, { '@id': `${site.origin}/s-invoice#app` }] }), sProtocolApp(), sInvoiceAppPage()),
 };
 

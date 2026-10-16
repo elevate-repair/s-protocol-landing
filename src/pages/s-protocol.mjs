@@ -9,7 +9,7 @@ import { photo } from '../lib/images.mjs';
 import { ring } from '../lib/ui-shots.mjs';
 import { graph, sProtocolApp, webPage } from '../lib/seo.mjs';
 import { tm, eyebrow, ctaLink, sectionHead, featureRow, textLink, iconTile } from '../components/ui.mjs';
-import { shotFrame, shotCrop, artFrame } from '../components/media.mjs';
+import { shotFrame, shotCrop, artFrame, artCrop } from '../components/media.mjs';
 import { pricingPair, finePrint, faqList, ctaStage, integrationCards, subnav } from '../components/blocks.mjs';
 import { technicianSection, moneySection } from '../components/sections.mjs';
 
@@ -23,7 +23,7 @@ function hero() {
     <div class="hero__text">
       ${eyebrow('S PROTOCOL · FIELD SERVICE SOFTWARE', { tone: 'night' })}
       <h1 class="display display--night hero__title hero__title--long" id="hero-title">Jobs, schedules, technicians and money — <em>on one board</em>.</h1>
-      <p class="lead lead--night hero__lead">S Protocol was built inside a working appliance repair business: a live dispatch board, S Protocol for <span class="tm">iPhone</span> in every technician’s pocket, estimates, invoices and payments — for ${SP.pro.monthly.short} for the whole team, with no per-seat fees.</p>
+      <p class="lead lead--night hero__lead">S Protocol was built inside a working appliance repair business: one dispatch board for the whole office, S Protocol for <span class="tm">iPhone</span> in every technician’s pocket, estimates, invoices and payments — for ${SP.pro.monthly.short} for the whole team, with no per-seat fees.</p>
       <div class="cta-row hero__ctas">${ctaLink(R, 'Start free', { section: 'A1 Hero' })}${ctaLink(R, 'See pricing', { section: 'A1 Hero' })}</div>
       <p class="microcopy microcopy--night">${strings.s_protocol_microcopy}</p>
     </div>
@@ -34,7 +34,8 @@ function hero() {
       </figure>
       <div class="sp-stage__board" data-reveal>${artFrame({ dark: true, cls: 'ui-frame--hero-board',
         wide: { id: 'sp-schedule-today-night', sizes: '(min-width: 1280px) 660px, (min-width: 1024px) 400px, calc(100vw - 64px)', priority: true },
-        narrow: { id: 'sp-dispatch-today-night', sizes: 'calc(100vw - 42px)', visible: 0.6 } })}</div>
+        narrow: { id: 'sp-dispatch-today-night', sizes: 'calc(100vw - 42px)', visible: 0.535,
+          alt: 'Today’s Schedule on the S Protocol Dispatch screen, Night theme (sample workspace): six jobs today, starting with technician M. Ruiz’s two scheduled jobs and D. Kaur’s two jobs, with times, customers, phone numbers and statuses' } })}</div>
     </div>
   </div>
 </section>`;
@@ -44,11 +45,16 @@ function hero() {
 function dispatch() {
   const rows = [
     { title: 'A section for every technician', body: 'Each technician’s jobs for the day in time order, with the customer, the job, the phone number and the status.',
-      visual: shotCrop({ id: 'sp-schedule-today-light', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, calc(100vw - 40px)', cls: 'ui-crop--row' }) },
+      visual: artCrop({ cls: 'ui-crop--row',
+        wide: { id: 'sp-schedule-today-light', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, 728px' },
+        narrow: { id: 'sp-dispatch-today', sizes: 'calc(100vw - 40px)', visible: 0.535, alt: 'Today’s Schedule on the S Protocol Dispatch screen (sample workspace): technician M. Ruiz’s two scheduled jobs and D. Kaur’s two jobs, each with the time, the customer, the phone number and the status' } }) },
     { title: 'The Unassigned group', body: 'New jobs wait under “Unassigned — needs tech assignment” until someone assigns them to a technician.',
       visual: shotCrop({ id: 'sp-dispatch-today', sizes: '(min-width: 768px) 400px, calc(100vw - 40px)', cls: 'ui-crop--row ui-crop--portrait', overlays: ring('sp-dispatch-today', 'unassigned', { pad: 0.6 }) }) },
     { title: 'The schedule', body: 'Pick the slot, pick the technician — the schedule and the board update together.',
-      visual: shotCrop({ id: 'sp-job-4417', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, calc(100vw - 40px)', cls: 'ui-crop--row', visible: 0.62, overlays: ring('sp-job-4417', 'sched', { pad: 0.6 }) }) },
+      visual: artCrop({ cls: 'ui-crop--row',
+        wide: { id: 'sp-job-4417', sizes: '(min-width: 1280px) 680px, (min-width: 1024px) 55vw, 728px', visible: 0.62, overlays: ring('sp-job-4417', 'sched', { pad: 0.6 }) },
+        narrow: { id: 'sp-job-4417', sizes: 'calc((100vw - 40px) * 1.79)', crop: { x: 0.03, y: 0.365, w: 0.56, h: 0.24 }, overlays: ring('sp-job-4417', 'sched', { pad: 0.6 }),
+          alt: 'The scheduling card of S Protocol job record J-4417 (sample workspace): August 14, 8:00–10:00 AM, technician M. Ruiz, with Message Staff, Message Customer and Notify Technician buttons' } }) },
   ];
   return html`<section class="section section--paper" id="dispatch" aria-labelledby="dispatch-title">
   <div class="container">
@@ -74,7 +80,7 @@ function customers() {
   const items = [
     ['Client records'], ['Full job history'], ['Notes and photos'],
     ['Website lead intake', 'set up with you', 'Website leads arrive with the address and the problem attached, ready to become a booked job.'],
-    ['Calls and SMS through Quo', 'by request', 'Calls and SMS on your business line — by request.'],
+    ['Calls and SMS through Quo', 'by request', 'On your business line.'],
   ];
   return html`<section class="section section--paper" id="customers" aria-labelledby="cust-title">
   <div class="container split split--visual-right split--5-7">
@@ -125,7 +131,7 @@ function priceBook() {
     <h2 class="sr-only" id="pb-title">Price book and reporting</h2>
     <div class="duo-cards">
       <article class="base-card">${iconTile('book-open')}<h3 class="base-card__title">Price book</h3><p>Keep your standard services and prices in one place.</p></article>
-      <article class="base-card">${iconTile('chart-column')}<h3 class="base-card__title">Analytics</h3><p>Analytics and reporting on jobs, invoices and payments.</p><p>${textLink({ label: 'Know what came in →', href: '#reports', track: 'section_link_click', props: { section: 'price_book', link: 'reports' } })}</p></article>
+      <article class="base-card">${iconTile('chart-column')}<h3 class="base-card__title">Analytics</h3><p>The numbers come from the same jobs, invoices and payments your team works on.</p><p>${textLink({ label: 'Know what came in →', href: '#reports', track: 'section_link_click', props: { section: 'price_book', link: 'reports' } })}</p></article>
     </div>
   </div>
 </section>`;
@@ -186,10 +192,12 @@ function finalCta() {
 const SUBNAV = [['Dispatch', 'dispatch'], ['Technician app', 'technician-app'], ['Customers', 'customers'], ['Money', 'payments'], ['Team', 'team'], ['Integrations', 'integrations'], ['Pricing', 'pricing'], ['FAQ', 'faq']];
 
 const TITLE = 'S Protocol: Dispatch Board, Technician App & Payments';
-const DESCRIPTION = `A live dispatch board, S Protocol for iPhone, estimates, invoices and card payments in one place. Free to start; Pro is ${SP.pro.monthly.short} for the whole team.`;
+const DESCRIPTION = `A shared dispatch board, S Protocol for iPhone, estimates, invoices and card payments in one place. Free to start; Pro is ${SP.pro.monthly.short} for the whole team.`;
 
 export const meta = {
   route: R, page: 's_protocol', title: TITLE, description: DESCRIPTION,
+  ogImage: { url: 'https://s-protocol.com/assets/brand/og-s-protocol.png', width: 1200, height: 630 },
+  ogImageAlt: `“Jobs, schedules, technicians and money — on one board.” S Protocol, ${SP.pro.monthly.short} for the whole team and free to start, beside the real Dispatch screen with a sample workspace`,
   jsonld: graph(webPage(R, TITLE, DESCRIPTION, { about: { '@id': 'https://s-protocol.com/#app' } }), sProtocolApp()),
 };
 

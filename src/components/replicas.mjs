@@ -39,7 +39,7 @@ export function invoiceDocReplica({ variant = 'full' } = {}) {
   <div class="rp-doc__top"><div class="rp-doc__brand"><span class="rp-doc__logo">R</span><strong>Ruiz Appliance Repair</strong></div><span class="rp-doc__from">Buffalo, NY<br>(716) 555-0142<br>office@example.com</span></div>
   <div class="rp-doc__title"><strong>Ice maker repair</strong><span>Invoice #1042</span></div>
   <div class="rp-doc__meta"><div><span class="rp-label">Bill to</span><strong>Northside Deli</strong><span>440 Main St, Buffalo, NY</span></div><div class="rp-doc__dates"><span><span class="rp-label">Date</span>Aug 12, 2026</span><span><span class="rp-label">Status</span><span class="rp-doc__paid">PAID</span></span></div></div>
-  <div class="rp-lines rp-lines--doc"><div class="rp-lines__head"><span>Description</span><span>Qty</span><span>Amount</span></div>${items.map(([n, d, q, , a]) => html`<div class="rp-lines__row"><span><strong>${n}</strong>${d ? html`<em>${d}</em>` : ''}</span><span>${q}</span><span class="rp-mono">${a}</span></div>`)}</div>
+  <div class="rp-lines rp-lines--doc"><div class="rp-lines__head"><span>Description</span><span>Qty</span><span>Amount</span></div>${items.map(([n, d, q, , a]) => html`<div class="rp-lines__row"><span><strong>${n}</strong>${d ? html`<span class="rp-lines__note">${d}</span>` : ''}</span><span>${q}</span><span class="rp-mono">${a}</span></div>`)}</div>
   ${variant === 'mobile' ? '' : html`<div class="rp-doc__totals"><div><span>Subtotal</span><span class="rp-mono">$452.00</span></div><div><span>Tax (7.5%)</span><span class="rp-mono">$33.90</span></div><div><span>Paid Aug 12</span><span class="rp-mono">−$485.90</span></div></div><div class="rp-doc__balance"><span>BALANCE DUE</span><strong class="rp-mono">$0.00</strong></div>`}
   ${variant === 'full' ? html`<p class="rp-doc__foot">Paid by card on Aug 12, 2026. Thank you — parts carry a 90-day warranty.</p>` : ''}
 </div>`;
@@ -49,7 +49,7 @@ export const DOC_LABEL = 'Sample customer-facing invoice titled “Ice maker rep
 // ------------------------------------------------------------------ S Invoice web home (Rosa's workspace)
 const RECENT = [
   ['#1042', 'Northside Deli', 'Aug 12, 2026', '$485.90', ['Paid', 'paid']],
-  ['#1041', 'R. Alvarez', 'Aug 12, 2026', '$186.00', ['Sent', 'sent']],
+  ['#1041', 'Corner Laundromat', 'Aug 11, 2026', '$210.00', ['Sent', 'sent']],
   ['#1040', 'T. Okafor', 'Aug 10, 2026', '$640.00', ['Partial', 'partial']],
   ['#1039', 'J. Whitfield', 'Aug 2, 2026', '$320.00', ['Overdue', 'overdue']],
   ['#1038', 'P. Nowak', 'Jul 30, 2026', '$140.00', ['Paid', 'paid']],

@@ -81,7 +81,7 @@ function table() {
 
 // ------------------------------------------------------------------ D4 Growth path (night)
 function growth() {
-  const today = ['Customers', 'Estimates', 'Invoices & numbering', 'Payments & refunds', 'Company details', 'Reports & statements'];
+  const today = ['Customers', 'Estimates', 'Invoices & numbering', 'Payments', 'Company details', 'Reports & statements'];
   const adds = ['Jobs', 'Scheduling', 'Dispatch board', 'Technicians', 'Tap to Pay on iPhone', 'Site leads', 'Price book', 'Operational analytics', 'Team chat'];
   return html`<section class="section section--night" id="growth-path" aria-labelledby="growth-title">
   <div class="container">
@@ -95,7 +95,7 @@ function growth() {
       <div class="growth__card growth__card--adds">
         <p class="growth__label">S Protocol adds</p>
         <ul class="checks checks--dark growth__adds">${adds.map((t) => check(t, { dark: true }))}</ul>
-        <p class="growth__note">Your invoice history stays visible in the new CRM. Job invoices created in S Protocol stay on the operations side, so the S Invoice list you know doesn’t fill up with dispatch paperwork.</p>
+        <p class="growth__note">Your invoice history stays visible in S Protocol. Job invoices created in S Protocol stay on the operations side, so the S Invoice list you know doesn’t fill up with dispatch paperwork.</p>
       </div>
     </div>
     <div class="family-callout growth__condition">

@@ -7,6 +7,8 @@
 .shot-stage { position: relative; }
 /* a window onto the top part of a capture (aspect-ratio set inline from the capture and the visible fraction) */
 .shot-window { position: relative; overflow: hidden; }
+/* a crop: the capture drawn at 1 / w of the window's width and shifted to the crop's corner (inline styles) */
+.shot-zoom { position: relative; }
 .ui-crop--shot { background: var(--c-white); }
 .ui-crop--shot.ui-crop--dark { background: var(--c-night-2); }
 

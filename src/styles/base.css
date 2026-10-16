@@ -92,5 +92,8 @@ main:focus-visible { outline: none; }
 @media print {
   .site-header, .site-footer, .skip-link, .header-sentinel, .sheet, .subnav, .legal-layout__toc, .legal-backtop-wrap { display: none !important; }
   body { background: var(--c-white); color: var(--x-print-text); }
+  /* print everything, including sections the scroll reveal has not reached yet, and every FAQ answer */
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .faq__a[hidden] { display: grid !important; content-visibility: visible !important; height: auto !important; overflow: visible !important; }
   .legal a[href^="http"]::after, .legal a[href^="mailto"]::after { content: " (" attr(href) ")"; font-size: .85em; }
 }
