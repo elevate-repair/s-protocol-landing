@@ -144,3 +144,7 @@ docs/redesign/node_modules/
 assets-src/
 .auth/
 .redesign-qa/
+
+# Review preview (scripts/build-preview.mjs) — generated, never committed
+preview/
+preview.zip

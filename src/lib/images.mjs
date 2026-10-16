@@ -41,7 +41,7 @@ export function photo({ id, page, section, sizes, cls = '', priority = false, ea
     pendingPhotos.add(`${id} (${page} · ${section})`);
     if (strict) throw new Error(`photo ${id} for ${page} · ${section} has not been processed — download the original and run build-images.mjs`);
     const a11y = isDecorative ? html` aria-hidden="true"` : html` role="img" aria-label="${alt}"`;
-    return html`<div class="photo photo--pending ${cls}"${a11y} data-photo="${id}"><span class="photo__pending" aria-hidden="true"><span class="photo__pending-id">${id}</span><span>Approved photo · original pending</span></span></div>`;
+    return html`<div class="photo photo--pending ${cls}"${a11y} data-photo="${id}"><span class="photo__pending" aria-hidden="true"><span class="photo__pending-id">Photo placeholder · ${id}</span><span>Approved photo — original not processed yet</span></span></div>`;
   }
   const img = (m ?? d).fallback;
   const lazy = priority || eager ? {} : { loading: 'lazy' };

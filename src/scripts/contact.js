@@ -8,6 +8,9 @@ import { track } from './track.js';
 
 // Filled in by scripts/build-site.mjs from the legacy main.js WEBHOOK_URL, after checking its SHA-256 (never retyped).
 const ENDPOINT = '__CONTACT_ENDPOINT__';
+// A build without the endpoint (the review preview from scripts/build-preview.mjs, or an unbuilt source file) sends
+// nothing: after validation it only says that this is a preview.
+const PREVIEW = !/^https:\/\//.test(ENDPOINT);
 const TIMEOUT_MS = 20000;
 const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 const MESSAGES = { network: 'Your message wasn’t sent — the connection failed.', server: 'Your message wasn’t sent — something went wrong on our side.' };
@@ -86,6 +89,7 @@ function init(root, form) {
     const invalid = validate();
     if (invalid) { invalid.focus(); return; }
     alertBox.hidden = true;
+    if (PREVIEW) { previewNotice(); return; }
     setBusy(true);
     const params = new URLSearchParams();
     params.append('name', val('name'));
@@ -109,6 +113,15 @@ function init(root, form) {
     setBusy(false);
     if (outcome === 'ok') succeed(); else fail(outcome);
   });
+
+  function previewNotice() {
+    alertBox.classList.add('alert--info');
+    alertBox.querySelector('.alert__body').innerHTML = '';
+    const t = document.createElement('p'); t.className = 'alert__title'; t.textContent = 'Preview only — this message was not sent.';
+    const b = document.createElement('p'); b.textContent = 'This review copy of the site has no connection to the contact inbox. On the live site the form sends to the same address as today.';
+    alertBox.querySelector('.alert__body').append(t, b);
+    alertBox.hidden = false;
+  }
 
   const retry = alertBox.querySelector('[data-contact-retry]');
   if (retry) retry.addEventListener('click', () => { if (typeof form.requestSubmit === 'function') form.requestSubmit(); else submit.click(); });
