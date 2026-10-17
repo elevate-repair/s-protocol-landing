@@ -1,0 +1,962 @@
+{
+  "schema": "s-protocol-site/photos@1",
+  "about": "Processing manifest for scripts/images/build-images.mjs: the 17 owner-approved photos, where each one appears, and how it is cropped. Crops are fractions of the full frame (rect = [x0, y0, x1, y1]; focal = the point kept in view at the slot aspect), so they work at any source resolution. widths = the planned AVIF/WebP ladder (rungs wider than the crop are dropped, never upscaled; the script adds one top rung of up to twice max_css_width when the crop has the pixels). target_min_width = the original requirement for the crop width (2400 px hero / full-width desktop, 1200 px elsewhere). max_css_width = the widest the slot renders in the built site (320–1920 px viewports, measured 2026-10-16); the crop should be at least twice that for 2x screens. desktop_min_width: the d crop serves viewports at or above it, the m crop below. reused_on lists the other pages that show the same files.",
+  "photos": [
+    {
+      "id": "HERO-01",
+      "source": "photo-originals/hero-01.jpg",
+      "name": "hero-01-hvac-technician-condenser",
+      "original": {
+        "width": 5472,
+        "height": 3648
+      },
+      "alt": "HVAC technician in a gray polo checks an outdoor air-conditioning unit with a flashlight beside a white-sided house",
+      "decorative": false,
+      "credit": {
+        "creator": "Kathleen Austin Kuhn",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/technician-inspecting-outdoor-hvac-unit-32497161/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Hero",
+          "slot": "Right visual panel (base photo layer)",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "4:5",
+            "crop": {
+              "rect": [0.38999, 0, 0.87007, 0.89995],
+              "note": "x 39.0–87.0%, y 0–90.0% of original — excludes both logos"
+            },
+            "widths": [640, 960, 1280, 1600, 2000, 2400],
+            "target_min_width": 2400,
+            "max_css_width": 460
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": {
+              "rect": [0.19006, 0, 0.97222, 0.87993],
+              "note": "x 19.0–97.2%, y 0–88.0% — window + technician + top of condenser; logos excluded"
+            },
+            "widths": [480, 640, 960, 1280, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        },
+        {
+          "page": "/industries/hvac",
+          "section": "Hero",
+          "slot": "Wide photo stage",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "16:10",
+            "crop": {
+              "rect": [0.09357, 0, 1, 0.84978],
+              "note": "x 9.4–100%, y 0–85% — logos excluded"
+            },
+            "widths": [640, 960, 1280, 1600, 2000, 2400, 2880],
+            "target_min_width": 2400,
+            "max_css_width": 646
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": {
+              "rect": [0.19006, 0, 0.97222, 0.87993],
+              "note": "same as homepage mobile crop"
+            },
+            "widths": [480, 640, 960, 1280, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "OFFICE-01",
+      "source": "photo-originals/office-01.jpg",
+      "name": "office-01-dispatcher-phone-laptop",
+      "original": {
+        "width": 3840,
+        "height": 2160
+      },
+      "alt": "Office manager talks on the phone while working on a laptop in a small office",
+      "decorative": false,
+      "credit": {
+        "creator": "Vitaly Gariev",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/woman-working-and-talking-on-phone-at-office-22046242/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Dispatch board (dark stage)",
+          "slot": "\"The office\" photo tile in the header row, right of the headline (cols 9–12)",
+          "desktop_min_width": 1024,
+          "reused_on": [
+            {
+              "page": "/industries/appliance-repair",
+              "section": "H3 · The board for same-day calls"
+            },
+            {
+              "page": "/industries/hvac",
+              "section": "I2 · The board in a heat wave"
+            }
+          ],
+          "d": {
+            "aspect": "4:3",
+            "crop": {
+              "focal": [0.48, 0.42],
+              "note": "center on face/phone; keep laptop edge"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 384
+          },
+          "m": {
+            "aspect": "16:9 full-width tile at 768–1023px; hidden (not rendered) < 768px",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "OFFICE-02",
+      "source": "photo-originals/office-02.jpg",
+      "name": "office-02-office-manager-call-notes",
+      "original": {
+        "width": 3625,
+        "height": 5437
+      },
+      "alt": "Office manager on a phone call takes notes at her desk",
+      "decorative": false,
+      "credit": {
+        "creator": "Kaboompics (Karolina Grabowska)",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/thoughtful-businesswoman-talking-on-smartphone-and-taking-notes-4476631/"
+      },
+      "placements": [
+        {
+          "page": "/s-protocol",
+          "section": "Hero",
+          "slot": "Supporting photo tile behind the board frame's lower-left corner (the frame overlaps the photo)",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:4",
+            "crop": {
+              "focal": [0.58, 0.42],
+              "note": "crop left monitor out; keep phone + notebook"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 280
+          },
+          "m": null
+        }
+      ]
+    },
+    {
+      "id": "MOBILE-01",
+      "source": "photo-originals/mobile-01.jpg",
+      "name": "mobile-01-technician-van-phone",
+      "original": {
+        "width": 6144,
+        "height": 3456
+      },
+      "alt": "Technician in a cap checks his phone from the driver's seat of a work van",
+      "decorative": false,
+      "credit": {
+        "creator": "Artem Podrez",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/man-sitting-inside-the-vehicle-while-using-his-smartphone-5025642/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Technician app (iPhone)",
+          "slot": "Photo panel behind/left of the official iPhone bezel",
+          "desktop_min_width": 768,
+          "reused_on": [
+            {
+              "page": "/industries/appliance-repair",
+              "section": "H4 · Technician app"
+            }
+          ],
+          "d": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.7, 0.4],
+              "note": "keep face, hands and phone; van door frame at left edge"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 460
+          },
+          "m": {
+            "aspect": "3:2",
+            "crop": {
+              "focal": [0.72, 0.42]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        },
+        {
+          "page": "/s-invoice",
+          "section": "Who it's for",
+          "slot": "Photo strip tile 3 of 3",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:4",
+            "crop": {
+              "focal": [0.72, 0.4]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 384
+          },
+          "m": {
+            "aspect": "3:4",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 260
+          }
+        }
+      ]
+    },
+    {
+      "id": "SINV-01",
+      "source": "photo-originals/sinv-01.jpg",
+      "name": "sinv-01-handyman-hammer-wall",
+      "original": {
+        "width": 4016,
+        "height": 6016
+      },
+      "alt": "Handyman in a gray T-shirt drives a nail into a white wall with a hammer",
+      "decorative": false,
+      "credit": {
+        "creator": "Anete Lusina",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/man-hammering-nail-into-wall-during-housework-4792525/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "S Invoice spotlight",
+          "slot": "Photo panel; the white wall area hosts the overlapping invoice card",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.6, 0.38],
+              "note": "keep hands, hammer and face; preserve the white wall at left for the overlapping \"Paid\" invoice card"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 460
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": {
+              "focal": [0.55, 0.55],
+              "note": "moved down from y 0.32 (visual QA 2026-10-16): on phones the overlapping invoice card covers the lower part of the photo, so the face, hand and hammer sit in the upper two-thirds"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        },
+        {
+          "page": "/s-invoice",
+          "section": "Who it's for",
+          "slot": "Photo strip tile 1 of 3",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:4",
+            "crop": {
+              "focal": [0.6, 0.38]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 384
+          },
+          "m": {
+            "aspect": "3:4",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 260
+          }
+        }
+      ]
+    },
+    {
+      "id": "SOLO-02",
+      "source": "photo-originals/solo-02.jpg",
+      "name": "solo-02-cleaner-van-equipment",
+      "original": {
+        "width": 3677,
+        "height": 5515
+      },
+      "alt": "Cleaning professional in a red uniform stands with a vacuum and ladder at her open van",
+      "decorative": false,
+      "credit": {
+        "creator": "Tima Miroshnichenko",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/woman-holding-a-white-vacuum-6196239/"
+      },
+      "placements": [
+        {
+          "page": "/s-invoice",
+          "section": "Hero",
+          "slot": "Photo panel (base layer) with overlapping invoice document + iPhone screen",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.5, 0.5],
+              "note": "keep the whole van opening, person and ladder"
+            },
+            "widths": [640, 960, 1280, 1600, 2000, 2400, 2880],
+            "target_min_width": 2400,
+            "max_css_width": 460
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": {
+              "focal": [0.5, 0.46]
+            },
+            "widths": [480, 640, 960, 1280, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREW-01",
+      "source": "photo-originals/crew-01.jpg",
+      "name": "crew-01-deck-framing-crew",
+      "original": {
+        "width": 3776,
+        "height": 6720
+      },
+      "alt": "Crew framing a wooden deck in front of a house",
+      "decorative": false,
+      "credit": {
+        "creator": "TROY ALLEN",
+        "license": "Unsplash License",
+        "source_page_url": "https://unsplash.com/photos/construction-workers-building-a-wooden-deck-outdoors-Dbn68nqrA14"
+      },
+      "placements": [
+        {
+          "page": "/s-protocol",
+          "section": "Team & roles",
+          "slot": "Tall photo beside the role cards",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:4",
+            "crop": {
+              "focal": [0.5, 0.62]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 420
+          },
+          "m": {
+            "aspect": "16:10",
+            "crop": {
+              "focal": [0.5, 0.61],
+              "note": "moved up from y 0.66 (visual QA 2026-10-16): keeps the heads of the two workers at the back and the front worker’s boots in the 16:10 band"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        }
+      ]
+    },
+    {
+      "id": "CTA-01",
+      "source": "photo-originals/cta-01.jpg",
+      "name": "cta-01-roofing-crew-brick-home",
+      "original": {
+        "width": 8256,
+        "height": 5504
+      },
+      "alt": "",
+      "decorative": true,
+      "credit": {
+        "creator": "Ryan Stephens",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/roof-repair-and-construction-in-fort-worth-33404981/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Final CTA",
+          "slot": "Full-bleed background (desktop) / top photo band (mobile)",
+          "desktop_min_width": 1024,
+          "reused_on": [
+            {
+              "page": "/s-protocol",
+              "section": "A12 · Final CTA"
+            },
+            {
+              "page": "/s-invoice",
+              "section": "B10 · Final CTA"
+            },
+            {
+              "page": "/pricing",
+              "section": "C8 · Final CTA"
+            },
+            {
+              "page": "/compare",
+              "section": "D7 · Final CTA"
+            },
+            {
+              "page": "/integrations",
+              "section": "E5 · CTA band"
+            },
+            {
+              "page": "/about",
+              "section": "F5 · CTA band"
+            },
+            {
+              "page": "/faq",
+              "section": "M3 · Final CTA"
+            },
+            {
+              "page": "/industries/appliance-repair",
+              "section": "H8 · CTA band"
+            },
+            {
+              "page": "/industries/hvac",
+              "section": "I7 · CTA band"
+            }
+          ],
+          "d": {
+            "aspect": "21:9",
+            "crop": {
+              "focal": [0.52, 0.48],
+              "note": "house + roofers centered; driveway worker kept"
+            },
+            "widths": [640, 960, 1280, 1600, 2000, 2400, 2880],
+            "target_min_width": 2400,
+            "max_css_width": 1320
+          },
+          "m": {
+            "aspect": "16:10 band above the navy content",
+            "crop": {
+              "focal": [0.48, 0.45]
+            },
+            "widths": [480, 640, 960, 1280, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-APPL-01",
+      "source": "photo-originals/ind-appl-01.jpg",
+      "name": "ind-appl-01-laundry-room-washer-dryer",
+      "original": {
+        "width": 5000,
+        "height": 3333
+      },
+      "alt": "Laundry room with a front-load washer and dryer beside a utility sink",
+      "decorative": false,
+      "credit": {
+        "creator": "Curtis Adams",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/front-load-washing-machine-beside-white-window-blinds-3935334/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Appliance repair — large 2×2 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈1.19:1 (588×496 at 1440)",
+            "crop": {
+              "focal": [0.52, 0.56],
+              "note": "machines centered; door at left may be cropped"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 588
+          },
+          "m": {
+            "aspect": "16:10 (full-width first card)",
+            "crop": {
+              "focal": [0.5, 0.56]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        },
+        {
+          "page": "/industries/appliance-repair",
+          "section": "Hero",
+          "slot": "Photo stage",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "16:10",
+            "crop": {
+              "focal": [0.52, 0.55]
+            },
+            "widths": [640, 960, 1280, 1600, 2000, 2400, 2880],
+            "target_min_width": 2400,
+            "max_css_width": 646
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": {
+              "focal": [0.5, 0.55]
+            },
+            "widths": [480, 640, 960, 1280, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-APPL-02",
+      "source": "photo-originals/ind-appl-02.jpg",
+      "name": "ind-appl-02-kitchen-stainless-refrigerator",
+      "original": {
+        "width": 5000,
+        "height": 3333
+      },
+      "alt": "Kitchen with a stainless-steel refrigerator and wall oven",
+      "decorative": false,
+      "credit": {
+        "creator": "Curtis Adams",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/empty-modern-kitchen-area-3958962/"
+      },
+      "placements": [
+        {
+          "page": "/industries/appliance-repair",
+          "section": "\"A typical day\" (second visual)",
+          "slot": "Photo beside the workflow list",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:2",
+            "crop": {
+              "focal": [0.62, 0.5]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          },
+          "m": {
+            "aspect": "3:2",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-HVAC-01",
+      "source": "photo-originals/ind-hvac-01.jpg",
+      "name": "ind-hvac-01-rooftop-condensing-unit",
+      "original": {
+        "width": 5025,
+        "height": 4000
+      },
+      "alt": "Technician works on an open commercial air-conditioning unit on a rooftop",
+      "decorative": false,
+      "credit": {
+        "creator": "José Andrés Pacheco Cortes",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/man-drilling-an-aircon-casing-5463581/"
+      },
+      "grade": {
+        "brightness": 1.06
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "HVAC — tall 1×2 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈0.57:1 (282×496)",
+            "crop": {
+              "focal": [0.36, 0.55],
+              "note": "technician + open cabinet edge"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.4, 0.55]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        },
+        {
+          "page": "/industries/hvac",
+          "section": "Commercial & rooftop work",
+          "slot": "Secondary photo",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "4:3",
+            "crop": {
+              "focal": [0.4, 0.55]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          },
+          "m": {
+            "aspect": "4:3",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-PLMB-01",
+      "source": "photo-originals/ind-plmb-01.jpg",
+      "name": "ind-plmb-01-bathroom-moisture-check",
+      "original": {
+        "width": 5472,
+        "height": 3648
+      },
+      "alt": "Technician kneels beside a toilet and checks the floor with a handheld moisture meter",
+      "decorative": false,
+      "credit": {
+        "creator": "Kathleen Austin Kuhn",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/senior-man-conducting-bathroom-inspection-with-device-32497162/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Plumbing — 1×1 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "1.2:1",
+            "crop": {
+              "focal": [0.62, 0.52]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.64, 0.5]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-ELEC-01",
+      "source": "photo-originals/ind-elec-01.jpg",
+      "name": "ind-elec-01-electrician-breaker-panel",
+      "original": {
+        "width": 3600,
+        "height": 2395
+      },
+      "alt": "Electrician inspects an open residential breaker panel in a garage",
+      "decorative": false,
+      "credit": {
+        "creator": "Kathleen Austin Kuhn",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/electrician-inspecting-residential-fuse-box-area-32497160/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Electrical — 1×1 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "1.2:1",
+            "crop": {
+              "focal": [0.66, 0.48]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.7, 0.48]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        },
+        {
+          "page": "/s-protocol",
+          "section": "Technician app",
+          "slot": "Photo panel beside the iPhone bezel",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.7, 0.46],
+              "note": "panel + technician; window cropped"
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 460
+          },
+          "m": {
+            "aspect": "3:2",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 727
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-HNDY-01",
+      "source": "photo-originals/ind-hndy-01.jpg",
+      "name": "ind-hndy-01-tradesperson-ladder-roofline",
+      "original": {
+        "width": 4365,
+        "height": 6548
+      },
+      "alt": "Tradesperson with tool bags climbs a ladder toward a roofline",
+      "decorative": false,
+      "credit": {
+        "creator": "Daniel & Hannah Snipes",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/skilled-roofer-climbing-ladder-for-repair-38346734/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Handyman — row 3 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈1:1.06 (282×300)",
+            "crop": {
+              "focal": [0.52, 0.45]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.52, 0.48]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-GC-01",
+      "source": "photo-originals/ind-gc-01.jpg",
+      "name": "ind-gc-01-carpenter-framing-sky",
+      "original": {
+        "width": 5790,
+        "height": 3860
+      },
+      "alt": "Carpenter in a hard hat hammers wood framing against a blue sky",
+      "decorative": false,
+      "credit": {
+        "creator": "Josh Olalde",
+        "license": "Unsplash License",
+        "source_page_url": "https://unsplash.com/photos/a-man-in-a-hard-hat-and-safety-gear-working-on-a-wooden-structure-EWoU3snzadU"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "General contractors — row 3 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈1:1.06",
+            "crop": {
+              "focal": [0.34, 0.42]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "16:10 (full-width last card)",
+            "crop": {
+              "focal": [0.4, 0.42]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 959
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-CLEAN-01",
+      "source": "photo-originals/ind-clean-01.jpg",
+      "name": "ind-clean-01-cleaning-crew-arriving",
+      "original": {
+        "width": 3769,
+        "height": 5653
+      },
+      "alt": "Cleaning crew in red uniforms carries equipment toward a house",
+      "decorative": false,
+      "credit": {
+        "creator": "Tima Miroshnichenko",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/back-view-of-workers-walking-towards-a-house-6196685/"
+      },
+      "grade": {
+        "saturation": 0.92
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Cleaning — row 3 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈1:1.06",
+            "crop": {
+              "focal": [0.5, 0.62]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.5, 0.62]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        }
+      ]
+    },
+    {
+      "id": "IND-LAND-01",
+      "source": "photo-originals/ind-land-01.jpg",
+      "name": "ind-land-01-zero-turn-mower",
+      "original": {
+        "width": 4000,
+        "height": 6000
+      },
+      "alt": "Landscaper mows grass on a commercial zero-turn mower",
+      "decorative": false,
+      "credit": {
+        "creator": "Luis Negron",
+        "license": "Pexels License",
+        "source_page_url": "https://www.pexels.com/photo/a-person-mowing-the-lawn-grass-13630739/"
+      },
+      "placements": [
+        {
+          "page": "/",
+          "section": "Industries (bento)",
+          "slot": "Landscaping — row 3 card",
+          "desktop_min_width": 1024,
+          "reused_on": [],
+          "d": {
+            "aspect": "≈1:1.06",
+            "crop": {
+              "focal": [0.55, 0.62]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 282
+          },
+          "m": {
+            "aspect": "4:5",
+            "crop": {
+              "focal": [0.55, 0.62]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 470
+          }
+        },
+        {
+          "page": "/s-invoice",
+          "section": "Who it's for",
+          "slot": "Photo strip tile 2 of 3",
+          "desktop_min_width": 768,
+          "reused_on": [],
+          "d": {
+            "aspect": "3:4",
+            "crop": {
+              "focal": [0.55, 0.6]
+            },
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 384
+          },
+          "m": {
+            "aspect": "3:4",
+            "crop": null,
+            "widths": [480, 640, 960, 1200, 1600],
+            "target_min_width": 1200,
+            "max_css_width": 260
+          }
+        }
+      ]
+    }
+  ]
+}

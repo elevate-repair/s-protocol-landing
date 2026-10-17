@@ -15,7 +15,7 @@ import { paymentCompare, ctaStage } from './blocks.mjs';
 // ------------------------------------------------------------------ dispatch board (night) — homepage §6
 /** The OFFICE-01 tile: the homepage §6 files, reused as registered in image-manifest.json (industry pages H3, I2). */
 export const officeTile = () => html`<figure class="dispatch-head__tile">
-        ${photo({ id: 'OFFICE-01', page: '/', section: 'Dispatch board (dark stage)', sizes: '(min-width: 1280px) 384px, (min-width: 1024px) 218px, (min-width: 768px) 704px, 0px', cls: 'photo--tile' })}
+        ${photo({ id: 'OFFICE-01', page: '/', section: 'Dispatch board (dark stage)', sizes: '(min-width: 1280px) 384px, (min-width: 1024px) calc(33.33vw - 43px), (min-width: 768px) calc(100vw - 64px), 0px', cls: 'photo--tile' })}
         <figcaption class="mono-caption mono-caption--night">THE OFFICE</figcaption>
       </figure>`;
 export const BOARD_CALLOUTS = [

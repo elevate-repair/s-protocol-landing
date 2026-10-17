@@ -1,7 +1,8 @@
 import { track } from './track.js';
 
 const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyOh8-2IwhL6yK6YWjJMENjv0dJugE3G7LcBg2nM22YPK7P8iXHbPQ9wuABSHij4vtp4g/exec';
-const PREVIEW = !/^https:\/\//.test(ENDPOINT);
+const LIVE_HOSTS = ['s-protocol.com', 'www.s-protocol.com', 'localhost', '127.0.0.1'];
+const PREVIEW = !/^https:\/\//.test(ENDPOINT) || !LIVE_HOSTS.includes(window.location.hostname);
 const TIMEOUT_MS = 20000;
 const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 const MESSAGES = { network: 'Your message wasn’t sent — the connection failed.', server: 'Your message wasn’t sent — something went wrong on our side.' };

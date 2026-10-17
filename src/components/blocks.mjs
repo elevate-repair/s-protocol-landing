@@ -101,7 +101,7 @@ export function paymentCompare() {
  * rows: [{ product, name, line, ctaLabel, section }] for the two-product variant, or a single `single` CTA.
  */
 export function ctaStage({ route, id, eyebrowText, title, lead, rows = null, single = null, link = null, headingId }) {
-  const sizes = '(min-width: 1440px) 1320px, (min-width: 1024px) calc(100vw - 80px), (min-width: 768px) 704px, calc(100vw - 40px)';
+  const sizes = '(min-width: 1440px) 1320px, (min-width: 1024px) calc(100vw - 80px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)';
   return html`<section class="section section--night cta-stage-section" id="${id}" aria-labelledby="${headingId}">
   <div class="container container--wide">
     <div class="cta-stage">

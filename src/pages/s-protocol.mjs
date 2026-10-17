@@ -29,7 +29,7 @@ function hero() {
     </div>
     <div class="hero__stage sp-stage" data-reveal-group>
       <figure class="sp-stage__tile">
-        ${photo({ id: 'OFFICE-02', page: R, section: 'Hero', sizes: '(min-width: 1024px) 280px, 0px', cls: 'photo--tile', eager: true })}
+        ${photo({ id: 'OFFICE-02', page: R, section: 'Hero', sizes: '(min-width: 1280px) 280px, (min-width: 1024px) 220px, 0px', cls: 'photo--tile', eager: true })}
         <figcaption class="mono-caption mono-caption--night">DISPATCH · THE OFFICE</figcaption>
       </figure>
       <div class="sp-stage__board" data-reveal>${artFrame({ dark: true, cls: 'ui-frame--hero-board',
@@ -105,7 +105,7 @@ function team() {
     ${sectionHead({ eyebrow: 'TEAM & ROLES', title: 'Add the whole crew. The price stays the same.', id: 'team-title', lead: 'Owner, dispatcher and technician roles, team chat on the job and technician earnings — with no per-seat fees and no team-member limit.', cls: 'section-head--7' })}
     <div class="team-grid">
       <figure class="team-grid__photo" data-reveal>
-        ${photo({ id: 'CREW-01', page: R, section: 'Team & roles', sizes: '(min-width: 1024px) 384px, (min-width: 768px) 704px, calc(100vw - 40px)', cls: 'photo--panel' })}
+        ${photo({ id: 'CREW-01', page: R, section: 'Team & roles', sizes: '(min-width: 1280px) 392px, (min-width: 1024px) calc(33.33vw - 35px), (min-width: 768px) 420px, calc(100vw - 40px)', cls: 'photo--panel' })}
         <figcaption class="mono-caption">CREWS, NOT SEATS</figcaption>
       </figure>
       <div class="team-grid__body">

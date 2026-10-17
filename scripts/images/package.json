@@ -1,0 +1,10 @@
+{
+  "name": "s-protocol-site-images",
+  "private": true,
+  "description": "Photo pipeline for the S Protocol site (sharp): crops and encodes photo-originals/ into site/images/. Not part of the website — Cloudflare Pages serves the committed site/ folder and never installs this. Install once with: npm --prefix scripts/images ci",
+  "type": "module",
+  "engines": { "node": ">=18.18" },
+  "dependencies": {
+    "sharp": "0.34.3"
+  }
+}
