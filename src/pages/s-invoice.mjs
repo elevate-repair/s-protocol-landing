@@ -12,7 +12,7 @@ import { invoiceDocReplica, DOC_LABEL, sInvoiceHomeReplica, SI_HOME_LABEL } from
 import { pricingPair, finePrint, faqList, ctaStage } from '../components/blocks.mjs';
 
 const R = '/s-invoice';
-const HERO_SIZES = '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) 704px, calc(100vw - 40px)';
+const HERO_SIZES = '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)';
 
 // ------------------------------------------------------------------ B1 Hero (tint)
 function hero() {
@@ -49,7 +49,7 @@ function whoFor() {
   return html`<section class="section section--paper" id="for" aria-labelledby="for-title">
   <div class="container">
     ${sectionHead({ eyebrow: 'WHO IT’S FOR', title: 'Built for independent service pros and small crews.', id: 'for-title', lead: 'If your work happens at the customer’s door — quotes, jobs and getting paid — S Invoice keeps the paperwork simple.', cls: 'section-head--7' })}
-    <div class="photo-strip-wrap" tabindex="0" role="region" aria-label="Photos of the trades S Invoice is made for — scroll sideways on small screens"><ul class="photo-strip">${strip.map(([id, section, caption]) => html`<li class="photo-strip__item" data-reveal><figure>${photo({ id, page: R, section, sizes: '(min-width: 1024px) 384px, (min-width: 768px) 220px, 260px', cls: 'photo--panel photo--3x4' })}<figcaption class="mono-caption">${caption}</figcaption></figure></li>`)}</ul></div>
+    <div class="photo-strip-wrap" tabindex="0" role="region" aria-label="Photos of the trades S Invoice is made for — scroll sideways on small screens"><ul class="photo-strip">${strip.map(([id, section, caption]) => html`<li class="photo-strip__item" data-reveal><figure>${photo({ id, page: R, section, sizes: '(min-width: 1280px) 384px, (min-width: 1024px) calc(33.33vw - 43px), (min-width: 768px) calc(33.33vw - 35px), 260px', cls: 'photo--panel photo--3x4' })}<figcaption class="mono-caption">${caption}</figcaption></figure></li>`)}</ul></div>
     <div class="also-row"><p class="mono-label">MADE FOR BUSINESSES LIKE</p><ul class="chips">${TRADES.map((t) => html`<li>${factChip(t)}</li>`)}</ul></div>
   </div>
 </section>`;

@@ -17,7 +17,7 @@ import { pricingPair, finePrint, faqList, ctaStage } from '../components/blocks.
 import { boardSection, technicianSection, moneySection, originSection, officeTile } from '../components/sections.mjs';
 
 const R = '/';
-const HERO_SIZES = '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) 704px, calc(100vw - 40px)';
+const HERO_SIZES = '(min-width: 1280px) 460px, (min-width: 1024px) 360px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)';
 const appIcon = (product, size) => html`<img class="app-icon" src="/assets/brand/${product === 's_invoice' ? 's-invoice-icon' : 'app-icon'}.webp" width="${size}" height="${size}" alt="" loading="lazy" decoding="async">`;
 const mono = (text, cls = '') => html`<p class="mono-caption${cls ? ' ' + cls : ''}">${tm(text)}</p>`;
 
@@ -218,14 +218,14 @@ function sInvoiceSpotlight() {
 
 // ------------------------------------------------------------------ §10 Industries (bento)
 const CARDS = [
-  { k: 'a', id: 'IND-APPL-01', label: 'Appliance repair', d: 'Where S Protocol started: same-day calls and the full history of every customer.', link: '§10 Industries — card A', sizes: '(min-width: 1024px) 588px, (min-width: 768px) 704px, calc(100vw - 40px)' },
-  { k: 'b', id: 'IND-HVAC-01', label: 'HVAC', d: 'Busy-season boards and one price for every tech.', link: '§10 Industries — card B', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
-  { k: 'c', id: 'IND-PLMB-01', label: 'Plumbing', d: 'Urgent calls on the board, photos on the job.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
-  { k: 'd', id: 'IND-ELEC-01', label: 'Electrical', d: 'Estimates on site, invoices before you leave.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
-  { k: 'e', id: 'IND-HNDY-01', label: 'Handyman', d: 'Small jobs and quick invoices — with S Invoice or S Protocol.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
-  { k: 'f', id: 'IND-GC-01', label: 'General contractors', d: 'Estimates, invoices and deposits with S Invoice.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 704px, calc(100vw - 40px)' },
-  { k: 'g', id: 'IND-CLEAN-01', label: 'Cleaning', d: 'Crews on the board, payment at the door.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
-  { k: 'h', id: 'IND-LAND-01', label: 'Landscaping', d: 'Crews out all day, invoices out the same evening.', sizes: '(min-width: 1024px) 282px, (min-width: 768px) 342px, calc(50vw - 28px)' },
+  { k: 'a', id: 'IND-APPL-01', label: 'Appliance repair', d: 'Where S Protocol started: same-day calls and the full history of every customer.', link: '§10 Industries — card A', sizes: '(min-width: 1280px) 588px, (min-width: 1024px) calc(50vw - 52px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)' },
+  { k: 'b', id: 'IND-HVAC-01', label: 'HVAC', d: 'Busy-season boards and one price for every tech.', link: '§10 Industries — card B', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
+  { k: 'c', id: 'IND-PLMB-01', label: 'Plumbing', d: 'Urgent calls on the board, photos on the job.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
+  { k: 'd', id: 'IND-ELEC-01', label: 'Electrical', d: 'Estimates on site, invoices before you leave.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
+  { k: 'e', id: 'IND-HNDY-01', label: 'Handyman', d: 'Small jobs and quick invoices — with S Invoice or S Protocol.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
+  { k: 'f', id: 'IND-GC-01', label: 'General contractors', d: 'Estimates, invoices and deposits with S Invoice.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)' },
+  { k: 'g', id: 'IND-CLEAN-01', label: 'Cleaning', d: 'Crews on the board, payment at the door.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
+  { k: 'h', id: 'IND-LAND-01', label: 'Landscaping', d: 'Crews out all day, invoices out the same evening.', sizes: '(min-width: 1280px) 282px, (min-width: 1024px) calc(25vw - 38px), (min-width: 768px) calc(50vw - 42px), calc(50vw - 28px)' },
 ];
 function industries() {
   const card = (c) => {

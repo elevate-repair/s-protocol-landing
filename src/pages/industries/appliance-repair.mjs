@@ -12,7 +12,7 @@ import { faqList } from '../../components/blocks.mjs';
 import { pageHero, breadcrumb, boardSection, technicianSection, moneySection, originSection, sProtocolCta, officeTile } from '../../components/sections.mjs';
 
 const R = '/industries/appliance-repair';
-const HERO_SIZES = '(min-width: 1280px) 690px, (min-width: 1024px) 52vw, calc(100vw - 40px)';
+const HERO_SIZES = '(min-width: 1280px) 646px, (min-width: 1024px) calc(58.33vw - 101px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)';
 
 function hero() {
   const aside = html`<div class="ind-stage" data-reveal-group>
@@ -49,7 +49,7 @@ function sampleDay() {
       <p class="footnote">Website lead intake and Tap to Pay on <span class="tm">iPhone</span> are set up with you.</p>
     </div>
     <figure class="day__visual" data-reveal>
-      ${photo({ id: 'IND-APPL-02', page: R, section: '"A typical day" (second visual)', sizes: '(min-width: 1280px) 588px, (min-width: 1024px) 46vw, (min-width: 768px) 704px, calc(100vw - 40px)', cls: 'photo--panel day__photo' })}
+      ${photo({ id: 'IND-APPL-02', page: R, section: '"A typical day" (second visual)', sizes: '(min-width: 1280px) 588px, (min-width: 1024px) calc(50vw - 52px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)', cls: 'photo--panel day__photo' })}
     </figure>
   </div>
 </section>`;

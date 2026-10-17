@@ -11,7 +11,7 @@ import { faqList } from '../../components/blocks.mjs';
 import { pageHero, breadcrumb, boardSection, moneySection, sProtocolCta, TECH_ROWS, officeTile } from '../../components/sections.mjs';
 
 const R = '/industries/hvac';
-const HERO_SIZES = '(min-width: 1280px) 690px, (min-width: 1024px) 52vw, calc(100vw - 40px)';
+const HERO_SIZES = '(min-width: 1280px) 646px, (min-width: 1024px) calc(58.33vw - 101px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)';
 
 function hero() {
   const aside = html`<div class="ind-stage ind-stage--chip" data-reveal-group>
@@ -34,7 +34,7 @@ function rooftop() {
   return html`<section class="section section--paper" id="rooftop" aria-labelledby="rooftop-title">
   <div class="container split split--visual-left">
     <figure class="split__visual rooftop__visual" data-reveal>
-      ${photo({ id: 'IND-HVAC-01', page: R, section: 'Commercial & rooftop work', sizes: '(min-width: 1280px) 690px, (min-width: 1024px) 50vw, (min-width: 768px) 704px, calc(100vw - 40px)', cls: 'photo--panel rooftop__photo' })}
+      ${photo({ id: 'IND-HVAC-01', page: R, section: 'Commercial & rooftop work', sizes: '(min-width: 1280px) 686px, (min-width: 1024px) calc(50vw - 52px), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)', cls: 'photo--panel rooftop__photo' })}
       <figcaption class="mono-caption">COMMERCIAL &amp; ROOFTOP WORK</figcaption>
     </figure>
     <div class="split__text">
