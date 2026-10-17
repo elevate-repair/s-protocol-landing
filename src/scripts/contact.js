@@ -8,9 +8,12 @@ import { track } from './track.js';
 
 // Filled in by scripts/build-site.mjs from the legacy main.js WEBHOOK_URL, after checking its SHA-256 (never retyped).
 const ENDPOINT = '__CONTACT_ENDPOINT__';
-// A build without the endpoint (the review preview from scripts/build-preview.mjs, or an unbuilt source file) sends
-// nothing: after validation it only says that this is a preview.
-const PREVIEW = !/^https:\/\//.test(ENDPOINT);
+// Only the live site sends. A build without the endpoint (the review preview from scripts/build-preview.mjs, or an
+// unbuilt source file) and every other host — a Cloudflare Pages preview (*.pages.dev), any staging copy — send
+// nothing: after validation they only say that this is a preview. localhost stays live for the local QA run, which
+// intercepts every request.
+const LIVE_HOSTS = ['s-protocol.com', 'www.s-protocol.com', 'localhost', '127.0.0.1'];
+const PREVIEW = !/^https:\/\//.test(ENDPOINT) || !LIVE_HOSTS.includes(window.location.hostname);
 const TIMEOUT_MS = 20000;
 const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 const MESSAGES = { network: 'Your message wasn’t sent — the connection failed.', server: 'Your message wasn’t sent — something went wrong on our side.' };
