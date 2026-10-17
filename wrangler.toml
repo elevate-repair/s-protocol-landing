@@ -1,0 +1,15 @@
+# Cloudflare Pages configuration for the s-protocol-landing project (GitHub integration).
+#
+# Pages serves ONLY the committed, prebuilt site/ folder — never the repository root, so src/, scripts/,
+# photo-originals/ and the legacy root files are not published. There is no build command: site/ is built
+# and committed with `node scripts/build-site.mjs` (see README.md).
+#
+# Cloudflare reads this file from each commit it deploys:
+#   - preview builds of a branch that contains it serve site/;
+#   - production switches from the dashboard's output directory ("/") to site/ only when this file
+#     reaches the production branch (main) — merging it is the release.
+# While this file is in use, it is the source of truth for the project's build output directory; delete it
+# and redeploy to return to the dashboard settings.
+name = "s-protocol-landing"
+pages_build_output_dir = "./site"
+compatibility_date = "2026-09-01"

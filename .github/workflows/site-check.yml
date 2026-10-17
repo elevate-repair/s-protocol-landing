@@ -1,0 +1,18 @@
+# Cloudflare Pages publishes the committed site/ folder as it is (wrangler.toml, no build command).
+# This check fails when site/ does not match a fresh build of src/ (a stale build, or files added to
+# site/ by hand, which the next build would delete), or when an approved photo slot is still pending.
+# Node built-ins only: nothing is installed.
+name: Site build check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: site/ matches a fresh build, and every photo slot is filled
+        run: node scripts/build-site.mjs --check --strict

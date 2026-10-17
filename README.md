@@ -8,9 +8,41 @@ S Protocol helps service businesses manage jobs, customers, technicians, dispatc
 scheduling, estimates, invoices, payments, and daily operations in one connected
 platform. A Free plan is available; S Protocol Pro unlocks unlimited use.
 
-## Stack
+## Redesigned site (`site/`)
 
-Static site — plain HTML, CSS, and vanilla JS. No build step.
+The redesigned website is the committed, prebuilt `site/` folder. Cloudflare Pages
+serves that folder and nothing else: `wrangler.toml` sets the build output directory
+to `site`, and there is no build command. Branch previews use it as soon as a branch
+contains the file; production uses it once the file is on `main`, so merging it is
+the release. The legacy files described under **Legacy site** stay in the repository as
+build inputs (legal text, `clarity.js`, the contact endpoint in `main.js`,
+`site.webmanifest`). They are no longer published once `wrangler.toml` is on `main`.
+
+```
+src/               page sources, styles, scripts, data   → node scripts/build-site.mjs → site/
+photo-originals/   the 17 approved photos (source files, never published)
+scripts/images/    photo pipeline (sharp)                → site/images/photos/ + images.generated.json
+```
+
+```bash
+npm --prefix scripts/images ci              # once: sharp for the photo pipeline
+node scripts/images/build-images.mjs        # photos → site/images/ (only after a photo changes)
+node scripts/build-site.mjs --strict        # pages → site/ (fails if a photo slot is still pending)
+node scripts/build-site.mjs --check         # exit 1 if the committed site/ is stale
+node scripts/preview-site.mjs               # serve site/ locally like Cloudflare Pages
+```
+
+Commit `site/` together with its sources: Cloudflare publishes exactly what is
+committed. The **Site build check** GitHub workflow (`.github/workflows/site-check.yml`)
+runs `node scripts/build-site.mjs --check --strict` on every push and pull request, and
+fails if `site/` is stale, holds files the build would delete, or has a pending photo. On `*.pages.dev` previews the contact form only says "Preview only — this
+message was not sent"; it sends from s-protocol.com (and localhost for testing) only.
+See `photo-originals/README.md` for the photos, their sizes and credits.
+
+## Legacy site (repository root)
+
+The pre-redesign site, served from the repository root until `wrangler.toml` reaches
+`main`. Static site — plain HTML, CSS, and vanilla JS. No build step.
 
 - `index.html` — homepage markup and metadata
 - `s-invoice/index.html` — S Invoice product page (`/s-invoice`)
@@ -61,7 +93,8 @@ files directly in the page.
 
 ## Develop
 
-Open `index.html` directly, or serve the folder:
+For the redesigned site, see **Redesigned site** above. For the legacy site, open
+`index.html` directly, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
